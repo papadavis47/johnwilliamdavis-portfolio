@@ -11,10 +11,12 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <SiteTitleWrapper>
-        <h1>John William Davis</h1>
-        <h2>Front End Developer</h2>
-        <p className='special'>Portfolio</p>
-        <span>Under Construction 🛠️</span>
+        <h1 className='title'>John William Davis</h1>
+        <h2 className='subtitle'>Front End Developer</h2>
+        <p className='paragraph'>Portfolio</p>
+        <p>
+          <span className='highlight'>Under Construction</span> 🛠️
+        </p>
       </SiteTitleWrapper>
     </div>
   );

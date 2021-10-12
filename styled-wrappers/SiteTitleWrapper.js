@@ -40,8 +40,21 @@ export const SiteTitleWrapper = styled.div`
 
   /*  */
 
-  .special:hover {
+  .paragraph:hover {
     color: hsl(209.6, 100%, 55.9%);
+  }
+
+  .subtitle:hover {
+    color: hsl(142.2, 100%, 59.8%);
+  }
+
+  .title:hover {
+    color: hsl(5.6, 78.1%, 57.1%);
+  }
+
+  .highlight:hover {
+    background-color: hsl(58.1, 100%, 69.8%);
+    font-size: 1.2rem;
   }
 
   @media screen and (max-width: 500px) {
