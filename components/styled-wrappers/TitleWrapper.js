@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SiteTitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ export const SiteTitleWrapper = styled.div`
     font-size: 1rem;
   }
 
-  font-family: "Abril Fatface", cursive;
+  /* font-family: "Abril Fatface", cursive; */
   /*  */
   position: absolute;
   top: 0px;
@@ -45,6 +45,16 @@ export const SiteTitleWrapper = styled.div`
   .title {
     transition: color 500ms;
   }
+
+  .paragraph {
+    transition: color 700ms;
+  }
+
+  .subtitle {
+    transition: color 900ms;
+  }
+
+  /* End transitions */
 
   .paragraph:hover {
     color: hsl(209.6, 100%, 55.9%);
@@ -77,3 +87,5 @@ export const SiteTitleWrapper = styled.div`
     }
   }
 `;
+
+export default TitleWrapper;
