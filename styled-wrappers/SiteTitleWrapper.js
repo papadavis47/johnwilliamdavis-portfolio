@@ -40,6 +40,12 @@ export const SiteTitleWrapper = styled.div`
 
   /*  */
 
+  /* Playing with a transition here below */
+
+  .title {
+    transition: color 500ms;
+  }
+
   .paragraph:hover {
     color: hsl(209.6, 100%, 55.9%);
   }
