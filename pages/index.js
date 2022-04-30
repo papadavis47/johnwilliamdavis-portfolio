@@ -1,10 +1,20 @@
 import Head from "next/head";
+import styled from "styled-components";
 import Image from "next/image";
-import LandingPageTitle from "../components/LandingPageTitle/LandingPageTitle.js";
+import LandingPageTitle from "../components/LandingPageTitle";
+import UnderConstruction from "../components/UnderConstruction";
+
+const TempLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
 
 export default function Home() {
   return (
-    <div>
+    <TempLayout>
       <Head>
         <title>John William Davis Portfolio</title>
         <meta
@@ -14,6 +24,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <LandingPageTitle />
-    </div>
+      <UnderConstruction />
+    </TempLayout>
   );
 }
