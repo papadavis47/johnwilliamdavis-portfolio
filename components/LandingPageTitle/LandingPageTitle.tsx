@@ -1,4 +1,4 @@
-import TitleWrapper from "./TitleWrapper.js";
+import TitleWrapper from "./TitleWrapper";
 
 const LandingPageTitle = () => {
   return (
