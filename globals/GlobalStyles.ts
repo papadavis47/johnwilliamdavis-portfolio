@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -25,7 +25,7 @@ body{
   min-height:100%;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Merriweather', serif;
 }
 
 /*
