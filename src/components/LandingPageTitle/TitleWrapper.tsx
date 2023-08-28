@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 const TitleWrapper = styled.div`
   // The following margin is to pull up content to eye level
   margin-top: -75px;
