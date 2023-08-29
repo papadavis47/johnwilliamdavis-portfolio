@@ -1,27 +1,46 @@
-// import LandingPageTitle from '../components/LandingPageTitle';
-// import UnderConstruction from '../components/UnderConstruction';
 import { styled } from '../../styled-system/jsx';
+import { merriweather } from './fonts';
 
 const TitleWrapper = styled.div`
+  margin-top: -75px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
+  font-family: merriweather;
+  color: hsl(0, 0%, 20%);
+  min-height: 100%;
+  font-weight: 300;
 `;
 
 const TitleMain = styled.h1`
   font-size: 3rem;
-  color: hsl(209.6, 100%, 55.9%);
+`;
+
+const SubtitleMain = styled.h2`
+  font-size: 2rem;
+`;
+
+const SubtitleSecondary = styled.h3`
+  font-size: 2rem;
+`;
+
+const StyledSpan = styled.span`
+  font-size: 1rem;
+  text-transform: capitalize;
 `;
 
 export default function Home() {
   return (
     <TitleWrapper>
-      {/* <LandingPageTitle /> */}
-      {/* <UnderConstruction /> */}
       <TitleMain>John William Davis</TitleMain>
-      <h2>TypeScript Developer</h2>
-      <p>Portfolio</p>
+      <SubtitleMain>TypeScript Developer</SubtitleMain>
+      <SubtitleSecondary>Portfolio</SubtitleSecondary>
+      {/* <UnderConstruction /> */}
+      <p>
+        <StyledSpan>under construction</StyledSpan> 🛠️
+      </p>
     </TitleWrapper>
   );
 }
