@@ -1,4 +1,4 @@
-import './globals.css';
+import './index.css';
 import { raleway } from './fonts';
 import { Metadata } from 'next';
 import { styled } from '../../styled-system/jsx';
