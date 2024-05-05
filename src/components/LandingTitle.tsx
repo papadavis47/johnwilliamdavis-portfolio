@@ -58,7 +58,7 @@ function LandingTitle() {
   return (
     <TitleWrapper>
       <TitleMain>John William Davis</TitleMain>
-      <SubtitleMain>TypeScript Developer</SubtitleMain>
+      <SubtitleMain>TypeScript / Rust / Go Developer</SubtitleMain>
       <SubtitleSecondary>Portfolio</SubtitleSecondary>
       <p>
         <StyledSpan>under construction</StyledSpan> 🛠️
