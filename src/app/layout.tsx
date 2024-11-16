@@ -1,11 +1,10 @@
-import './index.css';
-import { raleway } from './fonts';
-import { Metadata } from 'next';
-import { styled } from '../../styled-system/jsx';
+import "./index.css";
+import { raleway } from "./fonts";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'John William Davis - Portfolio',
-  description: 'Porfolio website for John William Davis - Software Engineer',
+  title: "John William Davis - Portfolio",
+  description: "Porfolio website for John William Davis - Software Engineer",
 };
 
 // const Container = styled.div`
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={raleway.className}>{children}</body>
     </html>
   );
