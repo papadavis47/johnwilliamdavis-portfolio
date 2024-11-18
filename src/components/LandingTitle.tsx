@@ -3,55 +3,60 @@ import { styled } from '@pigment-css/react'
 
 const TitleWrapper = styled('div')({
   marginTop: '-75px',
+  lineHeight: '1.75',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '24px',
-  fontFamily: 'merriweather',
   color: 'hsl(0, 0%, 20%)',
-  fontWeight: '400',
 })
 
 const TitleMain = styled('h1')({
-  fontSize: '2rem',
-  // &:hover {
-  //   color: 'hsl(209.6, 100%, 55.9%)',
-  // }
-  '@media screen and (min-width: 640px)': {
-    fontSize: '3rem',
+  fontFamily: 'merriweather',
+  fontWeight: '400',
+  fontSize: '1.75rem',
+  '&:hover': {
+    color: 'hsl(209.6, 100%, 55.9%)',
   },
-  // transition: color 900ms;
+  '@media screen and (min-width: 640px)': {
+    fontSize: '2.5rem',
+  },
+  transition: 'color 900ms',
 })
 
 const SubtitleMain = styled('h2')({
-  fontSize: '1.25rem',
-  // &:hover {
-  //   color: hsl(142.2, 100%, 59.8%);
-  // }
-  '@media screen and (min-width: 640px)': {
-    fontSize: '2rem',
+  fontFamily: 'merriweather',
+  fontWeight: '400',
+  fontSize: '1.1rem',
+  '&:hover': {
+    color: 'hsl(142.2, 100%, 59.8%)',
   },
-  // transition: color 500ms;
+  '@media screen and (min-width: 640px)': {
+    fontSize: '1.75rem',
+  },
+  transition: 'color 500ms',
 })
 
 const SubtitleSecondary = styled('h3')({
-  fontSize: '1.25rem',
-  // &:hover {
-  //   color: hsl(5.6, 78.1%, 57.1%);
-  // }
-  '@media screen and (min-width: 640px)': {
-    fontSize: '2rem',
+  fontFamily: 'merriweather',
+  fontWeight: '400',
+  fontSize: '1.2rem',
+  '&:hover': {
+    color: 'hsl(5.6, 78.1%, 57.1%)',
   },
-  // transition: color 700ms;
+  '@media screen and (min-width: 640px)': {
+    fontSize: '1.75rem',
+  },
+  transition: 'color 700ms',
 })
 
 const StyledSpan = styled('span')({
-  fontSize: '1.25rem',
+  fontFamily: 'merriweather',
+  fontSize: '1.1rem',
   textTransform: 'capitalize',
-  // &:hover {
-  //   background-color: hsl(58.1, 100%, 69.8%);
-  // }
+  '&:hover': {
+    backgroundColor: 'hsl(58.1, 100%, 69.8%)',
+  },
 })
 
 function LandingTitle() {
