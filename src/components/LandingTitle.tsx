@@ -18,9 +18,9 @@ const TitleMain = styled('h1')({
   // &:hover {
   //   color: 'hsl(209.6, 100%, 55.9%)',
   // }
-  // @media screen and (min-width: 640px) {
-  //   font-size: 3rem;
-  // }
+  '@media screen and (min-width: 640px)': {
+    fontSize: '3rem',
+  },
   // transition: color 900ms;
 })
 
@@ -29,9 +29,9 @@ const SubtitleMain = styled('h2')({
   // &:hover {
   //   color: hsl(142.2, 100%, 59.8%);
   // }
-  // @media screen and (min-width: 640px) {
-  //   font-size: 2rem;
-  // }
+  '@media screen and (min-width: 640px)': {
+    fontSize: '2rem',
+  },
   // transition: color 500ms;
 })
 
@@ -40,9 +40,9 @@ const SubtitleSecondary = styled('h3')({
   // &:hover {
   //   color: hsl(5.6, 78.1%, 57.1%);
   // }
-  // @media screen and (min-width: 640px) {
-  //   font-size: 2rem;
-  // }
+  '@media screen and (min-width: 640px)': {
+    fontSize: '2rem',
+  },
   // transition: color 700ms;
 })
 

@@ -10,44 +10,44 @@ export const metadata: Metadata = {
 
 // Global styles from Josh Comeau
 globalCss`
-  *: {
+  * {
     margin: 0;
     box-sizing: border-box;
   }
 
-  *::before: {
+  *::before {
     box-sizing: border-box;
   }
 
-  *::after: {
+  *::after {
     box-sizing: border-box;
   }
 
-  a: {
+  a {
     text-decoration: none;
   }
 
-  html, body: {
+  html, body {
     height: 100%;
   }
 
-  body: {
+  body {
     min-height: 100%;
     line-height: 1.5;
     WebkitFontSmoothing: antialiased;
   }
 
-  img, picture, video, canvas, svg: {
+  img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
   }
-  input, button, textarea, select: {
+  input, button, textarea, select {
     font: inherit;
   }
-  p, h1, h2, h3, h4, h5, h6: {
+  p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word,
   }
-  #root, #__next: {
+  #root, #__next {
     isolation: isolate;
   }
 `
