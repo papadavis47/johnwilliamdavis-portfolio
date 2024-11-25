@@ -1,4 +1,4 @@
-import { merriweather } from '../app/fonts'
+import { merriweather } from '../app/fonts.ts'
 import { styled } from '@pigment-css/react'
 
 const TitleWrapper = styled('div')({
