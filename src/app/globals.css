@@ -1,0 +1,20 @@
+@layer reset, base, tokens, recipes, utilities;
+
+/* Some global styles from Josh Comeau - preserving exactly as in layout.tsx */
+
+html,
+body,
+#__next {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+}

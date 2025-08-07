@@ -1,19 +1,17 @@
 import LandingTitle from '@/components/LandingTitle'
-import { styled } from '@pigment-css/react'
-
-const Wrapper = styled('div')({
-  minHeight: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '0 36px',
-})
+import { css } from '../../styled-system/css'
 
 export default function Home() {
   return (
-    <Wrapper>
+    <div className={css({
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0 36px',
+    })}>
       <LandingTitle />
-    </Wrapper>
+    </div>
   )
 }
