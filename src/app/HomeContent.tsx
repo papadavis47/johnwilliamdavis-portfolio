@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { css } from '../../../styled-system/css'
+import { css } from '../../styled-system/css'
 import { merriweather } from '@/app/fonts'
 
 export default function HomeContent() {

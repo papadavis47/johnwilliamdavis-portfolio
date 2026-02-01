@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { css } from '../../../../styled-system/css'
+import { css } from '../../../styled-system/css'
 import { merriweather } from '@/app/fonts'
 import {
   Code2,
