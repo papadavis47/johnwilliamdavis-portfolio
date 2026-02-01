@@ -18,9 +18,10 @@ function Footer() {
       alignItems: 'center',
       gap: '1rem',
       padding: '2rem',
-      borderTop: '1px solid hsl(0, 0%, 85%)',
-      backgroundColor: 'hsl(0, 0%, 98%)',
-      color: 'hsl(0, 0%, 45%)',
+      borderTop: '1px solid',
+      borderColor: 'muted/20',
+      bg: 'surface',
+      color: 'muted',
     })}>
       <div className={css({
         display: 'flex',
@@ -34,10 +35,10 @@ function Footer() {
             rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
             aria-label={label}
             className={css({
-              color: 'hsl(0, 0%, 45%)',
+              color: 'muted',
               transition: 'color 300ms',
               _hover: {
-                color: 'hsl(209.6, 100%, 55.9%)',
+                color: 'primary',
               },
             })}
             whileHover={{ scale: 1.15 }}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { css } from '../../styled-system/css'
@@ -11,12 +12,14 @@ import ThemeToggle from '@/components/ThemeToggle'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/about', label: 'About' },
+  { href: '/about-me', label: 'About Me' },
   { href: '/interests', label: 'Interests' },
 ]
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const filteredNavLinks = navLinks.filter((link) => link.href !== pathname)
 
   return (
     <header
@@ -63,7 +66,7 @@ function Navigation() {
             md: { display: 'flex' },
           })}
         >
-          {navLinks.map((link) => (
+          {filteredNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -104,51 +107,87 @@ function Navigation() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className={css({
-              overflow: 'hidden',
-              bg: 'surface',
-              borderTop: '1px solid',
-              borderColor: 'muted/20',
-              md: { display: 'none' },
-            })}
-          >
-            <div
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
               className={css({
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2',
-                px: '4',
-                py: '4',
+                position: 'fixed',
+                inset: 0,
+                top: '57px',
+                bg: 'black/40',
+                zIndex: 40,
+                md: { display: 'none' },
+              })}
+            />
+            <motion.div
+              id="mobile-menu"
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className={css({
+                position: 'fixed',
+                top: '57px',
+                left: 0,
+                bottom: 0,
+                width: '280px',
+                bg: 'surface',
+                borderRight: '1px solid',
+                borderColor: 'muted/20',
+                zIndex: 50,
+                md: { display: 'none' },
               })}
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={css({
-                    color: 'text',
-                    textDecoration: 'none',
-                    fontSize: '1rem',
-                    py: '2',
-                    transition: 'color 200ms',
-                    _hover: { color: 'primary' },
-                  })}
+              <div
+                className={css({
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '2',
+                  px: '6',
+                  py: '6',
+                })}
+              >
+                {filteredNavLinks.map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.05 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={css({
+                        display: 'block',
+                        color: 'text',
+                        textDecoration: 'none',
+                        fontSize: '1.1rem',
+                        py: '3',
+                        borderBottom: '1px solid',
+                        borderColor: 'muted/10',
+                        transition: 'color 200ms',
+                        _hover: { color: 'primary' },
+                      })}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + filteredNavLinks.length * 0.05 }}
+                  className={css({ pt: '4' })}
                 >
-                  {link.label}
-                </Link>
-              ))}
-              <div className={css({ pt: '2' })}>
-                <ThemeToggle />
+                  <ThemeToggle />
+                </motion.div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
