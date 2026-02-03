@@ -1,25 +1,25 @@
 'use client'
 
 import Link from 'next/link'
-import { Book, Mountain } from 'lucide-react'
-import { motion } from 'motion/react'
+import { Book, Mountain, PenLine } from 'lucide-react'
 import { css } from '../../../styled-system/css'
 import { merriweather } from '@/app/fonts'
+import InterestCard from '@/components/InterestCard'
 
 const books = [
   { title: 'The Pragmatic Programmer', author: 'David Thomas & Andrew Hunt' },
-  { title: 'Designing Data-Intensive Applications', author: 'Martin Kleppmann' },
-  { title: 'Structure and Interpretation of Computer Programs', author: 'Abelson & Sussman' },
+  {
+    title: 'Designing Data-Intensive Applications',
+    author: 'Martin Kleppmann',
+  },
+  {
+    title: 'Structure and Interpretation of Computer Programs',
+    author: 'Abelson & Sussman',
+  },
   { title: 'The Art of Unix Programming', author: 'Eric S. Raymond' },
 ]
 
-const sectionAnimation = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-}
-
-export default function InterestsContent() {
+export default function OtherInterestsContent() {
   return (
     <main
       className={css({
@@ -38,43 +38,13 @@ export default function InterestsContent() {
           textAlign: 'center',
         })}`}
       >
-        Interests
+        Other Interests
       </h1>
 
-      <div className={css({ display: 'flex', flexDirection: 'column', gap: '16' })}>
-        <motion.section
-          {...sectionAnimation}
-          className={css({
-            bg: 'surface',
-            borderRadius: '12px',
-            p: '8',
-            border: '1px solid',
-            borderColor: 'muted/20',
-          })}
-        >
-          <div
-            className={css({
-              display: 'flex',
-              alignItems: 'center',
-              gap: '3',
-              mb: '4',
-            })}
-          >
-            <Book
-              size={28}
-              className={css({ color: 'secondary' })}
-            />
-            <h2
-              className={`${merriweather.className} ${css({
-                fontSize: '1.75rem',
-                fontWeight: '700',
-                color: 'text',
-              })}`}
-            >
-              Reading
-            </h2>
-          </div>
-
+      <div
+        className={css({ display: 'flex', flexDirection: 'column', gap: '16' })}
+      >
+        <InterestCard icon={Book} title="Reading">
           <p
             className={css({
               color: 'text',
@@ -83,9 +53,9 @@ export default function InterestsContent() {
               maxWidth: '65ch',
             })}
           >
-            I enjoy reading technical books that deepen my understanding of software
-            engineering principles and practices. Here are some favorites that have
-            shaped how I think about building software.
+            I enjoy reading technical books that deepen my understanding of
+            software engineering principles and practices. Here are some
+            favorites that have shaped how I think about building software.
           </p>
 
           <ul
@@ -127,42 +97,9 @@ export default function InterestsContent() {
               </li>
             ))}
           </ul>
-        </motion.section>
+        </InterestCard>
 
-        <motion.section
-          {...sectionAnimation}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className={css({
-            bg: 'surface',
-            borderRadius: '12px',
-            p: '8',
-            border: '1px solid',
-            borderColor: 'muted/20',
-          })}
-        >
-          <div
-            className={css({
-              display: 'flex',
-              alignItems: 'center',
-              gap: '3',
-              mb: '4',
-            })}
-          >
-            <Mountain
-              size={28}
-              className={css({ color: 'secondary' })}
-            />
-            <h2
-              className={`${merriweather.className} ${css({
-                fontSize: '1.75rem',
-                fontWeight: '700',
-                color: 'text',
-              })}`}
-            >
-              Trail Running
-            </h2>
-          </div>
-
+        <InterestCard icon={PenLine} title="Writing" delay={0.4}>
           <p
             className={css({
               color: 'text',
@@ -171,9 +108,44 @@ export default function InterestsContent() {
               maxWidth: '65ch',
             })}
           >
-            When I&apos;m not coding, you&apos;ll find me on the trails. Trail running is my way
-            of disconnecting from screens and reconnecting with nature. The challenge
-            of varied terrain keeps both mind and body engaged.
+            Writing has always been a way for me to clarify my thoughts and
+            share ideas with others. Whether it&apos;s technical documentation,
+            blog posts, or personal reflections, putting words to paper helps me
+            process complex concepts and communicate more effectively.
+          </p>
+
+          <div
+            className={css({
+              bg: 'muted/10',
+              borderRadius: '8px',
+              p: '5',
+            })}
+          >
+            <p
+              className={css({
+                color: 'text',
+                lineHeight: '1.7',
+              })}
+            >
+              I believe that clear writing reflects clear thinking. The
+              discipline of organizing ideas into coherent prose has made me a
+              better engineer and collaborator.
+            </p>
+          </div>
+        </InterestCard>
+        <InterestCard icon={Mountain} title="Trail Running" delay={0.2}>
+          <p
+            className={css({
+              color: 'text',
+              lineHeight: '1.7',
+              mb: '6',
+              maxWidth: '65ch',
+            })}
+          >
+            When I&apos;m not coding, you&apos;ll find me on the trails. Trail
+            running is my way of disconnecting from screens and reconnecting
+            with nature. The challenge of varied terrain keeps both mind and
+            body engaged.
           </p>
 
           <div
@@ -202,7 +174,8 @@ export default function InterestsContent() {
               >
                 Mountains
               </Link>
-              , a terminal-based application for tracking runs and exploring trail data.
+              , a terminal-based application for tracking runs and exploring
+              trail data.
             </p>
           </div>
 
@@ -225,7 +198,9 @@ export default function InterestsContent() {
               >
                 500+
               </p>
-              <p className={css({ fontSize: '0.85rem', color: 'text' })}>Miles Run</p>
+              <p className={css({ fontSize: '0.85rem', color: 'text' })}>
+                Miles Run
+              </p>
             </div>
             <div>
               <p
@@ -237,7 +212,9 @@ export default function InterestsContent() {
               >
                 50K+
               </p>
-              <p className={css({ fontSize: '0.85rem', color: 'text' })}>Elevation Gain</p>
+              <p className={css({ fontSize: '0.85rem', color: 'text' })}>
+                Elevation Gain
+              </p>
             </div>
             <div>
               <p
@@ -249,10 +226,12 @@ export default function InterestsContent() {
               >
                 25+
               </p>
-              <p className={css({ fontSize: '0.85rem', color: 'text' })}>Trails Explored</p>
+              <p className={css({ fontSize: '0.85rem', color: 'text' })}>
+                Trails Explored
+              </p>
             </div>
           </div>
-        </motion.section>
+        </InterestCard>
       </div>
     </main>
   )

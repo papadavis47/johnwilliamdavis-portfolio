@@ -13,7 +13,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/about-me', label: 'About Me' },
-  { href: '/interests', label: 'Interests' },
+  { href: '/other-interests', label: 'Other Interests' },
 ]
 
 function Navigation() {
@@ -47,7 +47,7 @@ function Navigation() {
         <Link
           href="/"
           className={`${merriweather.className} ${css({
-            fontSize: '1.25rem',
+            fontSize: '1rem',
             fontWeight: '700',
             color: 'text',
             textDecoration: 'none',
@@ -117,7 +117,7 @@ function Navigation() {
               className={css({
                 position: 'fixed',
                 inset: 0,
-                top: '57px',
+                top: '64px',
                 bg: 'black/40',
                 zIndex: 40,
                 md: { display: 'none' },
@@ -128,10 +128,10 @@ function Navigation() {
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              transition={{ type: 'spring', damping: 30, stiffness: 200 }}
               className={css({
                 position: 'fixed',
-                top: '57px',
+                top: '64px',
                 left: 0,
                 bottom: 0,
                 width: '280px',

@@ -33,11 +33,11 @@ export default function HomeContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className={`${merriweather.className} ${css({
-            fontSize: '2.5rem',
+            fontSize: '2rem',
             fontWeight: '700',
             color: 'text',
             mb: '3',
-            sm: { fontSize: '3.5rem' },
+            sm: { fontSize: '2rem' },
             md: { fontSize: '4rem' },
           })}`}
         >
@@ -57,7 +57,7 @@ export default function HomeContent() {
             md: { fontSize: '1.75rem' },
           })}`}
         >
-          TypeScript / Rust / Go Developer
+          Software Engineer
         </motion.h2>
 
         <motion.p
@@ -69,12 +69,13 @@ export default function HomeContent() {
             lineHeight: '1.8',
             color: 'muted',
             mb: '10',
+            textAlign: 'justify',
             sm: { fontSize: '1.2rem' },
           })}
         >
-          I build robust, performant applications with modern technologies.
-          Passionate about clean code, type safety, and crafting exceptional
-          developer experiences.
+          I build robust, performant applications and web experiences with
+          modern tools and technologies. My primary programming languages are
+          TypeScript, Rust and Go.
         </motion.p>
 
         <motion.div
