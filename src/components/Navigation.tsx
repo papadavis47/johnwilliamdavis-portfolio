@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { css } from '../../styled-system/css'
-import { merriweather } from '@/app/fonts'
 import ThemeToggle from '@/components/ThemeToggle'
+import BrandLink from '@/components/BrandLink'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -44,19 +44,7 @@ function Navigation() {
           py: '3',
         })}
       >
-        <Link
-          href="/"
-          className={`${merriweather.className} ${css({
-            fontSize: '1rem',
-            fontWeight: '700',
-            color: 'text',
-            textDecoration: 'none',
-            transition: 'color 200ms',
-            _hover: { color: 'primary' },
-          })}`}
-        >
-          John William Davis
-        </Link>
+        <BrandLink />
 
         <div
           className={css({
