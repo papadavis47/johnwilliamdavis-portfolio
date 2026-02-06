@@ -53,8 +53,58 @@ export default function HeroIntro() {
           sm: { fontSize: '1.2rem' },
         })}
       >
-        I build performant applications and web experiences with modern tools
-        and technologies.
+        Everything is changing and I am changing with it - Amp, Claude Code and
+        Zed are now my tools in choice ( with some Neovim on the side ).
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className={css({
+          fontSize: '1.1rem',
+          lineHeight: '1.8',
+          color: 'muted',
+          mb: '10',
+          textAlign: 'justify',
+          sm: { fontSize: '1.2rem' },
+        })}
+      >
+        TypeScript, Rust and Go are my primary choices language choices ( with
+        some experiments in Python and Zig ).
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className={css({
+          fontSize: '1.1rem',
+          lineHeight: '1.8',
+          color: 'muted',
+          mb: '10',
+          textAlign: 'justify',
+          sm: { fontSize: '1.2rem' },
+        })}
+      >
+        Things are shifting fast and my main skill now is being nimble enough to
+        shift with the changes coming every week.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className={css({
+          fontSize: '1.1rem',
+          lineHeight: '1.8',
+          color: 'muted',
+          mb: '10',
+          textAlign: 'justify',
+          sm: { fontSize: '1.2rem' },
+        })}
+      >
+        Changing my stride with the terrain.
       </motion.p>
 
       <motion.div

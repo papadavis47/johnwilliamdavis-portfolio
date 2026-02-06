@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { css } from '../../styled-system/css'
-import HeroIntro from '@/components/HeroIntro'
+import HeroIntro from './HeroIntro'
 
 export default function HomeContent() {
   return (
