@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { css } from '../../../styled-system/css'
+import { css } from 'styled-system/css'
 import type { Skill } from './skill-data'
 import { itemVariants } from './skill-data'
 

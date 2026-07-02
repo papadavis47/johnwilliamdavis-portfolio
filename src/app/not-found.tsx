@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { Home } from 'lucide-react'
-import { css } from '../../styled-system/css'
+import { css } from 'styled-system/css'
 import { merriweather } from '@/app/fonts'
 
 export default function NotFound() {

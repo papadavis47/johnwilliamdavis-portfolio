@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { css } from '../../../styled-system/css'
+import { css } from 'styled-system/css'
 import { merriweather } from '@/app/fonts'
 import type { SkillCategory } from './skill-data'
 import { containerVariants, itemVariants } from './skill-data'
