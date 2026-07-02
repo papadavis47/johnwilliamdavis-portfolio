@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { Book, Mountain, PenLine } from 'lucide-react'
-import { css } from '../../../styled-system/css'
+import { css } from 'styled-system/css'
 import { merriweather } from '@/app/fonts'
-import InterestCard from '@/components/InterestCard'
+import InterestCard from './InterestCard'
 
 const books = [
   { title: 'The Pragmatic Programmer', author: 'David Thomas & Andrew Hunt' },

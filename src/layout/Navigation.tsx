@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
-import { css } from '../../styled-system/css'
-import ThemeToggle from '@/components/ThemeToggle'
-import BrandLink from '@/components/BrandLink'
+import { css } from 'styled-system/css'
+import ThemeToggle from '@/layout/ThemeToggle'
+import BrandLink from '@/layout/BrandLink'
 
 const navLinks = [
   { href: '/', label: 'Home' },

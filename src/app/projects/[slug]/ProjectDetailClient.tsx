@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { ExternalLink, ArrowLeft } from 'lucide-react'
-import { Github } from '../../../components/icons'
+import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
-import { css } from '../../../../styled-system/css'
+import { css } from 'styled-system/css'
 import { merriweather } from '@/app/fonts'
 
 type Project = {

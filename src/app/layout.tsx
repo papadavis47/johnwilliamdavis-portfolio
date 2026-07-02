@@ -2,11 +2,11 @@ import { raleway } from './fonts'
 import { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import SkipToContent from '@/components/SkipToContent'
-import PageTransition from '@/components/PageTransition'
-import { css } from '../../styled-system/css'
+import Navigation from '@/layout/Navigation'
+import Footer from '@/layout/Footer'
+import SkipToContent from '@/layout/SkipToContent'
+import PageTransition from '@/layout/PageTransition'
+import { css } from 'styled-system/css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://johnwilliamdavis.dev'),

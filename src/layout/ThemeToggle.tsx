@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import { Sun, Moon } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { css } from '../../styled-system/css'
+import { css } from 'styled-system/css'
 
 const buttonStyles = css({
   cursor: 'pointer',
