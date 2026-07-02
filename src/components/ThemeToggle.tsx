@@ -32,6 +32,9 @@ function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
+    // Mount guard: avoids next-themes hydration mismatch by deferring
+    // theme-dependent render to the client. Intentional one-shot setState.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 
