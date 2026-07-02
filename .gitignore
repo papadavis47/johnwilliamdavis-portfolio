@@ -46,3 +46,6 @@ npm-debug.log*
 # AI agents
 .claude/
 .agents/
+
+# Next.js generated (machine-dependent, do not track)
+next-env.d.ts
