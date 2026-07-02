@@ -1,7 +1,8 @@
 'use client'
 
 import { css } from '../../styled-system/css'
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
+import { Github, Linkedin } from './icons'
 import { motion } from 'motion/react'
 
 const socialLinks = [
