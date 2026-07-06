@@ -12,7 +12,7 @@ import BrandLink from '@/layout/BrandLink'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/about-me', label: 'About Me' },
+  { href: '/about', label: 'About' },
   { href: '/other-interests', label: 'Other Interests' },
 ]
 

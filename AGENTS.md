@@ -61,7 +61,7 @@ Rules:
 src/
   app/                      # routes only + layout/not-found/fonts/globals
     (home)/                 # "/" route group
-    about-me/  other-interests/  projects/[slug]/
+    about/  other-interests/  projects/[slug]/
   layout/                   # app-shell components (consumed by layout.tsx)
   design-system/            # cross-route UI (icons)
   providers/                # context providers (keeps its barrel)

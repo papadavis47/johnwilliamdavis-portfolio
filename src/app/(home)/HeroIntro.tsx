@@ -136,7 +136,7 @@ export default function HeroIntro() {
           </motion.button>
         </Link>
 
-        <Link href="/about-me">
+        <Link href="/about">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
@@ -156,7 +156,7 @@ export default function HeroIntro() {
               sm: { px: '8', py: '3', fontSize: '1rem' },
             })}
           >
-            About Me
+            About
           </motion.button>
         </Link>
       </motion.div>

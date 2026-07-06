@@ -6,7 +6,7 @@ import { merriweather } from '@/app/fonts'
 import { skillCategories, containerVariants, itemVariants } from './skill-data'
 import SkillSection from './SkillSection'
 
-export default function AboutMeContent() {
+export default function AboutContent() {
   return (
     <motion.main
       initial="hidden"
@@ -30,7 +30,7 @@ export default function AboutMeContent() {
           md: { fontSize: '3rem' },
         })}`}
       >
-        About Me
+        About
       </motion.h1>
 
       <motion.section
