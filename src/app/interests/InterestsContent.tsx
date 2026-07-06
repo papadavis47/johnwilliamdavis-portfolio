@@ -21,7 +21,7 @@ const books = [
   { title: 'Programming TypeScript', author: 'Boris Cherny' },
 ]
 
-export default function OtherInterestsContent() {
+export default function InterestsContent() {
   return (
     <main
       className={css({
@@ -40,7 +40,7 @@ export default function OtherInterestsContent() {
           textAlign: 'center',
         })}`}
       >
-        Other Interests
+        Interests
       </h1>
 
       <div
@@ -173,14 +173,36 @@ export default function OtherInterestsContent() {
                   _hover: { color: 'secondary' },
                 })}
               >
-                Mountains
+                Mountains{' '}
               </Link>
-              , a terminal-based application for tracking runs and exploring
-              trail data.
+              &nbsp;-- a terminal-based application for tracking runs and
+              exploring trail data.
+            </p>
+            <p
+              className={css({
+                color: 'text',
+                lineHeight: '1.7',
+                mt: '2',
+              })}
+            >
+              I have also recently completed a{' '}
+              <Link
+                href="https://github.com/papadavis47/mountains-web"
+                className={css({
+                  color: 'primary',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                  transition: 'color 200ms',
+                  _hover: { color: 'secondary' },
+                })}
+              >
+                web version{' '}
+              </Link>
+              of Mountains.
             </p>
           </div>
 
-          <div
+          {/*<div
             className={css({
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -231,7 +253,7 @@ export default function OtherInterestsContent() {
                 Trails Explored
               </p>
             </div>
-          </div>
+          </div>*/}
         </InterestCard>
       </div>
     </main>
