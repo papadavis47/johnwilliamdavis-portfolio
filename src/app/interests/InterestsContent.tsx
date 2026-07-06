@@ -187,7 +187,9 @@ export default function InterestsContent() {
             >
               I have also recently completed a{' '}
               <Link
-                href="https://github.com/papadavis47/mountains-web"
+                href="https://www.comfortablefeelingdumb.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={css({
                   color: 'primary',
                   textDecoration: 'underline',
