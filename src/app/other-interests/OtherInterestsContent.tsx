@@ -7,16 +7,18 @@ import { merriweather } from '@/app/fonts'
 import InterestCard from './InterestCard'
 
 const books = [
-  { title: 'The Pragmatic Programmer', author: 'David Thomas & Andrew Hunt' },
+  { title: 'Life Rider', author: 'Laird Hamilton & Gabrielle Reece' },
   {
-    title: 'Designing Data-Intensive Applications',
-    author: 'Martin Kleppmann',
+    title: 'Natural Born Heroes',
+    author: 'Christopher McDougal',
   },
   {
-    title: 'Structure and Interpretation of Computer Programs',
-    author: 'Abelson & Sussman',
+    title: 'Rust In Action',
+    author: 'Tim McNamara',
   },
-  { title: 'The Art of Unix Programming', author: 'Eric S. Raymond' },
+  { title: 'The Forever War', author: 'Dexter Filkins' },
+  { title: 'The Things They Carried', author: "Tim O'Brien" },
+  { title: 'Programming TypeScript', author: 'Boris Cherny' },
 ]
 
 export default function OtherInterestsContent() {
@@ -53,9 +55,8 @@ export default function OtherInterestsContent() {
               maxWidth: '65ch',
             })}
           >
-            I enjoy reading technical books that deepen my understanding of
-            software engineering principles and practices. Here are some
-            favorites that have shaped how I think about building software.
+            I love reading different kinds of books on many diverse subject:
+            technical, fiction and nonfiction. Here are a some of my favorites.
           </p>
 
           <ul
@@ -108,10 +109,11 @@ export default function OtherInterestsContent() {
               maxWidth: '65ch',
             })}
           >
-            Writing has always been a way for me to clarify my thoughts and
-            share ideas with others. Whether it&apos;s technical documentation,
-            blog posts, or personal reflections, putting words to paper helps me
-            process complex concepts and communicate more effectively.
+            Writing is a way for me to clarify my thoughts and express myself at
+            the same time. The process of putting ideas into words on a page,
+            whether paper or digial, is one of the most human things we can do
+            now in this age of LLMs. I like to remind myself that writing, while
+            difficult to do well, is like exercise - pushups for the brain.
           </p>
 
           <div
@@ -127,9 +129,7 @@ export default function OtherInterestsContent() {
                 lineHeight: '1.7',
               })}
             >
-              I believe that clear writing reflects clear thinking. The
-              discipline of organizing ideas into coherent prose has made me a
-              better engineer and collaborator.
+              I write publicly on my blog here.
             </p>
           </div>
         </InterestCard>
@@ -142,10 +142,11 @@ export default function OtherInterestsContent() {
               maxWidth: '65ch',
             })}
           >
-            When I&apos;m not coding, you&apos;ll find me on the trails. Trail
-            running is my way of disconnecting from screens and reconnecting
-            with nature. The challenge of varied terrain keeps both mind and
-            body engaged.
+            Trail running is my way of disconnecting from screens and
+            reconnecting with nature. It&apos;s a way to find peace in a
+            complicated world. There are few things more core to who we humans
+            are as a species than moving on foot across a landscape. Varied
+            terrain keeps both mind and body engaged.
           </p>
 
           <div
