@@ -65,8 +65,7 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className={css({
-            fontSize: '1.1rem',
-            lineHeight: '1.8',
+            textStyle: 'prose',
             color: 'muted',
             mb: '8',
           })}

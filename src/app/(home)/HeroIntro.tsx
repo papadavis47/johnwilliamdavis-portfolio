@@ -45,16 +45,14 @@ export default function HeroIntro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
-          fontSize: '1.1rem',
-          lineHeight: '1.8',
+          textStyle: 'prose',
           color: 'muted',
           mb: '10',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
       >
-        Everything is changing and I am changing with it - Amp, Claude Code and
-        Zed are now my tools in choice ( with some Neovim on the side ).
+        I live in the Greater Seattle area.
       </motion.p>
 
       <motion.p
@@ -62,16 +60,14 @@ export default function HeroIntro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
-          fontSize: '1.1rem',
-          lineHeight: '1.8',
+          textStyle: 'prose',
           color: 'muted',
           mb: '10',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
       >
-        TypeScript, Rust and Go are my primary choices language choices ( with
-        some experiments in Python and Zig ).
+        TypeScript, Rust and Python are my primary programming languages.
       </motion.p>
 
       <motion.p
@@ -79,16 +75,14 @@ export default function HeroIntro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
-          fontSize: '1.1rem',
-          lineHeight: '1.8',
+          textStyle: 'prose',
           color: 'muted',
           mb: '10',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
       >
-        Things are shifting fast and my main skill now is being nimble enough to
-        shift with the changes coming every week.
+        Zed, Claude Code and Amp are my developer tools of choice.
       </motion.p>
 
       <motion.p
@@ -96,15 +90,15 @@ export default function HeroIntro() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
-          fontSize: '1.1rem',
-          lineHeight: '1.8',
+          textStyle: 'prose',
           color: 'muted',
           mb: '10',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
       >
-        Changing my stride with the terrain.
+        Things are shifting fast in 2026, and my main skill now is being nimble
+        enough to adapt to new ways of building software.
       </motion.p>
 
       <motion.div

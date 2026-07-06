@@ -41,28 +41,39 @@ export default function AboutMeContent() {
       >
         <p
           className={css({
-            fontSize: '1.1rem',
-            lineHeight: '1.8',
+            textStyle: 'prose',
             color: 'text',
             mb: '4',
           })}
         >
-          I&apos;m a software developer passionate about building robust,
-          efficient, and maintainable systems. My primary focus is on
-          TypeScript, Rust, and Go—languages that offer strong type safety and
-          excellent developer experience.
+          I wrote my first line of code in 2017 - having come to this profession
+          as a result of wanting a craft that I could grow with and never fully
+          master. I am driven to build software and tools that add to society's
+          quality of life. I enjoy the building software and I see the act of
+          engineering as part of a larger process to help people to live happier
+          and more productive lives.
         </p>
         <p
           className={css({
-            fontSize: '1.1rem',
-            lineHeight: '1.8',
-            color: 'muted',
+            textStyle: 'prose',
+            color: 'text',
+            mb: '4',
+          })}
+        >
+          I am happily married and I am the father of three teenage children. We
+          have a beautiful golden retriever at home, and I love the outdoors -
+          including trail running.
+        </p>
+
+        <p
+          className={css({
+            textStyle: 'prose',
+            color: 'text',
           })}
         >
           I enjoy working across the full stack, from crafting intuitive user
           interfaces with React and Next.js to designing scalable backend
-          services and databases. I&apos;m always exploring new technologies and
-          approaches to solve complex problems elegantly.
+          services and databases. I love exploring new technologies and tools.
         </p>
       </motion.section>
 

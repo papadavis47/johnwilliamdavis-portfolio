@@ -103,8 +103,7 @@ export default function ProjectContent({ project }: { project: Project }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.4 }}
         className={css({
-          fontSize: '1.1rem',
-          lineHeight: '1.8',
+          textStyle: 'prose',
           color: 'text',
           mb: '8',
         })}

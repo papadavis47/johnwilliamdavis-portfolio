@@ -33,6 +33,7 @@ Organize by feature, not by type. Code that changes together lives together.
 - `src/providers/` — React context providers.
 
 Rules:
+
 - Single-consumer helpers live **beside** their consumer, not in a shared bucket.
 - **No barrel files** (`index.ts` re-exports). Import directly. Sole exception: `src/providers/index.ts` (kept intentionally).
 
@@ -47,6 +48,7 @@ Rules:
 - Lint uses **flat config** (`eslint.config.mjs`); `next lint` was removed in Next 16.
 - **lucide-react 1.x dropped brand icons** (GitHub/LinkedIn). Local SVG replacements live in `src/design-system/icons.tsx` — use those, not lucide, for brand marks.
 - Commit messages: **single subject line** + `Co-Authored-By` trailer. No body.
+- **Prose text uses the Panda `prose` `textStyle`** (`textStyles.prose` in `panda.config.ts` → `fontSize: 1.1rem`, `lineHeight: 1.8`). Apply it via `css({ textStyle: 'prose', ... })` for regular body `<p>` text instead of re-declaring `fontSize`/`lineHeight`. Per-instance `color`, `mb`, and `textAlign` stay inline. The hero (`HeroIntro.tsx`) keeps a `sm: { fontSize: '1.2rem' }` responsive bump inline — this is intentionally **not** in the token, so about/projects/404 prose stays `1.1rem` at all widths. If site-wide responsive prose is ever wanted, fold `sm: { fontSize: '1.2rem' }` into the token and drop the hero's inline overrides.
 
 ## Deployment (Vercel)
 
