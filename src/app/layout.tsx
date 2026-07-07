@@ -25,9 +25,6 @@ export const metadata: Metadata = {
     title: 'John William Davis | Developer Portfolio',
     description: 'Portfolio website for John William Davis - Software Engineer',
   },
-  icons: {
-    icon: '/favicon.ico',
-  },
 }
 
 export default function RootLayout({
