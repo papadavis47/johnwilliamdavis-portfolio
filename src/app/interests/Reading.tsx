@@ -5,10 +5,10 @@ import { css } from 'styled-system/css'
 import InterestCard from './InterestCard'
 
 const books = [
-  { title: 'Life Rider', author: 'Laird Hamilton & Gabrielle Reece' },
+  { title: 'Liferider', author: 'Laird Hamilton & Gabrielle Reece' },
   {
     title: 'Natural Born Heroes',
-    author: 'Christopher McDougal',
+    author: 'Christopher McDougall',
   },
   {
     title: 'Rust In Action',
@@ -30,8 +30,8 @@ export default function Reading() {
           maxWidth: '65ch',
         })}
       >
-        I love reading different kinds of books on many diverse subject:
-        technical, fiction and nonfiction. Here are a some of my favorites.
+        I love reading books on diverse subjects: technical, fiction and
+        nonfiction. Here are a some of my favorites.
       </p>
 
       <ul
