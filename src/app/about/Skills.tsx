@@ -31,8 +31,8 @@ export default function Skills() {
         })}
       >
         I enjoy working across the full stack, from crafting intuitive user
-        interfaces with React and Next.js to designing scalable backend services
-        and databases. I love exploring new technologies and tools.
+        interfaces with React and Vue to designing scalable backend services and
+        working with databases. I love exploring new technologies and tools.
       </p>
     </motion.section>
   )

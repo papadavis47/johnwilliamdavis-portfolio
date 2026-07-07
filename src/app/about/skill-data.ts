@@ -29,8 +29,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'TypeScript', icon: FileCode },
       { name: 'Rust', icon: Terminal },
-      { name: 'Go', icon: Terminal },
-      { name: 'Zig', icon: Terminal },
       { name: 'Python', icon: FileCode },
     ],
   },
@@ -39,7 +37,9 @@ export const skillCategories: SkillCategory[] = [
     icon: Terminal,
     skills: [
       { name: 'React', icon: Code2 },
+      { name: 'Vue', icon: Code2 },
       { name: 'Next.js', icon: Server },
+      { name: 'Nuxt.js', icon: Server },
       { name: 'Astro', icon: Server },
       { name: 'TanStack Start', icon: Code2 },
     ],
@@ -51,7 +51,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Node.js', icon: Server },
       { name: 'Bun', icon: Server },
       { name: 'Deno', icon: Server },
-      { name: 'PostgreSQL', icon: Database },
+      { name: 'Supabase', icon: Database },
       { name: 'Turso Cloud', icon: Database },
     ],
   },
@@ -64,6 +64,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Docker', icon: Container },
       { name: 'Zed', icon: FolderCode },
       { name: 'Amp', icon: FileCode },
+      { name: 'Claude Code', icon: FileCode },
     ],
   },
 ]
