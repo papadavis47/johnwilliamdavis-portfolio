@@ -30,8 +30,9 @@ export default function ProjectsContent() {
         className={css({
           display: 'grid',
           gridTemplateColumns: '1fr',
+          gridAutoRows: '1fr',
           gap: '6',
-          md: { gridTemplateColumns: 'repeat(2, 1fr)' },
+          md: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
         })}
       >
         {projects.map((project, index) => (

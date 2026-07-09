@@ -47,7 +47,7 @@ export default function HeroIntro() {
         className={css({
           textStyle: 'prose',
           color: 'muted',
-          mb: '10',
+          mb: '4',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
@@ -62,7 +62,7 @@ export default function HeroIntro() {
         className={css({
           textStyle: 'prose',
           color: 'muted',
-          mb: '10',
+          mb: '4',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
@@ -77,7 +77,7 @@ export default function HeroIntro() {
         className={css({
           textStyle: 'prose',
           color: 'muted',
-          mb: '10',
+          mb: '4',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}
@@ -92,7 +92,7 @@ export default function HeroIntro() {
         className={css({
           textStyle: 'prose',
           color: 'muted',
-          mb: '10',
+          mb: '4',
           textAlign: 'justify',
           sm: { fontSize: '1.2rem' },
         })}

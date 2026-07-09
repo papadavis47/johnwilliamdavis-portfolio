@@ -20,11 +20,14 @@ export default function ProjectCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
+      className={css({ height: '100%' })}
     >
       <Link
         href={`/projects/${project.slug}`}
         className={css({
-          display: 'block',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
           p: '6',
           bg: 'surface',
           border: '1px solid',
@@ -86,6 +89,7 @@ export default function ProjectCard({
             display: 'flex',
             flexWrap: 'wrap',
             gap: '2',
+            mt: 'auto',
           })}
         >
           {project.techStack.map((tech) => (
