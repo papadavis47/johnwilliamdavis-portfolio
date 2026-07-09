@@ -66,3 +66,8 @@ src/
   design-system/            # cross-route UI (icons)
   providers/                # context providers (keeps its barrel)
 ```
+
+## Styling with Panda CSS
+
+Documentation for Panda CSS can be found at https://panda-css.com/llms.txt - or for a more full version at the following link:
+https://panda-css.com/llms-full.txt

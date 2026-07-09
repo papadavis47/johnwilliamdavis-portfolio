@@ -33,7 +33,7 @@ export default function Skills() {
         I work across the stack — Next.js, Astro, and TanStack on the frontend,
         with Node, Rust, and Python for backend and systems work. Lately
         I&apos;ve been digging into Tailwind v4&apos;s design token system and
-        Pigment CSS for styling.
+        Panda CSS for styling.
       </p>
     </motion.section>
   )

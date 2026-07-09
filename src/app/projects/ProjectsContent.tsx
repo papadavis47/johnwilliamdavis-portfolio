@@ -12,7 +12,7 @@ const projects = [
     slug: 'iwantyoutoknow',
     title: 'i want you to know',
     description: 'A communication app for fathers ',
-    tech: ['TanStack Start', 'Supabase', 'PandaCSS'],
+    tech: ['TanStack Start', 'Supabase', 'Panda CSS'],
     url: 'https://github.com/papadavis47/iwantyoutoknow',
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     slug: 'sokay',
     title: 'Sokay',
     description: 'Terminal UI for managing book collections',
-    tech: ['TanStack Start', 'PandaCSS', 'Supabase'],
+    tech: ['TanStack Start', 'Panda CSS', 'Supabase'],
     github: 'https://sokay-help.netlify.app/',
   },
   {
