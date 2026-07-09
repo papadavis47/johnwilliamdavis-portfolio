@@ -9,32 +9,33 @@ import { merriweather } from '@/app/fonts'
 
 const projects = [
   {
+    slug: 'iwantyoutoknow',
+    title: 'i want you to know',
+    description: 'A communication app for fathers ',
+    tech: ['TanStack Start', 'Supabase', 'PandaCSS'],
+    url: 'https://github.com/papadavis47/iwantyoutoknow',
+  },
+  {
+    slug: 'mountains',
+    title: 'Mountains',
+    description:
+      'Terminal UI for tracking nutrition and trail running adventures',
+    tech: ['Rust', 'ratatui', 'libsql'],
+    github: 'https://github.com/papadavis47/mountains-tui',
+  },
+  {
+    slug: 'sokay',
+    title: 'Sokay',
+    description: 'Terminal UI for managing book collections',
+    tech: ['TanStack Start', 'PandaCSS', 'Supabase'],
+    github: 'https://sokay-help.netlify.app/',
+  },
+  {
     slug: 'comfortable-feeling-dumb',
     title: 'Comfortable Feeling Dumb',
     description: 'Personal blog exploring learning and growth',
     tech: ['Next.js 16', 'Tailwind v4', 'MDX'],
     url: 'https://comfortablefeelingdumb.com',
-  },
-  {
-    slug: 'mountains',
-    title: 'Mountains',
-    description: 'Terminal UI for tracking trail running adventures',
-    tech: ['Rust', 'ratatui', 'libsql'],
-    github: 'https://github.com/papadavis47/mountains-tui',
-  },
-  {
-    slug: 'libros',
-    title: 'Libros',
-    description: 'Terminal UI for managing book collections',
-    tech: ['Go', 'Bubble Tea'],
-    github: 'https://github.com/papadavis47/libros-tui',
-  },
-  {
-    slug: 'victor-fuentes-art',
-    title: 'Victor Fuentes Art',
-    description: 'Portfolio for contemporary artist Victor Fuentes',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    url: 'https://victorfuentesart.netlify.app',
   },
 ]
 

@@ -30,9 +30,10 @@ export default function Skills() {
           color: 'text',
         })}
       >
-        I enjoy working across the full stack, from crafting intuitive user
-        interfaces with React and Vue to designing scalable backend services and
-        working with databases. I love exploring new technologies and tools.
+        I work across the stack — Next.js, Astro, and TanStack on the frontend,
+        with Node, Rust, and Python for backend and systems work. Lately
+        I&apos;ve been digging into Tailwind v4&apos;s design token system and
+        Pigment CSS for styling.
       </p>
     </motion.section>
   )
