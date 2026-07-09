@@ -6,15 +6,7 @@ import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import { merriweather } from '@/app/fonts'
-
-type Project = {
-  slug: string
-  title: string
-  description: string
-  techStack: string[]
-  github?: string
-  url?: string
-}
+import type { Project } from '../projects'
 
 export default function ProjectContent({ project }: { project: Project }) {
   return (
