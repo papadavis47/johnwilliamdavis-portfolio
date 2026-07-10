@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description:
       'A terminal user interface application for trail runners to track and plan their mountain adventures. Built with Rust for performance and reliability, using ratatui for the TUI framework and libsql for local data persistence. Features include route planning, elevation tracking, and run history.',
     techStack: ['Rust', 'ratatui', 'libsql'],
-    github: 'https://github.com/papadavis47/mountains-tui',
+    github: 'https://github.com/papadavis47/mountains',
   },
   {
     slug: 'sokay',

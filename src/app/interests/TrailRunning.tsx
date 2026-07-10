@@ -55,9 +55,9 @@ export default function TrailRunning() {
           display: 'grid',
           gridTemplateColumns: '1fr',
           gap: '5',
-          maxWidth: '520px',
+          maxWidth: { base: '520px', md: '100%' },
           mb: '8',
-          sm: { gridTemplateColumns: 'repeat(2, 1fr)' },
+          sm: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
         })}
       >
         {photos.map((photo, index) => (
@@ -67,42 +67,45 @@ export default function TrailRunning() {
             alt={photo.alt}
             width={600}
             height={800}
-            sizes="(max-width: 640px) 100vw, 250px"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 250px, 420px"
             className={cx(photoStyles, index === 1 && offsetStyles)}
           />
         ))}
       </motion.div>
 
-      <div
+      <p
         className={css({
-          bg: 'bg',
-          border: '1px solid',
-          borderColor: 'border',
-          borderRadius: 'control',
-          p: '5',
+          textStyle: 'prose',
+          color: 'text',
+          maxWidth: '65ch',
         })}
       >
-        <p className={css({ textStyle: 'body', color: 'text' })}>
-          My love for the mountains inspired{' '}
-          <Link href="/projects/mountains" className={link()}>
-            Mountains
-          </Link>{' '}
-          &mdash; a terminal-based application for tracking runs and exploring
-          trail data.
-        </p>
-        <p className={css({ textStyle: 'body', color: 'text', mt: '2' })}>
-          I have also recently completed a{' '}
-          <Link
-            href="https://www.comfortablefeelingdumb.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={link()}
-          >
-            web version
-          </Link>{' '}
-          of Mountains.
-        </p>
-      </div>
+        My love for the mountains inspired{' '}
+        <Link href="/projects/mountains" className={link()}>
+          Mountains
+        </Link>{' '}
+        &mdash; a terminal-based application for tracking runs and exploring
+        trail data.
+      </p>
+      <p
+        className={css({
+          textStyle: 'prose',
+          color: 'text',
+          maxWidth: '65ch',
+          mt: '4',
+        })}
+      >
+        I have also recently completed a{' '}
+        <Link
+          href="https://www.comfortablefeelingdumb.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={link()}
+        >
+          web version
+        </Link>{' '}
+        of Mountains.
+      </p>
     </InterestCard>
   )
 }

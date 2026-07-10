@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { PenLine } from 'lucide-react'
+import { MousePointerClick, PenLine } from 'lucide-react'
 import { css } from 'styled-system/css'
 import InterestCard from './InterestCard'
 
@@ -13,7 +13,7 @@ export default function Writing() {
         className={css({
           textStyle: 'prose',
           color: 'text',
-          mb: '6',
+          mb: '4',
           maxWidth: '65ch',
         })}
       >
@@ -23,6 +23,20 @@ export default function Writing() {
         like exercise - pushups for the brain.
       </p>
 
+      <p
+        className={css({
+          textStyle: 'small',
+          color: 'text.muted',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2',
+          mb: '3',
+        })}
+      >
+        <MousePointerClick size={16} aria-hidden="true" />
+        Click on image to go to my blog
+      </p>
+
       <Link
         href="https://www.comfortablefeelingdumb.com/"
         target="_blank"
@@ -30,6 +44,7 @@ export default function Writing() {
         className={css({
           display: 'block',
           maxWidth: '600px',
+          mb: '3',
           border: '1px solid',
           borderColor: 'border',
           borderRadius: 'control',
@@ -52,16 +67,6 @@ export default function Writing() {
           className={css({ width: '100%', height: 'auto', display: 'block' })}
         />
       </Link>
-
-      <p
-        className={css({
-          textStyle: 'small',
-          color: 'text.muted',
-          mt: '3',
-        })}
-      >
-        comfortablefeelingdumb.com — where I write publicly
-      </p>
     </InterestCard>
   )
 }
