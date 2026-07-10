@@ -1,4 +1,4 @@
-import { raleway } from './fonts'
+import { raleway, merriweather } from './fonts'
 import { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -33,7 +33,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={raleway.className} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${raleway.variable} ${merriweather.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProvider>
           <SkipToContent />
