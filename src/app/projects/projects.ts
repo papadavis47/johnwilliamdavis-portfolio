@@ -35,13 +35,13 @@ export const projects: Project[] = [
     url: 'https://sokay-help.netlify.app/',
   },
   {
-    slug: 'comfortable-feeling-dumb',
-    title: 'Comfortable Feeling Dumb',
-    summary: 'Personal blog exploring learning and growth',
+    slug: 'rattlesnake',
+    title: 'Rattlesnake',
+    summary: 'A tool for learning intermediate and advance Python concepts',
     description:
-      'A personal blog dedicated to documenting the learning journey. Built with Next.js 16 and the new Tailwind v4, this site uses MDX for rich, interactive content. The blog explores topics around embracing uncertainty and the growth that comes from being comfortable with not knowing everything.',
-    techStack: ['Next.js 16', 'Tailwind v4', 'MDX'],
-    url: 'https://comfortablefeelingdumb.com',
+      'Forked from Rustlings - Small exercises to get used to reading and writing intermediate/advanced Python code!',
+    techStack: ['Rust', 'Python'],
+    url: 'https://github.com/papadavis47/rattlesnake',
   },
 ]
 
