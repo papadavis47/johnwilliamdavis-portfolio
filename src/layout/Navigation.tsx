@@ -27,9 +27,14 @@ function Navigation() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
+        height: 'navHeight',
         bg: 'surface',
-        borderBottom: '1px solid',
-        borderColor: 'border',
+        // Longhands, not `borderBottom: '1px solid'` + `borderColor` — Panda
+        // emits the directional shorthand last, resetting the color to
+        // currentColor (a near-white hairline in dark mode).
+        borderBottomWidth: '1px',
+        borderBottomStyle: 'solid',
+        borderBottomColor: 'border',
       })}
     >
       <nav
@@ -38,10 +43,10 @@ function Navigation() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          height: '100%',
           maxWidth: 'contentWide',
           mx: 'auto',
           px: '6',
-          py: '3',
         })}
       >
         <BrandLink />
@@ -105,7 +110,7 @@ function Navigation() {
               className={css({
                 position: 'fixed',
                 inset: 0,
-                top: '64px',
+                top: 'token(sizes.navHeight)',
                 bg: 'black/40',
                 zIndex: 40,
                 md: { display: 'none' },
@@ -119,13 +124,14 @@ function Navigation() {
               transition={{ type: 'spring', damping: 30, stiffness: 200 }}
               className={css({
                 position: 'fixed',
-                top: '64px',
+                top: 'token(sizes.navHeight)',
                 left: 0,
                 bottom: 0,
                 width: '280px',
                 bg: 'surface',
-                borderRight: '1px solid',
-                borderColor: 'border',
+                // Elevated above the scrim, not outlined — a border here would
+                // cross the header's bottom hairline at the drawer's corner.
+                boxShadow: 'lifted',
                 zIndex: 50,
                 md: { display: 'none' },
               })}
@@ -155,8 +161,9 @@ function Navigation() {
                         textDecoration: 'none',
                         fontSize: 'lg',
                         py: '3',
-                        borderBottom: '1px solid',
-                        borderColor: 'border',
+                        borderBottomWidth: '1px',
+                        borderBottomStyle: 'solid',
+                        borderBottomColor: 'border',
                         transition: 'color 200ms',
                         _hover: { color: 'accent' },
                       })}

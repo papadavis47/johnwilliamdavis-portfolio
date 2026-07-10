@@ -57,6 +57,8 @@ Rules:
 - **Every route wraps in `src/design-system/PageContainer.tsx`** — one 56rem frame for every page (`hero` only bumps top padding), so all `h1`s share a left edge with the nav brand. It owns `mx/px/py`, so routes should not set their own page gutters, and must not render a `<main>` (`layout.tsx` already does). Long-form text sets `maxWidth: 'content'` (44rem) on its own block to hold a readable measure; **never narrow the frame itself** — that is what knocked headings out of alignment before.
 - Semantic `radii`: `card` (12px) · `control` (8px, buttons/panels/photos) · `tag` (6px). Semantic `shadows`: `hover`, `lifted`. No raw `rgba()`.
 - Panda extracts styles **statically** — never build a `css()` object from a runtime conditional (`...(i === 1 ? {...} : {})`). Hoist each branch to its own `css()` and pick with `cx()`.
+- **Never pair a directional border shorthand with `borderColor`** (`borderBottom: '1px solid'` + `borderColor: 'border'`). Panda emits `.bd-b_1px_solid` *after* `.bd-c_border`, so the shorthand resets that edge to `currentColor` — a near-white hairline in dark mode. Use longhands: `borderBottomWidth` / `borderBottomStyle` / `borderBottomColor`. The all-sides `border: '1px solid'` + `borderColor` pairing is fine.
+- Overlay panels (the mobile drawer) get **elevation, not outlines** — `boxShadow: 'lifted'` over the scrim. A border on the drawer crosses the header's bottom hairline at its corner. Its top offset comes from `top: 'token(sizes.navHeight)'`, matching the header's `height: 'navHeight'`; never hardcode a pixel offset.
 - Project screenshots live under `public/images/projects/<slug>/`; strip EXIF/GPS from any photo (`convert … -auto-orient -strip`) before committing.
 
 ## Deployment (Vercel)

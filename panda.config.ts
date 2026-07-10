@@ -236,6 +236,9 @@ export default defineConfig({
         sizes: {
           content: { value: '44rem' },
           contentWide: { value: '56rem' },
+          // Sticky header height. The mobile drawer and its scrim hang off this,
+          // so they always meet the header's bottom edge exactly.
+          navHeight: { value: '5rem' },
         },
       },
       semanticTokens: {
