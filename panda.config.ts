@@ -232,18 +232,6 @@ export default defineConfig({
             900: { value: 'oklch(0.359 0.140 272)' },
             950: { value: 'oklch(0.257 0.090 272)' },
           },
-          indigo: {
-            light: { value: '#4338CA' },
-            dark: { value: '#818CF8' },
-          },
-          teal: {
-            light: { value: '#0F766E' },
-            dark: { value: '#2DD4BF' },
-          },
-          amber: {
-            light: { value: '#D97706' },
-            dark: { value: '#FBBF24' },
-          },
         },
         sizes: {
           content: { value: '44rem' },
@@ -311,36 +299,6 @@ export default defineConfig({
               value: {
                 base: '{colors.accent.100}',
                 _dark: '{colors.accent.950}',
-              },
-            },
-          },
-          // Legacy — deleted once every route is migrated.
-          muted: {
-            DEFAULT: {
-              value: { base: '#55524B', _dark: '#A9B4C7' },
-            },
-          },
-          primary: {
-            DEFAULT: {
-              value: {
-                base: '{colors.indigo.light}',
-                _dark: '{colors.indigo.dark}',
-              },
-            },
-          },
-          secondary: {
-            DEFAULT: {
-              value: {
-                base: '{colors.teal.light}',
-                _dark: '{colors.teal.dark}',
-              },
-            },
-          },
-          highlight: {
-            DEFAULT: {
-              value: {
-                base: '{colors.amber.light}',
-                _dark: '{colors.amber.dark}',
               },
             },
           },
