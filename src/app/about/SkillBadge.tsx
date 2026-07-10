@@ -17,20 +17,20 @@ export default function SkillBadge({ skill }: { skill: Skill }) {
         px: '4',
         py: '2',
         bg: 'surface',
-        borderRadius: '8px',
+        borderRadius: 'control',
         border: '1px solid',
-        borderColor: 'muted/20',
-        transition: 'all 200ms',
+        borderColor: 'border',
+        transition: 'border-color 200ms, transform 200ms',
         _hover: {
-          borderColor: 'primary',
+          borderColor: 'accent/40',
           transform: 'translateY(-2px)',
         },
       })}
     >
-      <Icon size={18} className={css({ color: 'primary', flexShrink: 0 })} />
+      <Icon size={18} className={css({ color: 'accent', flexShrink: 0 })} />
       <span
         className={css({
-          fontSize: '0.9rem',
+          fontSize: 'sm',
           color: 'text',
           whiteSpace: 'nowrap',
         })}

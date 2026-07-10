@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
 import { skillCategories, itemVariants } from './skill-data'
 import SkillSection from './SkillSection'
 
@@ -10,13 +9,11 @@ export default function Technologies() {
   return (
     <motion.section variants={itemVariants}>
       <h2
-        className={`${merriweather.className} ${css({
-          fontSize: '1.75rem',
-          fontWeight: '700',
+        className={css({
+          textStyle: 'h2',
           color: 'text',
           mb: '8',
-          md: { fontSize: '2rem' },
-        })}`}
+        })}
       >
         Tech I Know Well
       </h2>

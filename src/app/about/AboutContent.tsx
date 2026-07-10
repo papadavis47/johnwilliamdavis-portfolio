@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import PageContainer from '@/design-system/PageContainer'
 import { containerVariants, itemVariants } from './skill-data'
 import Intro from './Intro'
 import Skills from './Skills'
@@ -10,34 +10,28 @@ import Technologies from './Technologies'
 
 export default function AboutContent() {
   return (
-    <motion.main
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className={css({
-        maxWidth: '800px',
-        mx: 'auto',
-        px: '4',
-        py: '12',
-        md: { py: '16' },
-      })}
-    >
-      <motion.h1
-        variants={itemVariants}
-        className={`${merriweather.className} ${css({
-          fontSize: '2.5rem',
-          fontWeight: '700',
-          color: 'text',
-          mb: '8',
-          md: { fontSize: '3rem' },
-        })}`}
+    <PageContainer>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className={css({
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12',
+        })}
       >
-        About
-      </motion.h1>
+        <motion.h1
+          variants={itemVariants}
+          className={css({ textStyle: 'h1', color: 'text' })}
+        >
+          About
+        </motion.h1>
 
-      <Intro />
-      <Skills />
-      <Technologies />
-    </motion.main>
+        <Intro />
+        <Skills />
+        <Technologies />
+      </motion.div>
+    </PageContainer>
   )
 }

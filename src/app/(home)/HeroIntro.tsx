@@ -3,7 +3,14 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import { button } from 'styled-system/recipes'
+
+const paragraphs = [
+  'I live in the Greater Seattle area.',
+  'TypeScript, Rust and Python are my primary programming languages.',
+  'Zed, Claude Code and Amp are my developer tools of choice.',
+  'Things are shifting fast in 2026, and my main skill now is being nimble enough to adapt to new ways of building software.',
+]
 
 export default function HeroIntro() {
   return (
@@ -12,14 +19,11 @@ export default function HeroIntro() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className={`${merriweather.className} ${css({
-          fontSize: '2rem',
-          fontWeight: '700',
+        className={css({
+          textStyle: 'display',
           color: 'text',
           mb: '3',
-          sm: { fontSize: '2rem' },
-          md: { fontSize: '4rem' },
-        })}`}
+        })}
       >
         John William Davis
       </motion.h1>
@@ -28,78 +32,35 @@ export default function HeroIntro() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className={`${merriweather.className} ${css({
-          fontSize: '1.25rem',
-          fontWeight: '400',
-          color: 'primary',
+        className={css({
+          textStyle: 'subtitle',
+          color: 'text.muted',
           mb: '8',
-          sm: { fontSize: '1.5rem' },
-          md: { fontSize: '1.75rem' },
-        })}`}
+        })}
       >
         Software Engineer
       </motion.h2>
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
-          textStyle: 'prose',
-          color: 'muted',
-          mb: '4',
-          textAlign: 'justify',
-          sm: { fontSize: '1.2rem' },
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4',
+          mb: '10',
         })}
       >
-        I live in the Greater Seattle area.
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className={css({
-          textStyle: 'prose',
-          color: 'muted',
-          mb: '4',
-          textAlign: 'justify',
-          sm: { fontSize: '1.2rem' },
-        })}
-      >
-        TypeScript, Rust and Python are my primary programming languages.
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className={css({
-          textStyle: 'prose',
-          color: 'muted',
-          mb: '4',
-          textAlign: 'justify',
-          sm: { fontSize: '1.2rem' },
-        })}
-      >
-        Zed, Claude Code and Amp are my developer tools of choice.
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className={css({
-          textStyle: 'prose',
-          color: 'muted',
-          mb: '4',
-          textAlign: 'justify',
-          sm: { fontSize: '1.2rem' },
-        })}
-      >
-        Things are shifting fast in 2026, and my main skill now is being nimble
-        enough to adapt to new ways of building software.
-      </motion.p>
+        {paragraphs.map((paragraph) => (
+          <p
+            key={paragraph}
+            className={css({ textStyle: 'prose', color: 'text.muted' })}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -113,51 +74,15 @@ export default function HeroIntro() {
           sm: { gap: '4' },
         })}
       >
-        <Link href="/projects">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className={css({
-              px: '5',
-              py: '2.5',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              color: 'white',
-              bg: 'primary',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'background 200ms',
-              _hover: { opacity: 0.9 },
-              sm: { px: '8', py: '3', fontSize: '1rem' },
-            })}
-          >
-            View Projects
-          </motion.button>
+        <Link
+          href="/projects"
+          className={button({ visual: 'solid', size: 'md' })}
+        >
+          View Projects
         </Link>
 
-        <Link href="/about">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className={css({
-              px: '5',
-              py: '2.5',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              color: 'primary',
-              bg: 'transparent',
-              border: '2px solid',
-              borderColor: 'primary',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 200ms',
-              _hover: { bg: 'primary', color: 'white' },
-              sm: { px: '8', py: '3', fontSize: '1rem' },
-            })}
-          >
-            About
-          </motion.button>
+        <Link href="/about" className={button({ visual: 'outline', size: 'md' })}>
+          About
         </Link>
       </motion.div>
     </>

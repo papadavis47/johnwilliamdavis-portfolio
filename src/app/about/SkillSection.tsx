@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
 import type { SkillCategory } from './skill-data'
 import { containerVariants, itemVariants } from './skill-data'
 import SkillBadge from './SkillBadge'
@@ -25,14 +24,8 @@ export default function SkillSection({ category }: { category: SkillCategory }) 
           gap: '3',
         })}
       >
-        <CategoryIcon size={22} className={css({ color: 'secondary' })} />
-        <h3
-          className={`${merriweather.className} ${css({
-            fontSize: '1.25rem',
-            fontWeight: '700',
-            color: 'text',
-          })}`}
-        >
+        <CategoryIcon size={22} className={css({ color: 'accent' })} />
+        <h3 className={css({ textStyle: 'h3', color: 'text' })}>
           {category.title}
         </h3>
       </div>

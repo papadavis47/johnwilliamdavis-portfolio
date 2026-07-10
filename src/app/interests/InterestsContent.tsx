@@ -1,27 +1,19 @@
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import PageContainer from '@/design-system/PageContainer'
 import Reading from './Reading'
 import Writing from './Writing'
 import TrailRunning from './TrailRunning'
 
 export default function InterestsContent() {
   return (
-    <main
-      className={css({
-        maxWidth: '900px',
-        mx: 'auto',
-        px: '4',
-        py: '12',
-      })}
-    >
+    <PageContainer width="wide">
       <h1
-        className={`${merriweather.className} ${css({
-          fontSize: '2.5rem',
-          fontWeight: '700',
+        className={css({
+          textStyle: 'h1',
           color: 'text',
           mb: '12',
           textAlign: 'center',
-        })}`}
+        })}
       >
         Interests
       </h1>
@@ -33,6 +25,6 @@ export default function InterestsContent() {
         <Writing />
         <TrailRunning />
       </div>
-    </main>
+    </PageContainer>
   )
 }

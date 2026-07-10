@@ -9,8 +9,8 @@ export default function Writing() {
     <InterestCard icon={PenLine} title="Writing" delay={0.4}>
       <p
         className={css({
+          textStyle: 'prose',
           color: 'text',
-          lineHeight: '1.7',
           mb: '6',
           maxWidth: '65ch',
         })}
@@ -23,17 +23,14 @@ export default function Writing() {
 
       <div
         className={css({
-          bg: 'muted/10',
-          borderRadius: '8px',
+          bg: 'bg',
+          border: '1px solid',
+          borderColor: 'border',
+          borderRadius: 'control',
           p: '5',
         })}
       >
-        <p
-          className={css({
-            color: 'text',
-            lineHeight: '1.7',
-          })}
-        >
+        <p className={css({ textStyle: 'body', color: 'text' })}>
           I write publicly on my blog here.
         </p>
       </div>

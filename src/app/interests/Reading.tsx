@@ -43,8 +43,8 @@ export default function Reading() {
     <InterestCard icon={Book} title="Reading">
       <p
         className={css({
+          textStyle: 'prose',
           color: 'text',
-          lineHeight: '1.7',
           mb: '6',
           maxWidth: '65ch',
         })}
@@ -71,11 +71,13 @@ export default function Reading() {
               gridTemplateColumns: '82px 1fr',
               gap: '4',
               alignItems: 'start',
-              bg: 'muted/10',
-              borderRadius: '8px',
+              bg: 'bg',
+              border: '1px solid',
+              borderColor: 'border',
+              borderRadius: 'control',
               p: '4',
-              transition: 'background 200ms',
-              _hover: { bg: 'muted/20' },
+              transition: 'border-color 200ms',
+              _hover: { borderColor: 'accent/40' },
             })}
           >
             <Image
@@ -87,8 +89,8 @@ export default function Reading() {
                 width: '82px',
                 height: '124px',
                 objectFit: 'cover',
-                borderRadius: '4px',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.18)',
+                borderRadius: 'sm',
+                boxShadow: 'lifted',
               })}
             />
             <div>
@@ -103,8 +105,8 @@ export default function Reading() {
               </p>
               <p
                 className={css({
-                  fontSize: '0.9rem',
-                  color: 'secondary',
+                  textStyle: 'small',
+                  color: 'text.muted',
                 })}
               >
                 {book.author}

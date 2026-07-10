@@ -1,27 +1,19 @@
 'use client'
 
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import PageContainer from '@/design-system/PageContainer'
 import ProjectCard from './ProjectCard'
 import { projects } from './projects'
 
 export default function ProjectsContent() {
   return (
-    <div
-      className={css({
-        maxWidth: '900px',
-        mx: 'auto',
-        px: '4',
-        py: '12',
-      })}
-    >
+    <PageContainer width="wide">
       <h1
-        className={`${merriweather.className} ${css({
-          fontSize: '2.5rem',
-          fontWeight: '700',
+        className={css({
+          textStyle: 'h1',
           color: 'text',
           mb: '10',
-        })}`}
+        })}
       >
         Projects
       </h1>
@@ -39,6 +31,6 @@ export default function ProjectsContent() {
           <ProjectCard key={project.slug} project={project} index={index} />
         ))}
       </div>
-    </div>
+    </PageContainer>
   )
 }

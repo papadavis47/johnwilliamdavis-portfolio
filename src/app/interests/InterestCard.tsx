@@ -3,7 +3,7 @@
 import { type LucideIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import { card } from 'styled-system/recipes'
 
 interface InterestCardProps {
   icon: LucideIcon
@@ -27,13 +27,7 @@ export default function InterestCard({
     <motion.section
       {...sectionAnimation}
       transition={{ duration: 0.5, delay }}
-      className={css({
-        bg: 'surface',
-        borderRadius: '12px',
-        p: '8',
-        border: '1px solid',
-        borderColor: 'muted/20',
-      })}
+      className={card()}
     >
       <div
         className={css({
@@ -43,16 +37,8 @@ export default function InterestCard({
           mb: '4',
         })}
       >
-        <Icon size={28} className={css({ color: 'secondary' })} />
-        <h2
-          className={`${merriweather.className} ${css({
-            fontSize: '1.75rem',
-            fontWeight: '700',
-            color: 'text',
-          })}`}
-        >
-          {title}
-        </h2>
+        <Icon size={28} className={css({ color: 'accent' })} />
+        <h2 className={css({ textStyle: 'h2', color: 'text' })}>{title}</h2>
       </div>
       {children}
     </motion.section>

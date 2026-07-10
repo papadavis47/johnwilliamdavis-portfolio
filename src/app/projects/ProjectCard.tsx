@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
-import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
+import { css, cx } from 'styled-system/css'
+import { card, tag } from 'styled-system/recipes'
 import type { Project } from './projects'
 
 export default function ProjectCard({
@@ -24,60 +24,46 @@ export default function ProjectCard({
     >
       <Link
         href={`/projects/${project.slug}`}
-        className={css({
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          p: '6',
-          bg: 'surface',
-          border: '1px solid',
-          borderColor: 'muted/20',
-          borderRadius: '12px',
-          textDecoration: 'none',
-          transition: 'all 200ms',
-          _hover: {
-            borderColor: 'primary/40',
-            transform: 'translateY(-4px)',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
-          },
-        })}
+        className={cx(
+          card({ interactive: true }),
+          css({
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            textDecoration: 'none',
+          }),
+        )}
       >
         <div
           className={css({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '3',
             mb: '3',
           })}
         >
-          <h2
-            className={`${merriweather.className} ${css({
-              fontSize: '1.25rem',
-              fontWeight: '700',
-              color: 'text',
-            })}`}
-          >
+          <h2 className={css({ textStyle: 'h3', color: 'text' })}>
             {project.title}
           </h2>
           {project.url && (
             <ExternalLink
               size={18}
-              className={css({ color: 'muted', flexShrink: 0 })}
+              className={css({ color: 'text.muted', flexShrink: 0 })}
             />
           )}
           {project.github && (
             <Github
               size={18}
-              className={css({ color: 'muted', flexShrink: 0 })}
+              className={css({ color: 'text.muted', flexShrink: 0 })}
             />
           )}
         </div>
 
         <p
           className={css({
-            color: 'muted',
-            fontSize: '0.95rem',
-            lineHeight: '1.6',
+            textStyle: 'small',
+            color: 'text.muted',
             mb: '4',
           })}
         >
@@ -93,18 +79,7 @@ export default function ProjectCard({
           })}
         >
           {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className={css({
-                px: '3',
-                py: '1',
-                fontSize: '0.75rem',
-                fontWeight: '500',
-                color: 'primary',
-                bg: 'primary/10',
-                borderRadius: '6px',
-              })}
-            >
+            <span key={tech} className={tag()}>
               {tech}
             </span>
           ))}
