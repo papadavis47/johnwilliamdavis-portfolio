@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { css } from 'styled-system/css'
-import { merriweather } from '@/app/fonts'
 
 function BrandLink() {
   return (
@@ -12,7 +11,7 @@ function BrandLink() {
       className={css({
         display: 'inline-flex',
         alignItems: 'center',
-        color: 'primary',
+        color: 'accent',
         transition: 'opacity 200ms',
         _hover: { opacity: 0.7 },
       })}
@@ -47,10 +46,10 @@ function BrandLink() {
           textAnchor="middle"
           dominantBaseline="central"
           fill="currentColor"
-          fontFamily={merriweather.style.fontFamily}
           fontWeight={700}
           fontSize="19"
           letterSpacing="0.75"
+          className={css({ fontFamily: 'heading' })}
         >
           JWD
         </text>

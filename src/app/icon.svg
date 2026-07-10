@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <style>
-    :root { --c: #4338CA; }
-    @media (prefers-color-scheme: dark) { :root { --c: #818CF8; } }
+    /* sRGB equivalents of accent.600 / accent.300 — an SVG favicon can't rely on oklch parsing. */
+    :root { --c: #4046ef; }
+    @media (prefers-color-scheme: dark) { :root { --c: #a0b5ff; } }
     circle { fill: none; stroke: var(--c); }
     text {
       fill: var(--c);

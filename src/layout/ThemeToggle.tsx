@@ -9,7 +9,7 @@ import { css } from 'styled-system/css'
 const buttonStyles = css({
   cursor: 'pointer',
   padding: '2',
-  borderRadius: 'md',
+  borderRadius: 'control',
   border: 'none',
   backgroundColor: 'transparent',
   color: 'text',
@@ -17,8 +17,9 @@ const buttonStyles = css({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  // The nav is already `surface`, so the hover chip needs `border` to register.
   _hover: {
-    backgroundColor: 'surface',
+    backgroundColor: 'border',
   },
 })
 

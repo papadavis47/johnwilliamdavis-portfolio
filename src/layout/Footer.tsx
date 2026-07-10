@@ -17,16 +17,16 @@ function Footer() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '1rem',
-      padding: '2rem',
+      gap: '4',
+      padding: '8',
       borderTop: '1px solid',
-      borderColor: 'muted/20',
+      borderColor: 'border',
       bg: 'surface',
-      color: 'muted',
+      color: 'text.muted',
     })}>
       <div className={css({
         display: 'flex',
-        gap: '1.5rem',
+        gap: '6',
       })}>
         {socialLinks.map(({ href, icon: Icon, label }) => (
           <motion.a
@@ -36,10 +36,10 @@ function Footer() {
             rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
             aria-label={label}
             className={css({
-              color: 'muted',
+              color: 'text.muted',
               transition: 'color 300ms',
               _hover: {
-                color: 'primary',
+                color: 'accent',
               },
             })}
             whileHover={{ scale: 1.15 }}
@@ -50,8 +50,8 @@ function Footer() {
         ))}
       </div>
       <p className={css({
-        fontSize: '0.875rem',
-        fontFamily: 'merriweather',
+        fontSize: 'sm',
+        fontFamily: 'heading',
       })}>
         © 2025 John William Davis
       </p>

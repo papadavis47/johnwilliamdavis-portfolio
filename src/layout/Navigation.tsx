@@ -29,7 +29,7 @@ function Navigation() {
         zIndex: 100,
         bg: 'surface',
         borderBottom: '1px solid',
-        borderColor: 'muted/20',
+        borderColor: 'border',
       })}
     >
       <nav
@@ -38,9 +38,9 @@ function Navigation() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          maxWidth: '1200px',
+          maxWidth: 'contentWide',
           mx: 'auto',
-          px: '4',
+          px: '6',
           py: '3',
         })}
       >
@@ -61,9 +61,9 @@ function Navigation() {
               className={css({
                 color: 'text',
                 textDecoration: 'none',
-                fontSize: '0.95rem',
+                fontSize: 'sm',
                 transition: 'color 200ms',
-                _hover: { color: 'primary' },
+                _hover: { color: 'accent' },
               })}
             >
               {link.label}
@@ -125,7 +125,7 @@ function Navigation() {
                 width: '280px',
                 bg: 'surface',
                 borderRight: '1px solid',
-                borderColor: 'muted/20',
+                borderColor: 'border',
                 zIndex: 50,
                 md: { display: 'none' },
               })}
@@ -153,12 +153,12 @@ function Navigation() {
                         display: 'block',
                         color: 'text',
                         textDecoration: 'none',
-                        fontSize: '1.1rem',
+                        fontSize: 'lg',
                         py: '3',
                         borderBottom: '1px solid',
-                        borderColor: 'muted/10',
+                        borderColor: 'border',
                         transition: 'color 200ms',
-                        _hover: { color: 'primary' },
+                        _hover: { color: 'accent' },
                       })}
                     >
                       {link.label}
