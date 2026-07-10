@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
 import { PenLine } from 'lucide-react'
 import { css } from 'styled-system/css'
 import InterestCard from './InterestCard'
@@ -21,19 +23,45 @@ export default function Writing() {
         like exercise - pushups for the brain.
       </p>
 
-      <div
+      <Link
+        href="https://www.comfortablefeelingdumb.com/"
+        target="_blank"
+        rel="noopener noreferrer"
         className={css({
-          bg: 'bg',
+          display: 'block',
+          maxWidth: '600px',
           border: '1px solid',
           borderColor: 'border',
           borderRadius: 'control',
-          p: '5',
+          overflow: 'hidden',
+          boxShadow: 'hover',
+          transition: 'border-color 200ms, transform 200ms, box-shadow 200ms',
+          _hover: {
+            borderColor: 'accent/40',
+            transform: 'translateY(-4px)',
+            boxShadow: 'lifted',
+          },
         })}
       >
-        <p className={css({ textStyle: 'body', color: 'text' })}>
-          I write publicly on my blog here.
-        </p>
-      </div>
+        <Image
+          src="/images/writing/blog-screenshot.webp"
+          alt="Landing page of my blog, Comfortable Feeling Dumb"
+          width={1440}
+          height={900}
+          sizes="(max-width: 768px) 100vw, 600px"
+          className={css({ width: '100%', height: 'auto', display: 'block' })}
+        />
+      </Link>
+
+      <p
+        className={css({
+          textStyle: 'small',
+          color: 'text.muted',
+          mt: '3',
+        })}
+      >
+        comfortablefeelingdumb.com — where I write publicly
+      </p>
     </InterestCard>
   )
 }
