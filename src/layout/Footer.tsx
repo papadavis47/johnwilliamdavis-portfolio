@@ -19,8 +19,9 @@ function Footer() {
       alignItems: 'center',
       gap: '4',
       padding: '8',
-      borderTop: '1px solid',
-      borderColor: 'border',
+      borderTopWidth: '1px',
+      borderTopStyle: 'solid',
+      borderTopColor: 'border',
       bg: 'surface',
       color: 'text.muted',
     })}>
