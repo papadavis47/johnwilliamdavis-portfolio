@@ -15,11 +15,10 @@ export default function Writing() {
           maxWidth: '65ch',
         })}
       >
-        Writing is a way for me to clarify my thoughts and express myself at the
-        same time. The process of putting ideas into words on a page, whether
-        paper or digial, is one of the most human things we can do now in this
-        age of LLMs. I like to remind myself that writing, while difficult to do
-        well, is like exercise - pushups for the brain.
+        Writing helps me clarify what I actually think. The process of putting
+        ideas into words, whether on paper or on a screen, tends to reveal
+        whether I really know something. Writing, while difficult to do well, is
+        like exercise - pushups for the brain.
       </p>
 
       <div

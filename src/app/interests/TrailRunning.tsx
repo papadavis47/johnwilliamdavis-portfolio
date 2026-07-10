@@ -17,10 +17,9 @@ export default function TrailRunning() {
         })}
       >
         Trail running is my way of disconnecting from screens and reconnecting
-        with nature. It&apos;s a way to find peace in a complicated world. There
-        are few things more core to who we humans are as a species than moving
-        on foot across a landscape. Varied terrain keeps both mind and body
-        engaged.
+        with nature and with my own body. On a beautiful trail, the noise of a
+        complicated world quiets. There are few things more core to who we
+        humans are as a species than moving on foot across a landscape.
       </p>
 
       <div
