@@ -1,4 +1,107 @@
-import { defineConfig } from '@pandacss/dev'
+import { defineConfig, defineRecipe } from '@pandacss/dev'
+
+const button = defineRecipe({
+  className: 'button',
+  description: 'Primary call-to-action control',
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '2',
+    fontWeight: '500',
+    borderRadius: 'control',
+    border: '1px solid transparent',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
+    transition: 'background-color 200ms, border-color 200ms, color 200ms',
+  },
+  variants: {
+    visual: {
+      solid: {
+        bg: 'accent.emphasis',
+        borderColor: 'accent.emphasis',
+        color: 'accent.fg',
+        // Deepen on hover in both themes; a lighter fill would sink white text.
+        _hover: {
+          bg: { base: 'accent.700', _dark: 'accent.600' },
+          borderColor: { base: 'accent.700', _dark: 'accent.600' },
+        },
+      },
+      outline: {
+        bg: 'transparent',
+        borderColor: 'accent',
+        color: 'accent',
+        _hover: {
+          bg: 'accent.emphasis',
+          borderColor: 'accent.emphasis',
+          color: 'accent.fg',
+        },
+      },
+    },
+    size: {
+      sm: { px: '5', py: '2.5', fontSize: 'sm' },
+      md: { px: '6', py: '3', fontSize: 'md' },
+    },
+  },
+  defaultVariants: { visual: 'solid', size: 'md' },
+})
+
+const card = defineRecipe({
+  className: 'card',
+  description: 'Bordered surface panel',
+  base: {
+    bg: 'surface',
+    border: '1px solid',
+    borderColor: 'border',
+    borderRadius: 'card',
+    p: { base: '6', md: '8' },
+  },
+  variants: {
+    interactive: {
+      true: {
+        transition: 'border-color 200ms, transform 200ms, box-shadow 200ms',
+        _hover: {
+          borderColor: 'accent/40',
+          transform: 'translateY(-4px)',
+          boxShadow: 'hover',
+        },
+      },
+    },
+  },
+})
+
+const tag = defineRecipe({
+  className: 'tag',
+  description: 'Small metadata pill',
+  base: {
+    display: 'inline-block',
+    px: '3',
+    py: '1',
+    fontSize: 'xs',
+    fontWeight: '500',
+    color: 'accent',
+    bg: 'accent.subtle',
+    borderRadius: 'tag',
+    whiteSpace: 'nowrap',
+  },
+})
+
+const link = defineRecipe({
+  className: 'link',
+  description: 'Inline text link',
+  base: {
+    color: 'accent',
+    textDecoration: 'underline',
+    textDecorationColor: 'accent/40',
+    textUnderlineOffset: '3px',
+    transition: 'color 200ms, text-decoration-color 200ms',
+    _hover: {
+      color: 'accent.hover',
+      textDecorationColor: 'accent.hover',
+    },
+  },
+})
 
 export default defineConfig({
   preflight: true,
@@ -15,6 +118,7 @@ export default defineConfig({
 
   theme: {
     extend: {
+      recipes: { button, card, tag, link },
       textStyles: {
         display: {
           description: 'Hero title',
