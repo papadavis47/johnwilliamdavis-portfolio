@@ -48,7 +48,16 @@ Rules:
 - Lint uses **flat config** (`eslint.config.mjs`); `next lint` was removed in Next 16.
 - **lucide-react 1.x dropped brand icons** (GitHub/LinkedIn). Local SVG replacements live in `src/design-system/icons.tsx` — use those, not lucide, for brand marks.
 - Commit messages: **single subject line** + `Co-Authored-By` trailer. No body.
-- **Prose text uses the Panda `prose` `textStyle`** (`textStyles.prose` in `panda.config.ts` → `fontSize: 1.1rem`, `lineHeight: 1.8`). Apply it via `css({ textStyle: 'prose', ... })` for regular body `<p>` text instead of re-declaring `fontSize`/`lineHeight`. Per-instance `color`, `mb`, and `textAlign` stay inline. The hero (`HeroIntro.tsx`) keeps a `sm: { fontSize: '1.2rem' }` responsive bump inline — this is intentionally **not** in the token, so about/projects/404 prose stays `1.1rem` at all widths. If site-wide responsive prose is ever wanted, fold `sm: { fontSize: '1.2rem' }` into the token and drop the hero's inline overrides.
+
+### Design system
+
+- **Colors are semantic tokens only.** Never reach for a raw ramp step (`accent.600`, `neutral.200`) in a component — use `bg`, `surface`, `text`, `text.muted`, `border`, `accent`, `accent.hover`, `accent.emphasis`, `accent.fg`, `accent.subtle`. Both ramps are oklch; every `accent` step shares hue `272`, so re-hueing the site means editing one number per step in `panda.config.ts`.
+- **Typography is `textStyle`, never inline `fontSize`/`fontWeight`/`fontFamily`.** `display` (hero) · `h1`/`h2`/`h3` · `subtitle` · `prose` (body `<p>`) · `body` · `small` · `caption`. Headings pull `fontFamily: heading` themselves — do not concatenate `merriweather.className`. Fonts are CSS vars (`--font-raleway`/`--font-merriweather`) set on `<html>`; `globalCss` puts `fontFamily: body` on `html`.
+- **Recipes for repeated primitives**: `button` (`visual: solid|outline`, `size: sm|md`), `card` (`interactive: true`), `tag`, `link` — import from `styled-system/recipes`. Route one-offs stay plain `css()`. Combine a recipe with extra styles via `cx(card({...}), css({...}))`; the `utilities` layer wins over `recipes`, so `css()` overrides land.
+- **Every route wraps in `src/design-system/PageContainer.tsx`** — `width="content"` (44rem, prose pages) or `width="wide"` (56rem, grids); `hero` bumps top padding. It owns `mx/px/py`, so routes should not set their own page gutters, and must not render a `<main>` (`layout.tsx` already does).
+- Semantic `radii`: `card` (12px) · `control` (8px, buttons/panels/photos) · `tag` (6px). Semantic `shadows`: `hover`, `lifted`. No raw `rgba()`.
+- Panda extracts styles **statically** — never build a `css()` object from a runtime conditional (`...(i === 1 ? {...} : {})`). Hoist each branch to its own `css()` and pick with `cx()`.
+- Project screenshots live under `public/images/projects/<slug>/`; strip EXIF/GPS from any photo (`convert … -auto-orient -strip`) before committing.
 
 ## Deployment (Vercel)
 
@@ -63,7 +72,7 @@ src/
     (home)/                 # "/" route group
     about/  interests/  projects/[slug]/
   layout/                   # app-shell components (consumed by layout.tsx)
-  design-system/            # cross-route UI (icons)
+  design-system/            # cross-route UI (icons, PageContainer)
   providers/                # context providers (keeps its barrel)
 ```
 
