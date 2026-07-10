@@ -6,13 +6,12 @@ import TrailRunning from './TrailRunning'
 
 export default function InterestsContent() {
   return (
-    <PageContainer width="wide">
+    <PageContainer>
       <h1
         className={css({
           textStyle: 'h1',
           color: 'text',
           mb: '12',
-          textAlign: 'center',
         })}
       >
         Interests

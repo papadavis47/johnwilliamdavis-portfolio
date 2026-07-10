@@ -20,6 +20,7 @@ export default function Skills() {
         className={css({
           textStyle: 'prose',
           color: 'text',
+          maxWidth: 'content',
         })}
       >
         I work across the stack — Next.js, Astro, and TanStack on the frontend,

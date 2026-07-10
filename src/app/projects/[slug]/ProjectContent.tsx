@@ -80,6 +80,7 @@ export default function ProjectContent({ project }: { project: Project }) {
             textStyle: 'prose',
             color: 'text',
             mb: '10',
+            maxWidth: 'content',
           })}
         >
           {project.description}

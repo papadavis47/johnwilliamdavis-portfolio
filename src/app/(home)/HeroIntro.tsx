@@ -50,6 +50,7 @@ export default function HeroIntro() {
           flexDirection: 'column',
           gap: '4',
           mb: '10',
+          maxWidth: 'content',
         })}
       >
         {paragraphs.map((paragraph) => (

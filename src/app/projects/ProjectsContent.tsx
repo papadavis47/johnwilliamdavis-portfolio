@@ -7,7 +7,7 @@ import { projects } from './projects'
 
 export default function ProjectsContent() {
   return (
-    <PageContainer width="wide">
+    <PageContainer>
       <h1
         className={css({
           textStyle: 'h1',

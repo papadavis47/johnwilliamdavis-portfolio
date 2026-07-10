@@ -18,6 +18,7 @@ export default function Intro() {
         display: 'flex',
         flexDirection: 'column',
         gap: '4',
+        maxWidth: 'content',
       })}
     >
       {paragraphs.map((paragraph) => (
