@@ -11,9 +11,10 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'iwantyoutoknow',
-    title: 'i want you to know',
-    summary: 'A communication app for fathers',
-    description: 'A communication app for fathers.',
+    title: 'I want you to know',
+    summary: 'A shared memory and communication vault for fathers',
+    description:
+      'A shared memory and communication platform for fathers to leave wisdom and memories for their children.',
     techStack: ['TanStack Start', 'Supabase', 'Panda CSS'],
     url: 'https://github.com/papadavis47/iwantyoutoknow',
   },
@@ -29,17 +30,17 @@ export const projects: Project[] = [
   {
     slug: 'sokay',
     title: 'Sokay',
-    summary: 'Terminal UI for managing book collections',
-    description: 'Terminal UI for managing book collections.',
+    summary: 'A mindful eating tracker',
+    description:
+      'Set a limit of "sokay items," log indulgences without guilt, build sustainable habits through realistic goals and self-forgiveness.',
     techStack: ['TanStack Start', 'Panda CSS', 'Supabase'],
     url: 'https://sokay-help.netlify.app/',
   },
   {
     slug: 'rattlesnake',
     title: 'Rattlesnake',
-    summary: 'A tool for learning intermediate and advance Python concepts',
-    description:
-      'Forked from Rustlings - Small exercises to get used to reading and writing intermediate/advanced Python code!',
+    summary: 'A tool for learning Python concepts - inspired by Rustlings',
+    description: 'Forked from Rustlings - Small exercises for learning Python.',
     techStack: ['Rust', 'Python'],
     url: 'https://github.com/papadavis47/rattlesnake',
   },
