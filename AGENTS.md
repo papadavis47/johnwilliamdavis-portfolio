@@ -19,7 +19,12 @@ Personal developer portfolio for John William Davis. Next.js App Router site, st
 pnpm dev      # dev server
 pnpm build    # production build (runs panda codegen via prepare + tsc)
 pnpm lint     # eslint . (flat config)
+pnpm test:e2e # Playwright smoke + axe suite (builds, serves on :3100)
 ```
+
+## Testing
+
+Playwright smoke suite in `e2e/` — no unit tests by design (no logic to unit-test; `tsc` + SSG prerender cover static correctness). `playwright.config.ts` builds and serves the prod app on **:3100** (never collides with dev on :3000). `e2e/smoke.spec.ts` covers routes, the projects.ts↔routes contract (imports `projects` directly), theme toggle persistence, and the mobile drawer. `e2e/a11y.spec.ts` runs axe (WCAG A/AA) on every page in both themes — keep it green; a contrast violation is a defect. Run optionally before pushing; there is no CI gate.
 
 `pnpm prepare` runs `panda codegen` to regenerate `styled-system/`. Run it after changing `panda.config.ts`.
 
