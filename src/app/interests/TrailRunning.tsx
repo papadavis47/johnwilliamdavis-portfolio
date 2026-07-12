@@ -97,7 +97,7 @@ export default function TrailRunning() {
       >
         I have also recently completed a{' '}
         <Link
-          href="https://www.comfortablefeelingdumb.com/"
+          href="https://github.com/papadavis47/mountains-web"
           target="_blank"
           rel="noopener noreferrer"
           className={link()}
