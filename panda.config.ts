@@ -8,6 +8,10 @@ import { defineConfig, defineRecipe } from '@pandacss/dev'
 const LIGHT_HUE = 65
 const DARK_HUE = 262
 
+// Accent hue — shared by both themes, unlike the neutrals. Analogous to the warm
+// light ground, complementary to the cool dark one; works against both.
+const ACCENT_HUE = 45
+
 const button = defineRecipe({
   className: 'button',
   description: 'Primary call-to-action control',
@@ -249,19 +253,24 @@ export default defineConfig({
             900: { value: `oklch(0.24 0.014 ${DARK_HUE})` },
             950: { value: `oklch(0.19 0.013 ${DARK_HUE})` },
           },
-          // Every step shares hue 272 — change the hue to restyle the whole site.
+          // Rust. ONE accent ramp for both themes — every step shares ACCENT_HUE, so
+          // re-hueing the site is one number. Hue 45 is analogous to the warm light
+          // ground (cohesive, editorial) and complementary to the cool dark one
+          // (it pops). Chroma is deliberately below the gamut ceiling: at full
+          // chroma the dark-mode button reads as safety-orange rather than
+          // terracotta. Do not "brighten this up".
           accent: {
-            50: { value: 'oklch(0.962 0.018 272)' },
-            100: { value: 'oklch(0.93 0.034 272)' },
-            200: { value: 'oklch(0.87 0.065 272)' },
-            300: { value: 'oklch(0.785 0.115 272)' },
-            400: { value: 'oklch(0.673 0.182 272)' },
-            500: { value: 'oklch(0.585 0.233 272)' },
-            600: { value: 'oklch(0.511 0.245 272)' },
-            700: { value: 'oklch(0.457 0.222 272)' },
-            800: { value: 'oklch(0.398 0.180 272)' },
-            900: { value: 'oklch(0.359 0.140 272)' },
-            950: { value: 'oklch(0.257 0.090 272)' },
+            50: { value: `oklch(0.962 0.014 ${ACCENT_HUE})` },
+            100: { value: `oklch(0.93 0.032 ${ACCENT_HUE})` },
+            200: { value: `oklch(0.87 0.055 ${ACCENT_HUE})` },
+            300: { value: `oklch(0.745 0.080 ${ACCENT_HUE})` },
+            400: { value: `oklch(0.640 0.100 ${ACCENT_HUE})` },
+            500: { value: `oklch(0.545 0.115 ${ACCENT_HUE})` },
+            600: { value: `oklch(0.490 0.120 ${ACCENT_HUE})` },
+            700: { value: `oklch(0.440 0.112 ${ACCENT_HUE})` },
+            800: { value: `oklch(0.390 0.095 ${ACCENT_HUE})` },
+            900: { value: `oklch(0.350 0.078 ${ACCENT_HUE})` },
+            950: { value: `oklch(0.250 0.052 ${ACCENT_HUE})` },
           },
         },
         sizes: {
