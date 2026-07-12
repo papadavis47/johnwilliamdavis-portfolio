@@ -1,12 +1,25 @@
 'use client'
 
 import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Mountain } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
 import { card, tag } from 'styled-system/recipes'
 import type { Project } from './projects'
+
+const markImage = css({
+  width: '10',
+  height: '10',
+  borderRadius: 'control',
+  objectFit: 'contain',
+  flexShrink: 0,
+})
+
+const markIcon = css({
+  color: 'accent',
+  flexShrink: 0,
+})
 
 export default function ProjectCard({
   project,
@@ -43,9 +56,30 @@ export default function ProjectCard({
             mb: '3',
           })}
         >
-          <h2 className={css({ textStyle: 'h3', color: 'text' })}>
-            {project.title}
-          </h2>
+          <div
+            className={css({
+              display: 'flex',
+              alignItems: 'center',
+              gap: '3',
+              minWidth: 0,
+            })}
+          >
+            {project.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={project.logo.src}
+                alt=""
+                width={40}
+                height={40}
+                className={markImage}
+              />
+            ) : (
+              <Mountain size={32} aria-hidden className={markIcon} />
+            )}
+            <h2 className={css({ textStyle: 'h3', color: 'text' })}>
+              {project.title}
+            </h2>
+          </div>
           {project.url && (
             <ExternalLink
               size={18}
