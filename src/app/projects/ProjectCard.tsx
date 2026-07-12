@@ -5,7 +5,8 @@ import { ExternalLink, Mountain } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
-import { card, tag } from 'styled-system/recipes'
+import { card } from 'styled-system/recipes'
+import TechStack from './TechStack'
 import type { Project } from './projects'
 
 const markImage = css({
@@ -104,20 +105,10 @@ export default function ProjectCard({
           {project.summary}
         </p>
 
-        <div
-          className={css({
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '2',
-            mt: 'auto',
-          })}
-        >
-          {project.techStack.map((tech) => (
-            <span key={tech} className={tag()}>
-              {tech}
-            </span>
-          ))}
-        </div>
+        <TechStack
+          items={project.techStack}
+          className={css({ mt: 'auto' })}
+        />
       </Link>
     </motion.div>
   )

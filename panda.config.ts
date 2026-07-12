@@ -92,7 +92,7 @@ const tag = defineRecipe({
     py: '1',
     fontSize: 'xs',
     fontWeight: '500',
-    color: 'accent',
+    color: 'accent.subtleFg',
     bg: 'accent.subtle',
     borderRadius: 'tag',
     whiteSpace: 'nowrap',
@@ -347,10 +347,22 @@ export default defineConfig({
               },
             },
             fg: { value: 'white' },
+            // Tag pill. In dark the fill must sit *above* its backdrop in
+            // lightness, not below: at 950 (L 0.25) the pill was darker than
+            // the card (0.30) and vanished entirely against the page (0.24).
+            // 800 reads as a chip on both. Its foreground can't be the plain
+            // `accent` token — accent.300 on 800 is 4.29:1 and fails AA — so
+            // the pill carries its own fg, one step lighter.
             subtle: {
               value: {
                 base: '{colors.accent.100}',
-                _dark: '{colors.accent.950}',
+                _dark: '{colors.accent.800}',
+              },
+            },
+            subtleFg: {
+              value: {
+                base: '{colors.accent.600}',
+                _dark: '{colors.accent.200}',
               },
             },
           },

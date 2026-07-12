@@ -6,8 +6,9 @@ import { ExternalLink, ArrowLeft, Mountain } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { button, tag } from 'styled-system/recipes'
+import { button } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
+import TechStack from '../TechStack'
 import type { Project } from '../projects'
 
 const sectionHeading = css({
@@ -122,18 +123,9 @@ export default function ProjectContent({ project }: { project: Project }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3 }}
-          className={css({
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '2',
-            mb: '8',
-          })}
+          className={css({ mb: '8' })}
         >
-          {project.techStack.map((tech) => (
-            <span key={tech} className={tag()}>
-              {tech}
-            </span>
-          ))}
+          <TechStack items={project.techStack} />
         </motion.div>
 
         <motion.p
