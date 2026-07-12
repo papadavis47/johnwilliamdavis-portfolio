@@ -206,7 +206,7 @@ export default defineConfig({
         colors: {
           // Cool, indigo-tinted neutral ramp.
           neutral: {
-            50: { value: 'oklch(0.985 0.004 262)' },
+            50: { value: 'oklch(0.955 0.004 262)' },
             100: { value: 'oklch(0.965 0.006 262)' },
             200: { value: 'oklch(0.925 0.008 262)' },
             300: { value: 'oklch(0.87 0.010 262)' },
@@ -243,17 +243,25 @@ export default defineConfig({
       },
       semanticTokens: {
         colors: {
+          // Dark mode sits one ramp step lighter than the steps' names suggest
+          // (bg=900, surface=800, border=700): feedback was that 950 read too
+          // dark, and 900/800 can't be lightened in place — 900 is also light
+          // text. Light bg is softened via the 50 step itself; surface drops
+          // off pure white for the same reason.
           bg: {
             DEFAULT: {
               value: {
                 base: '{colors.neutral.50}',
-                _dark: '{colors.neutral.950}',
+                _dark: '{colors.neutral.900}',
               },
             },
           },
           surface: {
             DEFAULT: {
-              value: { base: 'white', _dark: '{colors.neutral.900}' },
+              value: {
+                base: 'oklch(0.988 0.004 262)',
+                _dark: '{colors.neutral.800}',
+              },
             },
           },
           text: {
@@ -272,9 +280,12 @@ export default defineConfig({
           },
           border: {
             DEFAULT: {
+              // base is 300, not 200: the cream bg (L 0.955) sits too close to
+              // 200 (0.925) for a hairline to read; 200 can't darken in place —
+              // it's also dark-mode text.
               value: {
-                base: '{colors.neutral.200}',
-                _dark: '{colors.neutral.800}',
+                base: '{colors.neutral.300}',
+                _dark: '{colors.neutral.700}',
               },
             },
           },
