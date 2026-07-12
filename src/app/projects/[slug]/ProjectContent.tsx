@@ -1,13 +1,61 @@
 'use client'
 
 import Link from 'next/link'
-import { ExternalLink, ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { ExternalLink, ArrowLeft, Mountain } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import { button, tag } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
 import type { Project } from '../projects'
+
+const sectionHeading = css({
+  textStyle: 'h2',
+  color: 'text',
+  mb: '4',
+})
+
+const sectionProse = css({
+  textStyle: 'prose',
+  color: 'text',
+  maxWidth: 'content',
+})
+
+const heroImage = css({
+  width: '14',
+  height: '14',
+  borderRadius: 'control',
+  objectFit: 'contain',
+  flexShrink: 0,
+})
+
+const heroIcon = css({
+  color: 'accent',
+  flexShrink: 0,
+})
+
+function Section({
+  title,
+  delay,
+  children,
+}: {
+  title: string
+  delay: number
+  children: React.ReactNode
+}) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay }}
+      className={css({ mb: '10' })}
+    >
+      <h2 className={sectionHeading}>{title}</h2>
+      {children}
+    </motion.section>
+  )
+}
 
 export default function ProjectContent({ project }: { project: Project }) {
   return (
@@ -41,18 +89,34 @@ export default function ProjectContent({ project }: { project: Project }) {
           </Link>
         </motion.div>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           className={css({
-            textStyle: 'h1',
-            color: 'text',
+            display: 'flex',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '4',
             mb: '6',
           })}
         >
-          {project.title}
-        </motion.h1>
+          {project.logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={project.logo.src}
+              alt={project.logo.alt}
+              width={56}
+              height={56}
+              className={heroImage}
+            />
+          ) : (
+            <Mountain size={48} aria-hidden className={heroIcon} />
+          )}
+          <h1 className={css({ textStyle: 'h1', color: 'text' })}>
+            {project.title}
+          </h1>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -86,10 +150,61 @@ export default function ProjectContent({ project }: { project: Project }) {
           {project.description}
         </motion.p>
 
+        <Section title="Why I built it" delay={0.5}>
+          <p className={sectionProse}>{project.why}</p>
+        </Section>
+
+        <Section title="Key features" delay={0.6}>
+          <ul
+            className={css({
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2',
+              pl: '5',
+              listStyleType: 'disc',
+              maxWidth: 'content',
+            })}
+          >
+            {project.features.map((feature) => (
+              <li
+                key={feature}
+                className={css({ textStyle: 'prose', color: 'text' })}
+              >
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        {project.screenshot && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.65 }}
+            className={css({ mb: '10' })}
+          >
+            <Image
+              src={project.screenshot.src}
+              alt={project.screenshot.alt}
+              width={project.screenshot.width}
+              height={project.screenshot.height}
+              className={css({
+                width: '100%',
+                height: 'auto',
+                borderRadius: 'control',
+              })}
+            />
+          </motion.div>
+        )}
+
+        <Section title="Tech notes" delay={0.7}>
+          <p className={sectionProse}>{project.techNotes}</p>
+        </Section>
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
           className={css({
             display: 'flex',
             flexWrap: 'wrap',
