@@ -1,5 +1,13 @@
 import { defineConfig, defineRecipe } from '@pandacss/dev'
 
+// The two neutral ramps are independent, so each theme picks its own hue.
+// Light is warm (65 = warm paper). Below ~55 reads pink at these lightnesses,
+// not rust — rust needs a dark step, not a pale one. Dark stays cool (262):
+// warming it just turns the charcoal brown, which looked cheap at every chroma
+// worth having.
+const LIGHT_HUE = 65
+const DARK_HUE = 262
+
 const button = defineRecipe({
   className: 'button',
   description: 'Primary call-to-action control',
@@ -204,19 +212,42 @@ export default defineConfig({
           heading: { value: 'var(--font-merriweather), Georgia, serif' },
         },
         colors: {
-          // Cool, indigo-tinted neutral ramp.
+          // One ramp per theme, and a step is NEVER shared between them — so each
+          // is free to move in L, C and H without dragging the other along. That
+          // independence is the whole point: light is warm, dark is cool, and
+          // neither can be retuned into the other by accident.
+
+          // Light theme (warm paper). Chroma peaks at the page/border steps and
+          // tapers into the dark steps, which serve as *text* — chroma reads far
+          // stronger at low lightness, and full chroma there turns text brown.
           neutral: {
-            50: { value: 'oklch(0.955 0.004 262)' },
-            100: { value: 'oklch(0.965 0.006 262)' },
-            200: { value: 'oklch(0.925 0.008 262)' },
-            300: { value: 'oklch(0.87 0.010 262)' },
-            400: { value: 'oklch(0.71 0.014 262)' },
-            500: { value: 'oklch(0.56 0.016 262)' },
-            600: { value: 'oklch(0.46 0.016 262)' },
-            700: { value: 'oklch(0.38 0.016 262)' },
-            800: { value: 'oklch(0.30 0.015 262)' },
-            900: { value: 'oklch(0.24 0.014 262)' },
-            950: { value: 'oklch(0.19 0.013 262)' },
+            50: { value: `oklch(0.988 0.010 ${LIGHT_HUE})` },
+            100: { value: `oklch(0.955 0.014 ${LIGHT_HUE})` },
+            200: { value: `oklch(0.925 0.014 ${LIGHT_HUE})` },
+            300: { value: `oklch(0.87 0.013 ${LIGHT_HUE})` },
+            400: { value: `oklch(0.71 0.014 ${LIGHT_HUE})` },
+            500: { value: `oklch(0.56 0.013 ${LIGHT_HUE})` },
+            600: { value: `oklch(0.46 0.011 ${LIGHT_HUE})` },
+            700: { value: `oklch(0.38 0.010 ${LIGHT_HUE})` },
+            800: { value: `oklch(0.30 0.009 ${LIGHT_HUE})` },
+            900: { value: `oklch(0.24 0.008 ${LIGHT_HUE})` },
+            950: { value: `oklch(0.19 0.007 ${LIGHT_HUE})` },
+          },
+          // Dark theme (cool charcoal). Unchanged from the original ramp. Do not
+          // "warm this up to match light" — it was tried at several chromas and
+          // every one of them read as brown/taupe leather, not warm charcoal.
+          neutralDark: {
+            50: { value: `oklch(0.955 0.004 ${DARK_HUE})` },
+            100: { value: `oklch(0.965 0.006 ${DARK_HUE})` },
+            200: { value: `oklch(0.925 0.008 ${DARK_HUE})` },
+            300: { value: `oklch(0.87 0.010 ${DARK_HUE})` },
+            400: { value: `oklch(0.71 0.014 ${DARK_HUE})` },
+            500: { value: `oklch(0.56 0.016 ${DARK_HUE})` },
+            600: { value: `oklch(0.46 0.016 ${DARK_HUE})` },
+            700: { value: `oklch(0.38 0.016 ${DARK_HUE})` },
+            800: { value: `oklch(0.30 0.015 ${DARK_HUE})` },
+            900: { value: `oklch(0.24 0.014 ${DARK_HUE})` },
+            950: { value: `oklch(0.19 0.013 ${DARK_HUE})` },
           },
           // Every step shares hue 272 — change the hue to restyle the whole site.
           accent: {
@@ -245,22 +276,21 @@ export default defineConfig({
         colors: {
           // Dark mode sits one ramp step lighter than the steps' names suggest
           // (bg=900, surface=800, border=700): feedback was that 950 read too
-          // dark, and 900/800 can't be lightened in place — 900 is also light
-          // text. Light bg is softened via the 50 step itself; surface drops
-          // off pure white for the same reason.
+          // dark. The page is the 100 step, not 50 — 50 is the lighter card
+          // surface above it.
           bg: {
             DEFAULT: {
               value: {
-                base: '{colors.neutral.50}',
-                _dark: '{colors.neutral.900}',
+                base: '{colors.neutral.100}',
+                _dark: '{colors.neutralDark.900}',
               },
             },
           },
           surface: {
             DEFAULT: {
               value: {
-                base: 'oklch(0.988 0.004 262)',
-                _dark: '{colors.neutral.800}',
+                base: '{colors.neutral.50}',
+                _dark: '{colors.neutralDark.800}',
               },
             },
           },
@@ -268,24 +298,23 @@ export default defineConfig({
             DEFAULT: {
               value: {
                 base: '{colors.neutral.900}',
-                _dark: '{colors.neutral.200}',
+                _dark: '{colors.neutralDark.200}',
               },
             },
             muted: {
               value: {
                 base: '{colors.neutral.600}',
-                _dark: '{colors.neutral.400}',
+                _dark: '{colors.neutralDark.400}',
               },
             },
           },
           border: {
             DEFAULT: {
               // base is 300, not 200: the cream bg (L 0.955) sits too close to
-              // 200 (0.925) for a hairline to read; 200 can't darken in place —
-              // it's also dark-mode text.
+              // 200 (0.925) for a hairline to read.
               value: {
                 base: '{colors.neutral.300}',
-                _dark: '{colors.neutral.700}',
+                _dark: '{colors.neutralDark.700}',
               },
             },
           },
