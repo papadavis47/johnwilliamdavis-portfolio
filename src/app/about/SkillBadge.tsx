@@ -30,6 +30,7 @@ export default function SkillBadge({ skill }: { skill: Skill }) {
       <Icon size={18} className={css({ color: 'accent', flexShrink: 0 })} />
       <span
         className={css({
+          fontFamily: 'mono',
           fontSize: 'sm',
           color: 'text',
           whiteSpace: 'nowrap',

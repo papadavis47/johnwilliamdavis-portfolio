@@ -90,8 +90,10 @@ const tag = defineRecipe({
     display: 'inline-block',
     px: '3',
     py: '1',
+    fontFamily: 'mono',
     fontSize: 'xs',
-    fontWeight: '500',
+    // 500 mono reads dense at xs; 400 keeps the pill crisp
+    fontWeight: '400',
     color: 'accent.subtleFg',
     bg: 'accent.subtle',
     borderRadius: 'tag',
