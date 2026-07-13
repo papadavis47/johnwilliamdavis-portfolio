@@ -69,6 +69,7 @@ Rules:
 - **Never pair a directional border shorthand with `borderColor`** (`borderBottom: '1px solid'` + `borderColor: 'border'`). Panda emits `.bd-b_1px_solid` *after* `.bd-c_border`, so the shorthand resets that edge to `currentColor` — a near-white hairline in dark mode. Use longhands: `borderBottomWidth` / `borderBottomStyle` / `borderBottomColor`. The all-sides `border: '1px solid'` + `borderColor` pairing is fine.
 - Overlay panels (the mobile drawer) get **elevation, not outlines** — `boxShadow: 'lifted'` over the scrim. A border on the drawer crosses the header's bottom hairline at its corner. Its top offset comes from `top: 'token(sizes.navHeight)'`, matching the header's `height: 'navHeight'`; never hardcode a pixel offset.
 - Project screenshots live under `public/images/projects/<slug>/`; strip EXIF/GPS from any photo (`convert … -auto-orient -strip`) before committing.
+- **OG images** (`src/app/opengraph-image.tsx`, `src/app/projects/[slug]/opengraph-image.tsx`) share `src/design-system/og/og.tsx`. Satori can't parse oklch, so that file holds **hex mirrors of the dark-theme tokens** — if a ramp step moves in `panda.config.ts`, re-derive them (source oklch noted inline). Fonts are vendored woff (satori can't read woff2) in `og/fonts/`; satori also drops `space-between`/`margin:auto` in the footer row — the flexGrow spacer is deliberate. The per-slug route renders on demand, so `next.config.mjs` pins the woffs into the function bundle via `outputFileTracingIncludes`.
 
 ## Deployment (Vercel)
 

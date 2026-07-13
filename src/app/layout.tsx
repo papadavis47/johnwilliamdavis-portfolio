@@ -9,7 +9,7 @@ import PageTransition from '@/layout/PageTransition'
 import { css } from 'styled-system/css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://johnwilliamdavis.dev'),
+  metadataBase: new URL('https://johnwilliamdavis.com'),
   title: {
     template: '%s | John William Davis',
     default: 'John William Davis | Developer Portfolio',
