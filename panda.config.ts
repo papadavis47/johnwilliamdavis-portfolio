@@ -212,8 +212,9 @@ export default defineConfig({
       },
       tokens: {
         fonts: {
-          body: { value: 'var(--font-raleway), system-ui, sans-serif' },
-          heading: { value: 'var(--font-merriweather), Georgia, serif' },
+          body: { value: 'var(--font-plex-sans), system-ui, sans-serif' },
+          heading: { value: 'var(--font-fraunces), Georgia, serif' },
+          mono: { value: "var(--font-plex-mono), ui-monospace, 'SF Mono', Menlo, monospace" },
         },
         colors: {
           // One ramp per theme, and a step is NEVER shared between them — so each

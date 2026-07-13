@@ -1,4 +1,4 @@
-import { raleway, merriweather } from './fonts'
+import { plexSans, plexMono, fraunces } from './fonts'
 import { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${raleway.variable} ${merriweather.variable}`}
+      className={`${plexSans.variable} ${plexMono.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
       <body>
