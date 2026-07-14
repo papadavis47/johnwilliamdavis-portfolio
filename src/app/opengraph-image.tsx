@@ -23,6 +23,27 @@ export default async function OpengraphImage() {
         <div style={{ fontSize: 42, color: og.muted, marginTop: 20 }}>
           Software Engineer
         </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            fontFamily: 'mono',
+            fontSize: 30,
+            marginTop: 48,
+            lineHeight: 1.5,
+          }}
+        >
+          <div style={{ display: 'flex' }}>
+            <span style={{ color: og.accent, marginRight: 16 }}>$</span>
+            <span style={{ color: og.muted }}>git status</span>
+          </div>
+          <div style={{ display: 'flex', color: og.text }}>
+            {`on branch ${new Date().getFullYear()}`}
+          </div>
+          <div style={{ display: 'flex', color: og.text }}>
+            refining-personal-projects
+          </div>
+        </div>
       </OgFrame>
     ),
     { ...OG_SIZE, fonts: await loadOgFonts() }
