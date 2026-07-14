@@ -19,14 +19,14 @@ export const projects: Project[] = [
     title: 'I want you to know',
     summary: 'A shared memory and communication vault for fathers',
     description:
-      'A digital legacy platform where a father builds a curated collection of letters, notes, and photos for his children — preserved for when he is no longer around. It is a love letter platform, not a will or estate tool: warm, forward-looking, and personal.',
+      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children — preserved for when he is no longer around. It is a love letter platform: forward-looking, and personal.',
     logo: {
       src: '/images/projects/iwantyoutoknow/mark.svg',
       alt: 'I want you to know mark — a folded note signed with a heart',
     },
-    why: 'I built this because I want my kids to have my words in my own voice — the stories, the advice, the things I would say to them at every age — even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write something meaningful, and close the app in a few minutes.',
+    why: 'I built this because I want my kids to have my words in my own voice — stories, advice, the things I would say to them at every age — even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
     features: [
-      'Letters, notes, and photo entries, each taggable and addressed to specific children',
+      'Letters, text or voice notes, and photo entries, each taggable and addressed to specific children',
       'A vault system: a hashed master unlock code for an executor, who generates per-child access codes',
       'Children return anytime with their code to see everything written for them',
       'Individual entries shareable via temporary password-protected links that expire after seven days',
@@ -42,8 +42,8 @@ export const projects: Project[] = [
     title: 'Mountains',
     summary: 'A terminal training log for trail running and food awareness',
     description:
-      'A Rust terminal application for trail runners who want to get good at vert. It is a daily training log for the command line: nutrition, body measurements, miles, elevation gain, strength and mobility work, and free-form notes — with streak tracking to nudge you toward 1,000+ feet of climbing a day.',
-    why: 'Trail running is where I find mindfulness and motivation, and the terminal is where I already spend my working day. I wanted a log that lives in that same place — no browser tab, no account, no friction. Open a terminal, record the day, get a gentle push to go climb something. Building it was also a chance to go deep on Rust and TUI development.',
+      'A Rust terminal application for trail runners who want to improve generally and improve particularly in vertical gain. It is a daily training log for the command line: nutrition, body measurements, miles, elevation gain, strength and mobility work, and free-form notes — with streak tracking to nudge you toward 1,000+ feet of climbing a day.',
+    why: 'Trail running is where I experience mindfulness and motivation to live a healthy lifestyle. As a person building tech, the terminal is where I already spend my working day. I wanted a log that lives in that same place — no browser tab, no account, no friction. Open a terminal, record the day, get a gentle push to work vert. Building this tool was also a chance to go deep on Rust and TUI development.',
     features: [
       'Daily entries for nutrition, body measurements, miles, elevation gain, strength and mobility work, and notes',
       'Streak tracking for 1,000+ feet of daily vert, with monthly and yearly totals on the start screen',
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       src: '/images/projects/sokay/sokay-ring.svg',
       alt: 'Sokay mark — an open ring with a gap where a stumble lands',
     },
-    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it — an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working. The design is still actively evolving as I refine the idea.',
+    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it — an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working. The design of the app is still actively evolving as I refine the idea.',
     features: [
       'Flexible goals: 1–100 items over a window of weeks or months',
       'Log items against the budget with optional notes — no calories, no shame',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       src: '/images/projects/rattlesnake/logo.png',
       alt: 'Rattlesnake logo — a coiled rattlesnake wrapped around the Python mark',
     },
-    why: 'Rustlings taught me Rust through a tight loop of broken code, failing checks, and immediate feedback — and I wanted that exact loop for going deeper into Python. Nothing quite like it existed, so I forked Rustlings and rebuilt its exercise pipeline for a new language. It doubled as the best Rust codebase tour I could have asked for.',
+    why: 'Rustlings was my introduction to Rust programming. Tthrough a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language. It doubled as a great Rust codebase tour.',
     features: [
       '50 hands-on exercises with matching reference solutions, from a gentle 11-exercise intro to metaclasses and asyncio',
       'Watch mode reruns the current exercise automatically on every save',
@@ -104,7 +104,7 @@ export const projects: Project[] = [
       'Covers decorators, context managers, generators, concurrency, protocols, and more',
     ],
     techNotes:
-      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain — uv bootstraps the Python 3.12 environment, then each exercise runs through python, pytest, Ruff, and the ty type checker as configured per exercise. Curriculum, ordering, and hints live in a single TOML file.',
+      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain — uv bootstraps the Python 3.12 environment, then each exercise runs through python, pytest, Ruff, and the ty type checker as configured per exercise. Curriculum, ordering, and hints live in a single .toml file.',
     techStack: ['Rust', 'Python', 'uv', 'pytest'],
     github: 'https://github.com/papadavis47/rattlesnake',
   },
