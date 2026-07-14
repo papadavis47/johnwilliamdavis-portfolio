@@ -7,7 +7,7 @@ import { motion } from 'motion/react'
 
 const socialLinks = [
   { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },
-  { href: 'https://linkedin.com/in/johnwilliamdavis47', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/in/john-william-davis/', icon: Linkedin, label: 'LinkedIn' },
   { href: 'mailto:jwdavisdeveloper@gmail.com', icon: Mail, label: 'Email' },
 ]
 
@@ -67,7 +67,7 @@ function Footer() {
             fontFamily: 'heading',
           })}
         >
-          © 2025 John William Davis
+          © 2026 John William Davis
         </p>
       </div>
     </footer>
