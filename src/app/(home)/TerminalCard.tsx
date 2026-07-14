@@ -1,4 +1,5 @@
 import { css } from 'styled-system/css'
+import { CURRENT_FOCUS } from '@/design-system/current-focus'
 
 const session = [
   { cmd: 'pwd', out: ['/pnw/greater_seattle_area'] },
@@ -7,7 +8,7 @@ const session = [
   { cmd: 'ls agent_tools_i_use/', out: ['amp  claude'] },
   {
     cmd: 'git status',
-    out: [`on branch ${new Date().getFullYear()}`, 'refining-personal-projects'],
+    out: [`on branch ${new Date().getFullYear()}`, CURRENT_FOCUS],
   },
 ]
 

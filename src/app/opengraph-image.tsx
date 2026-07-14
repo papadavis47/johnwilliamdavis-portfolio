@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { OG_SIZE, OgFrame, loadOgFonts, og } from '@/design-system/og/og'
+import { CURRENT_FOCUS } from '@/design-system/current-focus'
 
 export const alt = 'John William Davis — Software Engineer'
 export const size = OG_SIZE
@@ -41,7 +42,7 @@ export default async function OpengraphImage() {
             {`on branch ${new Date().getFullYear()}`}
           </div>
           <div style={{ display: 'flex', color: og.text }}>
-            refining-personal-projects
+            {CURRENT_FOCUS}
           </div>
         </div>
       </OgFrame>
