@@ -23,10 +23,10 @@ export default function Skills() {
           maxWidth: 'content',
         })}
       >
-        I work across the stack — Next.js, Astro, and TanStack on the frontend,
-        with Node, Rust, and Python for backend and systems work. Lately
-        I&apos;ve been digging into Tailwind v4&apos;s design token system and
-        Panda CSS for styling.
+        I work across the stack: Next.js, Astro, and TanStack on the frontend,
+        with Node, Rust, and Python on the backend and in systems work. Lately
+        I&apos;ve been exploring Turso, the embedded SQLite platform, and
+        adopting Panda CSS, a design token system for styling.
       </p>
     </motion.section>
   )
