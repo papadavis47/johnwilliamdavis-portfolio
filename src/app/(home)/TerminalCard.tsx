@@ -5,7 +5,10 @@ const session = [
   { cmd: 'cat languages.txt', out: ['typescript rust python'] },
   { cmd: 'echo $EDITOR', out: ['zed --wait'] },
   { cmd: 'ls agent_tools_i_use/', out: ['amp  claude'] },
-  { cmd: 'git status', out: ['on branch 2026', 'refining-personal-projects'] },
+  {
+    cmd: 'git status',
+    out: [`on branch ${new Date().getFullYear()}`, 'refining-personal-projects'],
+  },
 ]
 
 const prompt = css({ color: 'accent', mr: '2' })
@@ -67,7 +70,11 @@ export default function TerminalCard() {
               {cmd}
             </div>
             {out.map((line) => (
-              <div key={line} className={css({ color: 'text' })}>
+              <div
+                key={line}
+                suppressHydrationWarning
+                className={css({ color: 'text' })}
+              >
                 {line}
               </div>
             ))}

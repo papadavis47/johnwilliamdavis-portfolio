@@ -39,7 +39,8 @@ export const projects: Project[] = [
   {
     slug: 'mountains',
     title: 'Mountains',
-    summary: 'A terminal training log for trail running and food awareness',
+    summary:
+      'A terminal training log for trail running and nutrition awareness',
     description:
       'A Rust terminal application for trail runners who want to improve generally and improve particularly in vertical gain. It is a daily training log for the command line: nutrition, body measurements, miles, elevation gain, strength and mobility work, and free-form notes — with streak tracking to nudge you toward 1,000+ feet of climbing a day.',
     why: 'Trail running is where I experience mindfulness and motivation to live a healthy lifestyle. As a person building tech, the terminal is where I already spend my working day. I wanted a log that lives in that same place — no browser tab, no account, no friction. Open a terminal, record the day, get a gentle push to work vert. Building this tool was also a chance to go deep on Rust and TUI development.',

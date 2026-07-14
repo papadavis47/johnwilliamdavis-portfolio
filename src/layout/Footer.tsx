@@ -62,12 +62,13 @@ function Footer() {
           ))}
         </div>
         <p
+          suppressHydrationWarning
           className={css({
             textStyle: 'small',
             fontFamily: 'heading',
           })}
         >
-          © 2026 John William Davis
+          © {new Date().getFullYear()} John William Davis
         </p>
       </div>
     </footer>
