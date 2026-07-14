@@ -50,6 +50,9 @@ npm-debug.log*
 # Next.js generated (machine-dependent, do not track)
 next-env.d.ts
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
 # playwright
 /test-results/
 /playwright-report/
