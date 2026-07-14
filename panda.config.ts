@@ -133,6 +133,12 @@ export default defineConfig({
   theme: {
     extend: {
       recipes: { button, card, tag, link },
+      keyframes: {
+        blink: {
+          '0%, 49%': { opacity: '1' },
+          '50%, 100%': { opacity: '0' },
+        },
+      },
       textStyles: {
         display: {
           description: 'Hero title',
@@ -209,6 +215,16 @@ export default defineConfig({
             fontSize: 'xs',
             lineHeight: '1.4',
             letterSpacing: '0.02em',
+          },
+        },
+        mono: {
+          description: 'Monospace facts/key-value text',
+          value: {
+            fontFamily: 'mono',
+            // 400 for the same reason as the tag recipe: heavier mono reads dense at small sizes
+            fontWeight: '400',
+            fontSize: 'sm',
+            lineHeight: '1.6',
           },
         },
       },
