@@ -8,7 +8,7 @@ import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
-import TechStack from '../TechStack'
+import TechStack from '@/design-system/TechStack'
 import type { Project } from '../projects'
 
 const sectionHeading = css({

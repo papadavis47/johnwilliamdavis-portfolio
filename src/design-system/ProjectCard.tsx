@@ -7,7 +7,7 @@ import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
 import { card } from 'styled-system/recipes'
 import TechStack from './TechStack'
-import type { Project } from './projects'
+import type { Project } from '@/app/projects/projects'
 
 const markImage = css({
   width: '10',

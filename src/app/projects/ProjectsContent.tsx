@@ -2,7 +2,7 @@
 
 import { css } from 'styled-system/css'
 import PageContainer from '@/design-system/PageContainer'
-import ProjectCard from './ProjectCard'
+import ProjectCard from '@/design-system/ProjectCard'
 import { projects } from './projects'
 
 export default function ProjectsContent() {
