@@ -5,7 +5,7 @@ const session = [
   { cmd: 'pwd', out: ['/pnw/greater_seattle_area'] },
   { cmd: 'cat languages.txt', out: ['typescript rust python'] },
   { cmd: 'echo $EDITOR', out: ['zed --wait'] },
-  { cmd: 'ls agent_tools_i_use/', out: ['amp  claude'] },
+  { cmd: 'ls agent_harnesses/', out: ['amp  claude'] },
   {
     cmd: 'git status',
     out: [`on branch ${new Date().getFullYear()}`, CURRENT_FOCUS],

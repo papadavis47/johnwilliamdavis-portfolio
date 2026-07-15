@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { link } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
 import ProjectCard from '@/design-system/ProjectCard'
 import { projects } from '@/app/projects/projects'
@@ -60,8 +59,29 @@ export default function HomeContent() {
           ))}
         </div>
 
-        <Link href="/projects" className={link()}>
-          All projects →
+        <Link
+          href="/projects"
+          className={css({
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '2',
+            textStyle: 'body',
+            fontWeight: 'semibold',
+            color: 'accent',
+            transition: 'color 200ms',
+            _hover: {
+              color: 'accent.hover',
+              '& span': { transform: 'translateX(4px)' },
+            },
+          })}
+        >
+          All projects
+          <span
+            aria-hidden
+            className={css({ transition: 'transform 200ms' })}
+          >
+            →
+          </span>
         </Link>
       </motion.section>
     </PageContainer>

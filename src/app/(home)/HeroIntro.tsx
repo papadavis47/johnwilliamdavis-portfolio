@@ -8,7 +8,10 @@ import { Github, Linkedin } from '@/design-system/icons'
 import TerminalCard from './TerminalCard'
 
 const positioning =
-  'I care most about building software that adds health and happiness to people’s lives. My projects include a legacy vault for fathers, a guilt-free eating tracker, and training tools that live in the terminal. Things are shifting fast in the software industry. My main skill now is adapting to change.'
+  'I care most about building software that adds health and happiness to people’s lives. My projects include a legacy vault for fathers, a guilt-free eating tracker, and training tools that live in the terminal.'
+
+const adapting =
+  'Things are shifting fast in the software industry. My main skill now is adapting to change.'
 
 const socialLinks = [
   { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },
@@ -63,6 +66,9 @@ export default function HeroIntro() {
         <p className={css({ textStyle: 'prose', color: 'text.muted' })}>
           {positioning}
         </p>
+        <p className={css({ textStyle: 'prose', color: 'text.muted' })}>
+          {adapting}
+        </p>
         <TerminalCard />
       </motion.div>
 
@@ -109,9 +115,9 @@ export default function HeroIntro() {
               rel="noopener noreferrer"
               aria-label={label}
               className={css({
-                color: 'text.muted',
+                color: 'accent',
                 transition: 'color 300ms',
-                _hover: { color: 'accent' },
+                _hover: { color: 'accent.hover' },
               })}
               whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.95 }}

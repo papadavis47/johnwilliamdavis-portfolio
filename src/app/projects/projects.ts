@@ -19,12 +19,12 @@ export const projects: Project[] = [
     title: 'I want you to know',
     summary: 'A shared memory and communication vault for fathers',
     description:
-      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children — preserved for when he is no longer around. It is a love letter platform: forward-looking, and personal.',
+      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children — preserved for when he is no longer around. It is a love letter platform: forward-looking and personal.',
     logo: {
       src: '/images/projects/iwantyoutoknow/mark.svg',
       alt: 'I want you to know mark — a folded note signed with a heart',
     },
-    why: 'I built this because I want my kids to have my words in my own voice — stories, advice, the things I would say to them at every age — even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
+    why: 'I built this because I want my kids to have my words in my own voice: stories, counsel, the things I would say to them at every age, even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
     features: [
       'Letters, text or voice notes, and photo entries, each taggable and addressed to specific children',
       'A vault system: a hashed master unlock code for an executor, who generates per-child access codes',
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       src: '/images/projects/rattlesnake/logo.png',
       alt: 'Rattlesnake logo — a coiled rattlesnake wrapped around the Python mark',
     },
-    why: 'Rustlings was my introduction to Rust programming. Tthrough a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language. It doubled as a great Rust codebase tour.',
+    why: 'Rustlings was my introduction to Rust programming. Through a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language. It doubled as a great Rust codebase tour.',
     features: [
       '50 hands-on exercises with matching reference solutions, from a gentle 11-exercise intro to metaclasses and asyncio',
       'Watch mode reruns the current exercise automatically on every save',

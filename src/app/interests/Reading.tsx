@@ -49,8 +49,8 @@ export default function Reading() {
           maxWidth: '65ch',
         })}
       >
-        I love reading books on diverse subjects. Here are a some of my
-        favorites.
+        I love reading books on diverse subjects. These are some of my recent
+        favorites:
       </p>
 
       <ul
