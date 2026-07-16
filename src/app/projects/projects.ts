@@ -42,17 +42,17 @@ export const projects: Project[] = [
     summary:
       'A terminal training log for trail running and nutrition awareness',
     description:
-      'A Rust terminal application for trail runners who want to improve generally and improve particularly in vertical gain. It is a daily training log for the command line: nutrition, body measurements, miles, elevation gain, strength and mobility work, and free-form notes — with streak tracking to nudge you toward 1,000+ feet of climbing a day.',
-    why: 'Trail running is where I experience mindfulness and motivation to live a healthy lifestyle. As a person building tech, the terminal is where I already spend my working day. I wanted a log that lives in that same place — no browser tab, no account, no friction. Open a terminal, record the day, get a gentle push to work vert. Building this tool was also a chance to go deep on Rust and TUI development.',
+      'A Rust terminal application for trail runners who want to improve generally while focusing more intensely on vertical gain. It is a daily training log for the command line: nutrition, body measurements, miles, elevation gain, strength and mobility work, and free-form notes. Streak tracking nudges you toward 1,000+ feet of climbing a day.',
+    why: 'Trail running is where I experience mindfulness and motivation to live a healthy lifestyle. As a person building software, the terminal is where I already spend my working day. I wanted a log that lives in that same place: no browser tab, no account, no friction. Open a terminal, record the day, get a gentle push to chase elevation. Building this tool was also a chance to go deep on Rust and TUI development.',
     features: [
       'Daily entries for nutrition, body measurements, miles, elevation gain, strength and mobility work, and notes',
       'Streak tracking for 1,000+ feet of daily vert, with monthly and yearly totals on the start screen',
-      'Offline-first: a local libsql database at ~/.mountains/, no connection required',
+      'Offline-first: a local libsql database at `~/.mountains/`, no connection required',
       'Optional Turso cloud sync, configured in-app and synced in the background on startup and quit',
       "Markdown backups of every day's entry, readable outside the app",
     ],
     techNotes:
-      'Written in Rust with ratatui and crossterm for the terminal interface, and tokio for async background sync. Data persistence is libsql — the same engine locally and in Turso Cloud — so sync is opt-in rather than required. Installed with cargo install; the app creates and manages its own ~/.mountains/ directory.',
+      'Written in Rust with ratatui and crossterm for the terminal interface, and tokio for async background sync. Data persistence is libsql — the same engine locally and in Turso Cloud — so sync is opt-in rather than required. Installed with cargo install; the app creates and manages its own `~/.mountains/` directory.',
     screenshot: {
       src: '/images/projects/mountains/tui-screenshot.png',
       alt: 'Mountains TUI start screen showing the title, monthly vert streak, and yearly elevation total',

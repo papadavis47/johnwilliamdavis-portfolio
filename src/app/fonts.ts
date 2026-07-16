@@ -8,8 +8,9 @@ export const plexSans = IBM_Plex_Sans({
   variable: '--font-plex-sans',
 })
 
-// Not preloaded: @font-face is lazy, so no bytes load until something renders
-// in the `mono` token. Wired ahead of first use on purpose.
+// Not preloaded: mono renders on most pages (tag pills, home TerminalCard),
+// but it's secondary to body/heading text, so keep its @font-face lazy and
+// non-render-blocking rather than preloaded.
 export const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],

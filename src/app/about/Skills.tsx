@@ -24,8 +24,17 @@ export default function Skills() {
         })}
       >
         I work across the stack: Next.js, Astro, and TanStack on the frontend,
-        with Node, Rust, and Python on the backend and in systems work. Lately
-        I&apos;ve been exploring Turso, the embedded SQLite platform, and
+        with Node, Rust, and Python on the backend and in systems work.
+      </p>
+      <p
+        className={css({
+          textStyle: 'prose',
+          color: 'text',
+          maxWidth: 'content',
+          mt: '4',
+        })}
+      >
+        Lately I&apos;ve been exploring Turso, the embedded SQLite platform, and
         adopting Panda CSS, a design token system for styling.
       </p>
     </motion.section>

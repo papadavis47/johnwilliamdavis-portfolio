@@ -11,7 +11,7 @@ const positioning =
   'I care most about building software that adds health and happiness to people’s lives. My projects include a legacy vault for fathers, a guilt-free eating tracker, and training tools that live in the terminal.'
 
 const adapting =
-  'Things are shifting fast in the software industry. My main skill now is adapting to change.'
+  'Things are shifting fast in the software industry, most of all toward agentic engineering. Adapting quickly is my main skill; lately that means getting real leverage from agents.'
 
 const socialLinks = [
   { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },

@@ -1,5 +1,6 @@
 'use client'
 
+import { Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ExternalLink, ArrowLeft, Mountain } from 'lucide-react'
@@ -22,6 +23,28 @@ const sectionProse = css({
   color: 'text',
   maxWidth: 'content',
 })
+
+const inlineCode = css({
+  textStyle: 'code',
+  bg: 'surface',
+  px: '1',
+  py: '0.5',
+  borderRadius: 'tag',
+})
+
+// Renders copy with `backtick`-delimited spans as inline <code>. Odd-index
+// segments are the code spans. Strings without backticks render as one segment.
+function InlineCode({ text }: { text: string }) {
+  return text.split('`').map((part, i) =>
+    i % 2 === 1 ? (
+      <code key={i} className={inlineCode}>
+        {part}
+      </code>
+    ) : (
+      <Fragment key={i}>{part}</Fragment>
+    ),
+  )
+}
 
 const heroImage = css({
   width: '14',
@@ -162,7 +185,7 @@ export default function ProjectContent({ project }: { project: Project }) {
                 key={feature}
                 className={css({ textStyle: 'prose', color: 'text' })}
               >
-                {feature}
+                <InlineCode text={feature} />
               </li>
             ))}
           </ul>
@@ -190,7 +213,9 @@ export default function ProjectContent({ project }: { project: Project }) {
         )}
 
         <Section title="Tech notes" delay={0.7}>
-          <p className={sectionProse}>{project.techNotes}</p>
+          <p className={sectionProse}>
+            <InlineCode text={project.techNotes} />
+          </p>
         </Section>
 
         <motion.div

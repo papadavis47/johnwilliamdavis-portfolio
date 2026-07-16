@@ -227,6 +227,15 @@ export default defineConfig({
             lineHeight: '1.6',
           },
         },
+        code: {
+          description: 'Inline code / paths inside prose',
+          value: {
+            fontFamily: 'mono',
+            fontWeight: '400',
+            // relative so it tracks the surrounding prose size instead of jumping
+            fontSize: '0.9em',
+          },
+        },
       },
       tokens: {
         fonts: {
