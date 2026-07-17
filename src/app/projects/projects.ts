@@ -3,10 +3,12 @@ export type Project = {
   title: string
   summary: string
   description: string
+  descriptionLink?: { text: string; href: string }
   logo?: { src: string; alt: string }
   why: string
   features: string[]
   techNotes: string
+  closingNote?: string
   screenshot?: { src: string; alt: string; width: number; height: number }
   techStack: string[]
   github?: string
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     ],
     techNotes:
       'Built with TanStack Start — React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
+    closingNote: 'The design will continue to evolve as I refine the idea.',
     techStack: ['TanStack Start', 'React', 'Supabase', 'Drizzle', 'Panda CSS'],
   },
   {
@@ -52,7 +55,9 @@ export const projects: Project[] = [
       "Markdown backups of every day's entry, readable outside the app",
     ],
     techNotes:
-      'Written in Rust with ratatui and crossterm for the terminal interface, and tokio for async background sync. Data persistence is libsql — the same engine locally and in Turso Cloud — so sync is opt-in rather than required. Installed with cargo install; the app creates and manages its own `~/.mountains/` directory.',
+      'Written in Rust with ratatui and crossterm for the terminal interface, and tokio for async background sync. Data persistence is libsql, the same engine locally and in Turso Cloud, so sync is opt-in rather than required. Installed with cargo install; the app creates and manages its own `~/.mountains/` directory.',
+    closingNote:
+      'I’ll continue refining the app as I use it in my own training.',
     screenshot: {
       src: '/images/projects/mountains/tui-screenshot.png',
       alt: 'Mountains TUI start screen showing the title, monthly vert streak, and yearly elevation total',
@@ -67,12 +72,12 @@ export const projects: Project[] = [
     title: 'Sokay',
     summary: 'A mindful eating tracker',
     description:
-      'A mindful-eating tracker built around a simple idea: set a small budget of "sokay items" over a few weeks or months, and log indulgences against it without guilt. The goal is sustainable habits through realistic limits and self-forgiveness — progress, not perfection.',
+      'A mindful-eating tracker built around a simple idea: set a small budget of "sokay" items over a few weeks or months, and log indulgences against it without guilt. The goal is sustainable habits through realistic limits and self-forgiveness — progress, not perfection.',
     logo: {
       src: '/images/projects/sokay/sokay-ring.svg',
       alt: 'Sokay mark — an open ring with a gap where a stumble lands',
     },
-    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it — an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working. The design of the app is still actively evolving as I refine the idea.',
+    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it — an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working.',
     features: [
       'Flexible goals: 1–100 items over a window of weeks or months',
       'Log items against the budget with optional notes — no calories, no shame',
@@ -82,6 +87,7 @@ export const projects: Project[] = [
     ],
     techNotes:
       'Built with TanStack Start: React 19, file-based routing, and server functions that gate every query by the authenticated user. Auth is Supabase with row-level security; the schema is managed with Drizzle migrations. The UI is Panda CSS with config recipes and Ark UI primitives, and the logic is covered by Vitest unit tests plus Playwright end-to-end flows.',
+    closingNote: 'The design is still evolving as I refine the idea.',
     techStack: ['TanStack Start', 'Supabase', 'Drizzle', 'Panda CSS'],
     url: 'https://sokay-help.netlify.app/',
   },
@@ -90,12 +96,16 @@ export const projects: Project[] = [
     title: 'Rattlesnake',
     summary: 'A tool for learning Python concepts — inspired by Rustlings',
     description:
-      'An interactive exercise runner for learning Python, from basic syntax through advanced language features. It is a fork of Rustlings that keeps the fast Rust CLI — file watcher, progress tracking, hints — and replaces the curriculum and validation pipeline with Python: fix the code, save, and get immediate feedback.',
+      'An interactive exercise runner for learning Python, from basic syntax through advanced language features. It is a fork of Rustlings that keeps the fast Rust CLI, including its file watcher, progress tracking, and hints, while replacing the curriculum and validation pipeline with Python: fix the code, save, and get immediate feedback.',
+    descriptionLink: {
+      text: 'Rustlings',
+      href: 'https://rustlings.rust-lang.org/',
+    },
     logo: {
       src: '/images/projects/rattlesnake/logo.png',
       alt: 'Rattlesnake logo — a coiled rattlesnake wrapped around the Python mark',
     },
-    why: 'Rustlings was my introduction to Rust programming. Through a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language. It doubled as a great Rust codebase tour.',
+    why: 'Rustlings was my introduction to Rust programming. Through a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language.',
     features: [
       '50 hands-on exercises with matching reference solutions, from a gentle 11-exercise intro to metaclasses and asyncio',
       'Watch mode reruns the current exercise automatically on every save',
@@ -104,7 +114,8 @@ export const projects: Project[] = [
       'Covers decorators, context managers, generators, concurrency, protocols, and more',
     ],
     techNotes:
-      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain — uv bootstraps the Python 3.12 environment, then each exercise runs through python, pytest, Ruff, and the ty type checker as configured per exercise. Curriculum, ordering, and hints live in a single .toml file.',
+      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain — uv bootstraps the Python 3.12 environment, then each exercise runs through python, pytest, Ruff, and the ty type checker as configured per exercise. Curriculum, ordering, and hints live in a single `.toml` file.',
+    closingNote: 'This project served as a great Rust codebase tour.',
     techStack: ['Rust', 'Python', 'uv', 'pytest'],
     github: 'https://github.com/papadavis47/rattlesnake',
   },

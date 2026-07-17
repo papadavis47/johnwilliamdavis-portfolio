@@ -7,7 +7,7 @@ import { ExternalLink, ArrowLeft, Mountain } from 'lucide-react'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { button } from 'styled-system/recipes'
+import { button, link } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
 import TechStack from '@/design-system/TechStack'
 import type { Project } from '../projects'
@@ -82,6 +82,10 @@ function Section({
 }
 
 export default function ProjectContent({ project }: { project: Project }) {
+  const descriptionLinkIndex = project.descriptionLink
+    ? project.description.indexOf(project.descriptionLink.text)
+    : -1
+
   return (
     <PageContainer>
       <motion.article
@@ -137,9 +141,23 @@ export default function ProjectContent({ project }: { project: Project }) {
           ) : (
             <Mountain size={48} aria-hidden className={heroIcon} />
           )}
-          <h1 className={css({ textStyle: 'h1', color: 'text' })}>
-            {project.title}
-          </h1>
+          <div className={css({ flex: '1', minWidth: 0 })}>
+            <h1 className={css({ textStyle: 'h1', color: 'text' })}>
+              {project.title}
+            </h1>
+            {project.slug === 'sokay' && (
+              <p
+                className={css({
+                  textStyle: 'body',
+                  color: 'text.muted',
+                  mt: '1',
+                })}
+              >
+                It’<strong className={css({ color: 'accent' })}>s okay</strong>,
+                because imperfection is part of the plan.
+              </p>
+            )}
+          </div>
         </motion.div>
 
         <motion.div
@@ -162,7 +180,24 @@ export default function ProjectContent({ project }: { project: Project }) {
             maxWidth: 'content',
           })}
         >
-          {project.description}
+          {project.descriptionLink && descriptionLinkIndex >= 0 ? (
+            <>
+              {project.description.slice(0, descriptionLinkIndex)}
+              <a
+                href={project.descriptionLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={link()}
+              >
+                {project.descriptionLink.text}
+              </a>
+              {project.description.slice(
+                descriptionLinkIndex + project.descriptionLink.text.length,
+              )}
+            </>
+          ) : (
+            project.description
+          )}
         </motion.p>
 
         <Section title="Why I built it" delay={0.5}>
@@ -216,6 +251,19 @@ export default function ProjectContent({ project }: { project: Project }) {
           <p className={sectionProse}>
             <InlineCode text={project.techNotes} />
           </p>
+          {project.closingNote && (
+            <p
+              className={css({
+                textStyle: 'prose',
+                color: 'text.muted',
+                maxWidth: 'content',
+                mt: '4',
+                fontStyle: 'italic',
+              })}
+            >
+              {project.closingNote}
+            </p>
+          )}
         </Section>
 
         <motion.div

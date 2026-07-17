@@ -53,6 +53,7 @@ Rules:
 - Lint uses **flat config** (`eslint.config.mjs`); `next lint` was removed in Next 16.
 - **lucide-react 1.x dropped brand icons** (GitHub/LinkedIn). Local SVG replacements live in `src/design-system/icons.tsx` — use those, not lucide, for brand marks.
 - Commit messages: **single subject line** + `Co-Authored-By` trailer. No body.
+- **Never use em dashes in prose.** Use commas, periods, colons, semicolons, or parentheses instead.
 
 ### Design system
 
