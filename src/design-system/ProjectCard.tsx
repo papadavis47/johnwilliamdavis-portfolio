@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { ExternalLink, Mountain } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { Github } from '@/design-system/icons'
+import { MountainsMark } from './MountainsMark'
 import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
 import { card } from 'styled-system/recipes'
@@ -75,7 +76,7 @@ export default function ProjectCard({
                 className={markImage}
               />
             ) : (
-              <Mountain size={32} aria-hidden className={markIcon} />
+              <MountainsMark size={32} className={markIcon} />
             )}
             <h2 className={css({ textStyle: 'h3', color: 'text' })}>
               {project.title}

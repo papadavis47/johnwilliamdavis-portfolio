@@ -3,7 +3,8 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ExternalLink, ArrowLeft, Mountain } from 'lucide-react'
+import { ExternalLink, ArrowLeft } from 'lucide-react'
+import { MountainsMark } from '@/design-system/MountainsMark'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
@@ -139,7 +140,7 @@ export default function ProjectContent({ project }: { project: Project }) {
               className={heroImage}
             />
           ) : (
-            <Mountain size={48} aria-hidden className={heroIcon} />
+            <MountainsMark size={48} className={heroIcon} />
           )}
           <div className={css({ flex: '1', minWidth: 0 })}>
             <h1 className={css({ textStyle: 'h1', color: 'text' })}>
