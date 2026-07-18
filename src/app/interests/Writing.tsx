@@ -25,6 +25,18 @@ export default function Writing() {
 
       <p
         className={css({
+          textStyle: 'prose',
+          color: 'text',
+          mb: '4',
+          maxWidth: '65ch',
+        })}
+      >
+        I write about software, agentic engineering, and other topics that
+        interest me on my blog.
+      </p>
+
+      <p
+        className={css({
           textStyle: 'small',
           color: 'text.muted',
           display: 'flex',
@@ -34,7 +46,7 @@ export default function Writing() {
         })}
       >
         <MousePointerClick size={16} aria-hidden="true" />
-        Click on image to go to my blog
+        Click below to go to my blog
       </p>
 
       <Link
@@ -42,13 +54,15 @@ export default function Writing() {
         target="_blank"
         rel="noopener noreferrer"
         className={css({
-          display: 'block',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4',
           maxWidth: '600px',
           mb: '3',
           border: '1px solid',
           borderColor: 'border',
           borderRadius: 'control',
-          overflow: 'hidden',
+          p: '3',
           boxShadow: 'hover',
           transition: 'border-color 200ms, transform 200ms, box-shadow 200ms',
           _hover: {
@@ -59,12 +73,30 @@ export default function Writing() {
         })}
       >
         <Image
+          src="/images/writing/blog-og.webp"
+          alt="Comfortable Feeling Dumb — a blog about software engineering (and trail running)"
+          width={1200}
+          height={630}
+          sizes="(max-width: 768px) 100vw, 600px"
+          className={css({
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            borderRadius: 'control',
+          })}
+        />
+        <Image
           src="/images/writing/blog-screenshot.webp"
           alt="Landing page of my blog, Comfortable Feeling Dumb"
           width={1440}
           height={900}
           sizes="(max-width: 768px) 100vw, 600px"
-          className={css({ width: '100%', height: 'auto', display: 'block' })}
+          className={css({
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            borderRadius: 'control',
+          })}
         />
       </Link>
     </InterestCard>
