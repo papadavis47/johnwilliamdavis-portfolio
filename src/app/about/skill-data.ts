@@ -49,6 +49,7 @@ export const skillCategories: SkillCategory[] = [
     icon: Server,
     skills: [
       { name: 'Node.js', icon: Server },
+      { name: 'Postgres', icon: Database },
       // { name: 'Bun', icon: Server },
       // { name: 'Deno', icon: Server },
       { name: 'Supabase', icon: Database },

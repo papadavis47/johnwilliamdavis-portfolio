@@ -21,10 +21,10 @@ export const projects: Project[] = [
     title: 'I want you to know',
     summary: 'A shared memory and communication vault for fathers',
     description:
-      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children — preserved for when he is no longer around. It is a love letter platform: forward-looking and personal.',
+      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children, preserved for when he is no longer around. It is a love letter platform: forward-looking and personal.',
     logo: {
       src: '/images/projects/iwantyoutoknow/mark.svg',
-      alt: 'I want you to know mark — a folded note signed with a heart',
+      alt: 'I want you to know mark: a folded note signed with a heart',
     },
     why: 'I built this because I want my kids to have my words in my own voice: stories, counsel, the things I would say to them at every age, even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
     features: [
@@ -32,10 +32,10 @@ export const projects: Project[] = [
       'A vault system: a hashed master unlock code for an executor, who generates per-child access codes',
       'Children return anytime with their code to see everything written for them',
       'Individual entries shareable via temporary password-protected links that expire after seven days',
-      'Warm, personal design — cream backgrounds, amber accents, generous whitespace',
+      'Warm, personal design: cream backgrounds, amber accents, generous whitespace',
     ],
     techNotes:
-      'Built with TanStack Start — React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
+      'Built with TanStack Start: React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
     closingNote: 'The design will continue to evolve as I refine the idea.',
     techStack: ['TanStack Start', 'React', 'Supabase', 'Drizzle', 'Panda CSS'],
   },
@@ -55,7 +55,7 @@ export const projects: Project[] = [
       "Markdown backups of every day's entry, readable outside the app",
     ],
     techNotes:
-      'Written in Rust with ratatui and crossterm for the terminal interface, and tokio for async background sync. Data persistence is libsql, the same engine locally and in Turso Cloud, so sync is opt-in rather than required. Installed with cargo install; the app creates and manages its own `~/.mountains/` directory.',
+      'Written in Rust with `ratatui` and `crossterm` for the terminal interface, and `tokio` for async background sync. Data persistence is `libsql`, the same engine locally and in Turso Cloud, so sync is opt-in rather than required. Installed with `cargo install`; the app creates and manages its own `~/.mountains/` directory.',
     closingNote:
       'I’ll continue refining the app as I use it in my own training.',
     screenshot: {
@@ -72,17 +72,17 @@ export const projects: Project[] = [
     title: 'Sokay',
     summary: 'A mindful eating tracker',
     description:
-      'A mindful-eating tracker built around a simple idea: set a small budget of "sokay" items over a few weeks or months, and log indulgences against it without guilt. The goal is sustainable habits through realistic limits and self-forgiveness — progress, not perfection.',
+      'A mindful-eating tracker built around a simple idea: set a small budget of "sokay" items over a few weeks or months, and log indulgences against it without guilt. The goal is sustainable habits through realistic limits and self-forgiveness: progress, not perfection.',
     logo: {
       src: '/images/projects/sokay/sokay-ring.svg',
-      alt: 'Sokay mark — an open ring with a gap where a stumble lands',
+      alt: 'Sokay mark: an open ring with a gap where a stumble lands',
     },
-    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it — an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working.',
+    why: 'Most food tracking apps are built on restriction and streaks, and breaking the streak feels like failure. I wanted the opposite: an app that budgets for imperfection up front. The brand mark says it: an open ring with the gap right where a stumble lands, and the loop continues past it. Logging a treat is not falling off the wagon; it is the plan working.',
     features: [
       'Flexible goals: 1–100 items over a window of weeks or months',
-      'Log items against the budget with optional notes — no calories, no shame',
+      'Log items against the budget with optional notes: no calories, no shame',
       'A full goal lifecycle: finish the window or end early, review the cycle, start fresh',
-      'Nothing is deleted — history keeps every past goal and its entries for honest review',
+      'Nothing is deleted; history keeps every past goal and its entries for honest review',
       'Accounts with email or GitHub sign-in, profiles, and avatars',
     ],
     techNotes:
@@ -94,7 +94,7 @@ export const projects: Project[] = [
   {
     slug: 'rattlesnake',
     title: 'Rattlesnake',
-    summary: 'A tool for learning Python concepts — inspired by Rustlings',
+    summary: 'A tool for learning Python concepts, inspired by Rustlings',
     description:
       'An interactive exercise runner for learning Python, from basic syntax through advanced language features. It is a fork of Rustlings that keeps the fast Rust CLI, including its file watcher, progress tracking, and hints, while replacing the curriculum and validation pipeline with Python: fix the code, save, and get immediate feedback.',
     descriptionLink: {
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     },
     logo: {
       src: '/images/projects/rattlesnake/logo.png',
-      alt: 'Rattlesnake logo — a coiled rattlesnake wrapped around the Python mark',
+      alt: 'Rattlesnake logo: a coiled rattlesnake wrapped around the Python mark',
     },
     why: 'Rustlings was my introduction to Rust programming. Through a tight loop of broken code, failing checks, and immediate feedback it was extremely helpful as an introduction to the language. I wanted to create that exact loop for people learning Python. Nothing quite like it existed for Python as far as I was aware, so I forked Rustlings and rebuilt its exercise pipeline for a new language.',
     features: [
@@ -114,7 +114,7 @@ export const projects: Project[] = [
       'Covers decorators, context managers, generators, concurrency, protocols, and more',
     ],
     techNotes:
-      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain — uv bootstraps the Python 3.12 environment, then each exercise runs through python, pytest, Ruff, and the ty type checker as configured per exercise. Curriculum, ordering, and hints live in a single `.toml` file.',
+      'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain: `uv` bootstraps the Python 3.12 environment, then each exercise runs through `python`, `pytest`, `ruff`, and the `ty` type checker as configured per exercise. Curriculum, ordering, and hints live in a single `.toml` file.',
     closingNote: 'This project served as a great Rust codebase tour.',
     techStack: ['Rust', 'Python', 'uv', 'pytest'],
     github: 'https://github.com/papadavis47/rattlesnake',

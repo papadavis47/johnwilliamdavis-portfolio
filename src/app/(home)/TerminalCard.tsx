@@ -2,6 +2,7 @@ import { css } from 'styled-system/css'
 import { CURRENT_FOCUS } from '@/design-system/current-focus'
 
 const session = [
+  { cmd: 'whoami', out: ['john'] },
   { cmd: 'pwd', out: ['/pnw/greater_seattle_area'] },
   { cmd: 'cat languages.txt', out: ['typescript rust python'] },
   { cmd: 'echo $EDITOR', out: ['zed --wait'] },
