@@ -83,9 +83,8 @@ export default function TrailRunning() {
         My love for the mountains inspired{' '}
         <Link href="/projects/mountains" className={link()}>
           Mountains
-        </Link>{' '}
-        &mdash; a terminal-based application for tracking runs and exploring
-        trail data.
+        </Link>
+        , a terminal user interface for tracking runs and exploring trail data.
       </p>
       <p
         className={css({
@@ -95,7 +94,7 @@ export default function TrailRunning() {
           mt: '4',
         })}
       >
-        I have also recently completed a{' '}
+        I am currently working on an early-stage{' '}
         <Link
           href="https://github.com/papadavis47/mountains-web"
           target="_blank"
