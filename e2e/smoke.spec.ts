@@ -57,7 +57,7 @@ test.describe('projects data ↔ routes contract', () => {
         await expect(github).toHaveAttribute('rel', 'noopener noreferrer')
       }
       if (project.url) {
-        const site = page.getByRole('link', { name: 'Visit Site' })
+        const site = page.getByRole('link', { name: 'Visit App' })
         await expect(site).toHaveAttribute('href', project.url)
         await expect(site).toHaveAttribute('rel', 'noopener noreferrer')
       }
@@ -66,22 +66,28 @@ test.describe('projects data ↔ routes contract', () => {
 })
 
 test.describe('theme toggle', () => {
-  test('cycles to dark and persists across navigation', async ({ page }) => {
+  test.use({ colorScheme: 'light' })
+
+  test('toggles between light and dark and persists across navigation', async ({
+    page,
+  }) => {
     await page.goto('/')
-    const toggle = page.getByRole('button', { name: /Current theme/ })
-    // Cycle: system → light → dark
-    await toggle.click()
-    await expect(page.locator('html')).toHaveClass(/light/)
-    await toggle.click()
+    await page.getByRole('button', { name: 'Switch to dark theme' }).click()
     await expect(page.locator('html')).toHaveClass(/dark/)
 
     await page.goto('/about')
     await expect(page.locator('html')).toHaveClass(/dark/)
+
+    await page.getByRole('button', { name: 'Switch to light theme' }).click()
+    await expect(page.locator('html')).toHaveClass(/light/)
   })
 })
 
 test.describe('mobile drawer', () => {
-  test.use({ viewport: { width: 375, height: 740 } })
+  test.use({
+    viewport: { width: 375, height: 740 },
+    colorScheme: 'light',
+  })
 
   test('opens, navigates, and closes', async ({ page }) => {
     await page.goto('/')
@@ -91,6 +97,19 @@ test.describe('mobile drawer', () => {
 
     await drawer.getByRole('link', { name: 'Projects' }).click()
     await expect(page).toHaveURL('/projects')
+    await expect(drawer).not.toBeVisible()
+  })
+
+  test('changes the theme and closes', async ({ page }) => {
+    await page.goto('/')
+    await page.getByRole('button', { name: 'Open menu' }).click()
+    const drawer = page.locator('#mobile-menu')
+    await expect(drawer).toBeVisible()
+
+    await drawer
+      .getByRole('button', { name: 'Switch to dark theme' })
+      .click()
+    await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(drawer).not.toBeVisible()
   })
 })

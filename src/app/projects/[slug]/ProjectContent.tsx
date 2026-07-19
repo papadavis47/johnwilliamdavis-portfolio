@@ -296,7 +296,7 @@ export default function ProjectContent({ project }: { project: Project }) {
               className={button({ visual: 'solid', size: 'sm' })}
             >
               <ExternalLink size={18} />
-              Visit Site
+              Visit App
             </a>
           )}
         </motion.div>

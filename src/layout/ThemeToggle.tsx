@@ -28,9 +28,13 @@ const iconStyles = css({
   height: '5',
 })
 
-function ThemeToggle() {
+type ThemeToggleProps = {
+  onToggle?: () => void
+}
+
+function ThemeToggle({ onToggle }: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
     // Mount guard: avoids next-themes hydration mismatch by deferring
@@ -47,23 +51,19 @@ function ThemeToggle() {
     )
   }
 
-  const cycleTheme = () => {
-    if (theme === 'system') {
-      setTheme('light')
-    } else if (theme === 'light') {
-      setTheme('dark')
-    } else {
-      setTheme('system')
-    }
-  }
-
   const isDark = resolvedTheme === 'dark'
+  const nextTheme = isDark ? 'light' : 'dark'
+
+  const toggleTheme = () => {
+    setTheme(nextTheme)
+    onToggle?.()
+  }
 
   return (
     <button
       className={buttonStyles}
-      onClick={cycleTheme}
-      aria-label={`Current theme: ${theme}. Click to toggle.`}
+      onClick={toggleTheme}
+      aria-label={`Switch to ${nextTheme} theme`}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

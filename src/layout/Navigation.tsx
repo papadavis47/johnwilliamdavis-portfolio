@@ -178,7 +178,7 @@ function Navigation() {
                   transition={{ delay: 0.1 + filteredNavLinks.length * 0.05 }}
                   className={css({ pt: '4' })}
                 >
-                  <ThemeToggle />
+                  <ThemeToggle onToggle={() => setIsOpen(false)} />
                 </motion.div>
               </div>
             </motion.div>

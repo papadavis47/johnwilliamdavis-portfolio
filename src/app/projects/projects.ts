@@ -38,6 +38,7 @@ export const projects: Project[] = [
       'Built with TanStack Start: React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
     closingNote: 'The design will continue to evolve as I refine the idea.',
     techStack: ['TanStack Start', 'React', 'Supabase', 'Drizzle', 'Panda CSS'],
+    url: 'https://iwantyoutoknow-dad.netlify.app/',
   },
   {
     slug: 'mountains',
