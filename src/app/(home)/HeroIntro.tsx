@@ -7,8 +7,13 @@ import { button } from 'styled-system/recipes'
 import { Github, Linkedin } from '@/design-system/icons'
 import TerminalCard from './TerminalCard'
 
+// The thesis stands alone; the projects that back it up follow. Fused into one
+// paragraph, the thesis reads as a lead-in to the list rather than a claim.
 const positioning =
-  'I care most about building software that adds health and happiness to people’s lives. My projects include a legacy vault for fathers, a guilt-free eating tracker, and training tools that live in the terminal.'
+  'I care most about building software that adds health and happiness to people’s lives.'
+
+const projects =
+  'My projects include a legacy vault for fathers, a guilt-free eating tracker, and training tools that live in the terminal.'
 
 const adapting =
   'Things are shifting fast in the software industry, most of all toward agentic engineering. Adapting quickly is my main skill; lately that means getting real leverage from agents.'
@@ -65,6 +70,9 @@ export default function HeroIntro() {
       >
         <p className={css({ textStyle: 'prose', color: 'text.muted' })}>
           {positioning}
+        </p>
+        <p className={css({ textStyle: 'prose', color: 'text.muted' })}>
+          {projects}
         </p>
         <p className={css({ textStyle: 'prose', color: 'text.muted' })}>
           {adapting}
