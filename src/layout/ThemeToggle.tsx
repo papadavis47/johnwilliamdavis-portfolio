@@ -67,7 +67,9 @@ function ThemeToggle() {
           transition={{ duration: 0.2 }}
           className={iconStyles}
         >
-          {isDark ? <Moon size={20} /> : <Sun size={20} />}
+          {/* The glyph is the destination, not the current state, matching the
+              aria-label: a moon in light mode means "tap for dark". */}
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </motion.div>
       </AnimatePresence>
     </button>
