@@ -52,50 +52,69 @@ function Navigation() {
         <BrandLink />
 
         <div
-          className={css({
-            display: 'none',
-            alignItems: 'center',
-            gap: '6',
-            md: { display: 'flex' },
-          })}
+          className={css({ display: 'flex', alignItems: 'center', gap: '6' })}
         >
-          {filteredNavLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+          <div
+            className={css({
+              display: 'none',
+              alignItems: 'center',
+              gap: '6',
+              md: { display: 'flex' },
+            })}
+          >
+            {filteredNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={css({
+                  color: 'text',
+                  textDecoration: 'none',
+                  fontSize: 'sm',
+                  transition: 'color 200ms',
+                  _hover: { color: 'accent' },
+                })}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* The toggle is a control over the current page, not a destination,
+              so it stays in the header at every breakpoint rather than hiding
+              in the drawer. Both buttons share `p: '3'`, giving the pair one
+              44px hitbox around their 20px glyphs. */}
+          <div
+            className={css({ display: 'flex', alignItems: 'center', gap: '1' })}
+          >
+            <ThemeToggle />
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
               className={css({
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                p: '3',
                 color: 'text',
-                textDecoration: 'none',
-                fontSize: 'sm',
-                transition: 'color 200ms',
-                _hover: { color: 'accent' },
+                bg: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                md: { display: 'none' },
               })}
             >
-              {link.label}
-            </Link>
-          ))}
-          <ThemeToggle />
+              {/* Heavier stroke than the default 2: three thin lines read
+                  lighter than the Sun/Moon glyph, which fills its box. */}
+              {isOpen ? (
+                <X size={20} strokeWidth={2.25} />
+              ) : (
+                <Menu size={20} strokeWidth={2.25} />
+              )}
+            </button>
+          </div>
         </div>
-
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          className={css({
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            p: '2',
-            color: 'text',
-            bg: 'transparent',
-            border: 'none',
-            cursor: 'pointer',
-            md: { display: 'none' },
-          })}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </nav>
 
       <AnimatePresence>
@@ -172,14 +191,6 @@ function Navigation() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + filteredNavLinks.length * 0.05 }}
-                  className={css({ pt: '4' })}
-                >
-                  <ThemeToggle onToggle={() => setIsOpen(false)} />
-                </motion.div>
               </div>
             </motion.div>
           </>

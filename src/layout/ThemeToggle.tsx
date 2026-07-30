@@ -8,7 +8,9 @@ import { css } from 'styled-system/css'
 
 const buttonStyles = css({
   cursor: 'pointer',
-  padding: '2',
+  // 12px around a 20px glyph = a 44px target, matching the menu button beside
+  // it. Invisible at rest (transparent bg); only the hover chip shows the box.
+  padding: '3',
   borderRadius: 'control',
   border: 'none',
   backgroundColor: 'transparent',
@@ -28,11 +30,7 @@ const iconStyles = css({
   height: '5',
 })
 
-type ThemeToggleProps = {
-  onToggle?: () => void
-}
-
-function ThemeToggle({ onToggle }: ThemeToggleProps) {
+function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
@@ -54,15 +52,10 @@ function ThemeToggle({ onToggle }: ThemeToggleProps) {
   const isDark = resolvedTheme === 'dark'
   const nextTheme = isDark ? 'light' : 'dark'
 
-  const toggleTheme = () => {
-    setTheme(nextTheme)
-    onToggle?.()
-  }
-
   return (
     <button
       className={buttonStyles}
-      onClick={toggleTheme}
+      onClick={() => setTheme(nextTheme)}
       aria-label={`Switch to ${nextTheme} theme`}
     >
       <AnimatePresence mode="wait" initial={false}>

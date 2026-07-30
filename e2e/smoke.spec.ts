@@ -100,16 +100,40 @@ test.describe('mobile drawer', () => {
     await expect(drawer).not.toBeVisible()
   })
 
-  test('changes the theme and closes', async ({ page }) => {
+  test('does not hold the theme toggle', async ({ page }) => {
     await page.goto('/')
     await page.getByRole('button', { name: 'Open menu' }).click()
     const drawer = page.locator('#mobile-menu')
     await expect(drawer).toBeVisible()
 
-    await drawer
-      .getByRole('button', { name: 'Switch to dark theme' })
-      .click()
+    await expect(
+      drawer.getByRole('button', { name: 'Switch to dark theme' }),
+    ).toHaveCount(0)
+  })
+})
+
+test.describe('mobile theme toggle', () => {
+  test.use({
+    viewport: { width: 375, height: 740 },
+    colorScheme: 'light',
+  })
+
+  // The toggle lives in the header at every breakpoint, so on mobile it works
+  // without opening the drawer, and leaves the drawer alone when it is open.
+  test('toggles from the header without opening the menu', async ({ page }) => {
+    await page.goto('/')
+    await page.getByRole('button', { name: 'Switch to dark theme' }).click()
     await expect(page.locator('html')).toHaveClass(/dark/)
-    await expect(drawer).not.toBeVisible()
+  })
+
+  test('stays usable while the drawer is open', async ({ page }) => {
+    await page.goto('/')
+    await page.getByRole('button', { name: 'Open menu' }).click()
+    const drawer = page.locator('#mobile-menu')
+    await expect(drawer).toBeVisible()
+
+    await page.getByRole('button', { name: 'Switch to dark theme' }).click()
+    await expect(page.locator('html')).toHaveClass(/dark/)
+    await expect(drawer).toBeVisible()
   })
 })
