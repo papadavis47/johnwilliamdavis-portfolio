@@ -20,6 +20,17 @@ test.describe('routes render', () => {
     })
   }
 
+  test('about page links to Nala’s website', async ({ page }) => {
+    await page.goto('/about')
+    const nalaLink = page.getByRole('link', { name: 'golden retriever' })
+
+    await expect(nalaLink).toHaveAttribute(
+      'href',
+      'https://nala-the-astronaut.netlify.app/',
+    )
+    await expect(nalaLink).toHaveAttribute('rel', 'noopener noreferrer')
+  })
+
   test('unknown project slug 404s', async ({ page }) => {
     const response = await page.goto('/projects/does-not-exist')
     expect(response?.status()).toBe(404)

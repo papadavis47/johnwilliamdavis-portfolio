@@ -1,14 +1,15 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
+import { link } from 'styled-system/recipes'
 import { itemVariants } from './skill-data'
 
 const paragraphs = [
   "I wrote my first lines of code in 2017, drawn to programming as a craft I could grow with and never fully master. I'm driven to build software that genuinely helps the people who use it.",
   'I work mostly in TypeScript, building with Next.js or TanStack. Outside of web projects, I usually reach for Rust or Python. For static web sites, Astro is my current framework of choice.',
   'Outside of software, I am a happily married father of three teenage children.',
-  'We have a beautiful golden retriever at home, and I spend as much free time as possible outdoors, especially hiking and trail running.',
 ]
 
 export default function Intro() {
@@ -30,6 +31,19 @@ export default function Intro() {
           {paragraph}
         </p>
       ))}
+      <p className={css({ textStyle: 'prose', color: 'text' })}>
+        We have a beautiful{' '}
+        <Link
+          href="https://nala-the-astronaut.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={link()}
+        >
+          golden retriever
+        </Link>{' '}
+        at home, and I spend as much free time as possible outdoors, especially
+        hiking and trail running.
+      </p>
     </motion.section>
   )
 }
