@@ -49,7 +49,7 @@ export default function HeroIntro() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className={css({
           textStyle: 'subtitle',
-          color: 'text.muted',
+          color: 'text',
           mb: '8',
         })}
       >
