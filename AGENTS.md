@@ -49,7 +49,9 @@ Rules:
 
 ## Conventions & constraints
 
-- **ESLint pinned to 9.x** (`9.39.4`). ESLint 10 breaks the Next 16 lint toolchain (`scopeManager.addGlobals`), so `pnpm outdated` will always flag eslint — expected. Don't run blanket `pnpm up --latest` (it bumps eslint to 10); update packages individually.
+- **ESLint pinned to 9.x** (`9.39.5`). ESLint 10 is still blocked: `eslint-config-next` depends on `eslint-plugin-react` (peer caps at `^9.7`) and `eslint-plugin-import` (caps at `^9`). `typescript-eslint` 8.66+ does accept eslint 10, but it isn't the binding constraint. So `pnpm outdated` will always flag eslint — expected. Don't run blanket `pnpm up --latest` (it bumps eslint to 10); update packages individually. Plain `pnpm update` stays in range and is safe.
+- **TypeScript held at 6.x.** TS 7 type-checks this project clean and ~8x faster, but it ships no JS compiler API, so `typescript-eslint` hard-fails (`does not support TS 7.0`) and `pnpm lint` dies. The side-by-side alias (`typescript` → `@typescript/typescript6`, `@typescript/native` → real TS7) works for lint, but Next resolves its checker via `typescript/package.json`'s `bin.tsc` — undefined under that alias — so `next build` stays on TS6 regardless. Not worth the plumbing. Revisit when typescript-eslint supports the TS 7.1 API (typescript-eslint#10940).
+- **`agentRules: false` in `next.config.mjs` is deliberate.** Next 16.3+ `next dev` otherwise injects a managed `<!-- BEGIN:nextjs-agent-rules -->` block into this hand-curated `AGENTS.md` on every run.
 - Lint uses **flat config** (`eslint.config.mjs`); `next lint` was removed in Next 16.
 - **lucide-react 1.x dropped brand icons** (GitHub/LinkedIn). Local SVG replacements live in `src/design-system/icons.tsx` — use those, not lucide, for brand marks.
 - Commit messages: **single subject line** + `Co-Authored-By` trailer. No body.
