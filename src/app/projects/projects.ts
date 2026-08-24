@@ -19,26 +19,26 @@ export const projects: Project[] = [
   {
     slug: 'iwantyoutoknow',
     title: 'I want you to know',
-    summary: 'A shared memory and communication vault for fathers',
+    summary: 'A shared memory and communication vault for parents',
     description:
-      'A digital legacy platform where a father builds a curated collection of letters, text notes, voice notes and photos for his children, preserved for when he is no longer around. It is a love letter platform: forward-looking and personal.',
+      'A digital legacy platform where a parent builds a curated collection of letters, text notes, voice notes and photos for their children, preserved for when they are no longer around. It is a love letter platform: forward-looking and personal.',
     logo: {
       src: '/images/projects/iwantyoutoknow/mark.svg',
       alt: 'I want you to know mark: a folded note signed with a heart',
     },
-    why: 'I built this because I want my kids to have my words in my own voice: stories, counsel, the things I would say to them at every age, even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a father should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
+    why: 'I built this because I want my kids to have my words in my own voice: stories, counsel, the things I would say to them at every age, even if I am not there to say them. Most tools in this space feel like estate paperwork. I wanted something that feels like writing a love letter: a parent should be able to sit down, write or record or upload something meaningful, and close the app in a few minutes.',
     features: [
       'Letters, text or voice notes, and photo entries, each taggable and addressed to specific children',
       'A vault system: a hashed master unlock code for an executor, who generates per-child access codes',
       'Children return anytime with their code to see everything written for them',
       'Individual entries shareable via temporary password-protected links that expire after seven days',
-      'Warm, personal design: cream backgrounds, amber accents, generous whitespace',
+      'Warm, personal design: a modern neutral background with warm amber accents in light mode, a midnight blue background in dark mode, and generous whitespace throughout',
     ],
     techNotes:
       'Built with TanStack Start: React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
     closingNote: 'The design will continue to evolve as I refine the idea.',
     techStack: ['TanStack Start', 'React', 'Supabase', 'Drizzle', 'Panda CSS'],
-    url: 'https://iwantyoutoknow.dad/',
+    url: 'https://iwantyoutoknow.app/',
   },
   {
     slug: 'mountains',
