@@ -13,7 +13,7 @@ const positioning =
   'I care most about building software that adds health and happiness to people’s lives.'
 
 const projects =
-  'My projects include a legacy vault for parents, a guilt-free eating tracker, and training tools that live in the terminal.'
+  'My projects include a legacy vault for parents, a guilt-free eating tracker, and terminal tools for training and focus.'
 
 const adapting =
   'Things are shifting fast in the software industry, most of all toward agentic engineering. Adapting quickly is my main skill; lately that means getting real leverage from agents.'
