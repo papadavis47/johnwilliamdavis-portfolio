@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ExternalLink, ArrowLeft } from 'lucide-react'
-import { MountainsMark } from '@/design-system/MountainsMark'
+import ProjectMark from '@/design-system/ProjectMark'
 import { Github } from '@/design-system/icons'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
@@ -46,19 +46,6 @@ function InlineCode({ text }: { text: string }) {
     ),
   )
 }
-
-const heroImage = css({
-  width: '14',
-  height: '14',
-  borderRadius: 'control',
-  objectFit: 'contain',
-  flexShrink: 0,
-})
-
-const heroIcon = css({
-  color: 'accent',
-  flexShrink: 0,
-})
 
 function Section({
   title,
@@ -130,18 +117,11 @@ export default function ProjectContent({ project }: { project: Project }) {
             mb: '6',
           })}
         >
-          {project.logo ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={project.logo.src}
-              alt={project.logo.alt}
-              width={56}
-              height={56}
-              className={heroImage}
-            />
-          ) : (
-            <MountainsMark size={48} className={heroIcon} />
-          )}
+          <ProjectMark
+            project={project}
+            size={56}
+            alt={project.logo?.alt ?? ''}
+          />
           <div className={css({ flex: '1', minWidth: 0 })}>
             <h1 className={css({ textStyle: 'h1', color: 'text' })}>
               {project.title}

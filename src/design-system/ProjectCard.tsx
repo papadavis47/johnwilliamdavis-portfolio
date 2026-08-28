@@ -3,25 +3,12 @@
 import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
 import { Github } from '@/design-system/icons'
-import { MountainsMark } from './MountainsMark'
+import ProjectMark from './ProjectMark'
 import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
 import { card } from 'styled-system/recipes'
 import TechStack from './TechStack'
 import type { Project } from '@/app/projects/projects'
-
-const markImage = css({
-  width: '10',
-  height: '10',
-  borderRadius: 'control',
-  objectFit: 'contain',
-  flexShrink: 0,
-})
-
-const markIcon = css({
-  color: 'accent',
-  flexShrink: 0,
-})
 
 export default function ProjectCard({
   project,
@@ -66,18 +53,7 @@ export default function ProjectCard({
               minWidth: 0,
             })}
           >
-            {project.logo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={project.logo.src}
-                alt=""
-                width={40}
-                height={40}
-                className={markImage}
-              />
-            ) : (
-              <MountainsMark size={32} className={markIcon} />
-            )}
+            <ProjectMark project={project} size={40} alt="" />
             <h2 className={css({ textStyle: 'h3', color: 'text' })}>
               {project.title}
             </h2>

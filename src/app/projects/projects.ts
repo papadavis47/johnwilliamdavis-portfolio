@@ -5,6 +5,7 @@ export type Project = {
   description: string
   descriptionLink?: { text: string; href: string }
   logo?: { src: string; alt: string }
+  logoDark?: string
   why: string
   features: string[]
   techNotes: string
@@ -67,6 +68,31 @@ export const projects: Project[] = [
     },
     techStack: ['Rust', 'ratatui', 'libsql', 'Turso'],
     github: 'https://github.com/papadavis47/mountains',
+  },
+  {
+    slug: 'caleb',
+    title: 'caleb',
+    summary: 'A terminal task manager for coding sessions',
+    description:
+      'A Rust terminal application that holds a to-do list for the length of one coding session. Tasks sit in two panes side by side, Active and Completed, and checking one off moves it across. Each session is a single GitHub-flavored markdown file on disk, so the list stays readable in any editor long after the terminal is closed.',
+    logo: {
+      src: '/images/projects/caleb/mark-light.svg',
+      alt: 'caleb mark: an iris cut into a circular plate, with a green check drawn through it',
+    },
+    logoDark: '/images/projects/caleb/mark-dark.svg',
+    why: 'I wanted a list that begins when I sit down to code and ends when I stand up, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in Ex Machina, a film I keep going back to, and I wanted to build something named after a character in it. The mark came out of that too: an iris cut into a plate, with a check drawn through it.',
+    features: [
+      'Two panes, Active and Completed, with a task crossing over the moment you check it off',
+      'Every session is one GitHub-flavored markdown file under `~/.local/share/caleb/`, editable outside the app',
+      'Pull unfinished work forward from a past session, which ticks those tasks off where they came from',
+      'A resume picker with a live preview pane, so you can read a session before opening it',
+      'Mouse aware: wheel to scroll, click to select, double-click to toggle a task done',
+    ],
+    techNotes:
+      'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface and `clap` for the command line. Errors are typed per module with `thiserror` and surface through `anyhow` at the entry point, and `unsafe` code is forbidden crate-wide. Dates come from `jiff`, which resolves the local time zone in pure Rust. There is no database and no network: the markdown file is the state, parsed and reserialized on every save. Around 246 tests cover it, from in-file unit tests and `ratatui` buffer assertions to pty-driven smoke scripts, all gated in CI alongside `clippy` at pedantic.',
+    closingNote: 'Linux only for now, since that is where I work.',
+    techStack: ['Rust', 'ratatui', 'crossterm', 'clap'],
+    github: 'https://github.com/papadavis47/caleb',
   },
   {
     slug: 'sokay',
