@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import InterestsContent from './InterestsContent'
 
 export const metadata: Metadata = {
-  title: 'Interests | John William Davis',
+  title: 'Interests',
   description:
     "John William Davis's interests including reading and trail running.",
 }

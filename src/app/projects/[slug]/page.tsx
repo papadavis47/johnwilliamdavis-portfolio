@@ -19,12 +19,12 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: 'Project Not Found | John William Davis',
+      title: 'Project Not Found',
     }
   }
 
   return {
-    title: `${project.title} | John William Davis`,
+    title: project.title,
     description: project.description,
   }
 }
