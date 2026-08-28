@@ -37,7 +37,7 @@ export const skillCategories: SkillCategory[] = [
     icon: Terminal,
     skills: [
       { name: 'React', icon: Code2 },
-      // { name: 'Vue', icon: Code2 },
+      { name: 'Vue', icon: Code2 },
       { name: 'Next.js', icon: Server },
       // { name: 'Nuxt.js', icon: Server },
       { name: 'Astro', icon: Server },
@@ -49,8 +49,9 @@ export const skillCategories: SkillCategory[] = [
     icon: Server,
     skills: [
       { name: 'Node.js', icon: Server },
+      { name: 'Axum', icon: Server },
       { name: 'Postgres', icon: Database },
-      // { name: 'Bun', icon: Server },
+      { name: 'Bun', icon: Server },
       // { name: 'Deno', icon: Server },
       { name: 'Supabase', icon: Database },
       { name: 'Turso Cloud', icon: Database },
@@ -66,6 +67,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Zed', icon: FolderCode },
       { name: 'Amp', icon: FileCode },
       { name: 'Claude Code', icon: FileCode },
+      { name: 'Delta', icon: FolderCode },
     ],
   },
 ]
