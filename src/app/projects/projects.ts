@@ -10,7 +10,7 @@ export type Project = {
   features: string[]
   techNotes: string
   closingNote?: string
-  screenshot?: { src: string; alt: string; width: number; height: number }
+  screenshots?: { src: string; alt: string; width: number; height: number }[]
   techStack: string[]
   github?: string
   url?: string
@@ -60,12 +60,14 @@ export const projects: Project[] = [
       'Written in Rust with `ratatui` and `crossterm` for the terminal interface, and `tokio` for async background sync. Data persistence is `libsql`, the same engine locally and in Turso Cloud, so sync is opt-in rather than required. Installed with `cargo install`; the app creates and manages its own `~/.mountains/` directory.',
     closingNote:
       'I’ll continue refining the app as I use it in my own training.',
-    screenshot: {
-      src: '/images/projects/mountains/tui-screenshot.png',
-      alt: 'Mountains TUI start screen showing the title, monthly vert streak, and yearly elevation total',
-      width: 1204,
-      height: 536,
-    },
+    screenshots: [
+      {
+        src: '/images/projects/mountains/tui-screenshot.png',
+        alt: 'Mountains TUI start screen showing the title, monthly vert streak, and yearly elevation total',
+        width: 1204,
+        height: 536,
+      },
+    ],
     techStack: ['Rust', 'ratatui', 'libsql', 'Turso'],
     github: 'https://github.com/papadavis47/mountains',
   },
@@ -80,17 +82,32 @@ export const projects: Project[] = [
       alt: 'caleb mark: an iris cut into a circular plate, with a green check drawn through it',
     },
     logoDark: '/images/projects/caleb/mark-dark.svg',
-    why: 'I wanted a list that begins when I sit down to code and ends when I stand up, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in Ex Machina, a film I keep going back to, and I wanted to build something named after a character in it. The mark came out of that too: an iris cut into a plate, with a check drawn through it.',
+    why: 'I wanted a list that begins when I sit down to build software and ends with the terminal, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in Ex Machina, a film I keep going back to for its story and its look, which this app borrows from.',
     features: [
       'Two panes, Active and Completed, with a task crossing over the moment you check it off',
       'Every session is one GitHub-flavored markdown file under `~/.local/share/caleb/`, editable outside the app',
       'Pull unfinished work forward from a past session, which ticks those tasks off where they came from',
       'A resume picker with a live preview pane, so you can read a session before opening it',
       'Mouse aware: wheel to scroll, click to select, double-click to toggle a task done',
+      'Clear sessions containing all completed tasks with `caleb --clean`',
     ],
     techNotes:
       'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface and `clap` for the command line. Errors are typed per module with `thiserror` and surface through `anyhow` at the entry point, and `unsafe` code is forbidden crate-wide. Dates come from `jiff`, which resolves the local time zone in pure Rust. There is no database and no network: the markdown file is the state, parsed and reserialized on every save. Around 246 tests cover it, from in-file unit tests and `ratatui` buffer assertions to pty-driven smoke scripts, all gated in CI alongside `clippy` at pedantic.',
     closingNote: 'Linux only for now, since that is where I work.',
+    screenshots: [
+      {
+        src: '/images/projects/caleb/tui-picker.png',
+        alt: 'caleb session picker listing three past sessions on the left, with a live markdown preview of the selected session on the right',
+        width: 1160,
+        height: 603,
+      },
+      {
+        src: '/images/projects/caleb/tui-panes.png',
+        alt: 'caleb showing its two panes, Active on the left with three open tasks and Completed on the right with three struck-through tasks',
+        width: 1160,
+        height: 603,
+      },
+    ],
     techStack: ['Rust', 'ratatui', 'crossterm', 'clap'],
     github: 'https://github.com/papadavis47/caleb',
   },

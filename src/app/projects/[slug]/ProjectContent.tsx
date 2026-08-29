@@ -207,25 +207,36 @@ export default function ProjectContent({ project }: { project: Project }) {
           </ul>
         </Section>
 
-        {project.screenshot && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.65 }}
-            className={css({ mb: '10' })}
+        {project.screenshots && (
+          <div
+            className={css({
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6',
+              mb: '10',
+            })}
           >
-            <Image
-              src={project.screenshot.src}
-              alt={project.screenshot.alt}
-              width={project.screenshot.width}
-              height={project.screenshot.height}
-              className={css({
-                width: '100%',
-                height: 'auto',
-                borderRadius: 'control',
-              })}
-            />
-          </motion.div>
+            {project.screenshots.map((screenshot, index) => (
+              <motion.div
+                key={screenshot.src}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.65 + index * 0.08 }}
+              >
+                <Image
+                  src={screenshot.src}
+                  alt={screenshot.alt}
+                  width={screenshot.width}
+                  height={screenshot.height}
+                  className={css({
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: 'control',
+                  })}
+                />
+              </motion.div>
+            ))}
+          </div>
         )}
 
         <Section title="Tech notes" delay={0.7}>
