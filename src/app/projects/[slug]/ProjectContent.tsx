@@ -62,6 +62,20 @@ function InlineMarkup({ text }: { text: string }) {
   })
 }
 
+function Paragraphs({ text }: { text: string }) {
+  return (
+    <div
+      className={css({ display: 'flex', flexDirection: 'column', gap: '4' })}
+    >
+      {text.split('\n\n').map((paragraph) => (
+        <p key={paragraph} className={sectionProse}>
+          <InlineMarkup text={paragraph} />
+        </p>
+      ))}
+    </div>
+  )
+}
+
 function Section({
   title,
   delay,
@@ -197,9 +211,7 @@ export default function ProjectContent({ project }: { project: Project }) {
         </motion.p>
 
         <Section title="Why I built it" delay={0.5}>
-          <p className={sectionProse}>
-            <InlineMarkup text={project.why} />
-          </p>
+          <Paragraphs text={project.why} />
         </Section>
 
         <Section title="Key features" delay={0.6}>
@@ -257,9 +269,7 @@ export default function ProjectContent({ project }: { project: Project }) {
         )}
 
         <Section title="Tech notes" delay={0.7}>
-          <p className={sectionProse}>
-            <InlineMarkup text={project.techNotes} />
-          </p>
+          <Paragraphs text={project.techNotes} />
           {project.closingNote && (
             <p
               className={css({

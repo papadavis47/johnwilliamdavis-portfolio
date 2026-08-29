@@ -82,7 +82,7 @@ export const projects: Project[] = [
       alt: 'caleb mark: an iris cut into a circular plate, with a blue check drawn through it',
     },
     logoDark: '/images/projects/caleb/iris-dark.svg',
-    why: 'I wanted a list that begins when I sit down to build software and ends with the terminal, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in _Ex Machina_, a film I keep going back to for its story and its look, which this app borrows from.',
+    why: 'I wanted a list that begins when I sit down to build software and ends with the terminal, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry.\n\nThe name is the personal half. It is for Caleb Smith in _Ex Machina_, a film I keep going back to for its story and its look, which this app borrows from.',
     features: [
       'Two panes, Active and Completed, with a task crossing over the moment you check it off',
       'Every session is one GitHub-flavored markdown file under `~/.local/share/caleb/`, editable outside the app',
@@ -92,7 +92,7 @@ export const projects: Project[] = [
       'Clear sessions containing all completed tasks with `caleb --clean`',
     ],
     techNotes:
-      'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface and `clap` for the command line. Errors are typed per module with `thiserror` and surface through `anyhow` at the entry point, and `unsafe` code is forbidden crate-wide. Dates come from `jiff`, which resolves the local time zone in pure Rust. There is no database and no network: the markdown file is the state, parsed and reserialized on every save. Around 246 tests cover it, from in-file unit tests and `ratatui` buffer assertions to pty-driven smoke scripts, all gated in CI alongside `clippy` at pedantic.',
+      'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface and `clap` for the command line. Errors are typed per module with `thiserror` and surface through `anyhow` at the entry point, and `unsafe` code is forbidden crate-wide. Dates come from `jiff`, which resolves the local time zone in pure Rust.\n\nThere is no database and no network: the markdown file is the state, parsed and reserialized on every save. Around 246 tests cover it, from in-file unit tests and `ratatui` buffer assertions to pty-driven smoke scripts, all gated in CI alongside `clippy` at pedantic.',
     closingNote: 'Linux only for now, since that is where I work.',
     screenshots: [
       {
