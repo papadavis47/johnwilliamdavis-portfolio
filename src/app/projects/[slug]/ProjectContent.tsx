@@ -33,18 +33,33 @@ const inlineCode = css({
   borderRadius: 'tag',
 })
 
-// Renders copy with `backtick`-delimited spans as inline <code>. Odd-index
-// segments are the code spans. Strings without backticks render as one segment.
-function InlineCode({ text }: { text: string }) {
-  return text.split('`').map((part, i) =>
-    i % 2 === 1 ? (
-      <code key={i} className={inlineCode}>
-        {part}
-      </code>
-    ) : (
-      <Fragment key={i}>{part}</Fragment>
-    ),
-  )
+const emphasis = css({
+  fontStyle: 'italic',
+})
+
+// Renders copy with `backtick` spans as inline <code> and _underscore_ spans as
+// <em>, for titles. Splitting on a capturing group keeps the delimited segments
+// in the array, so each one is matched by its own wrapper.
+const markupSpan = /(`[^`]+`|_[^_]+_)/
+
+function InlineMarkup({ text }: { text: string }) {
+  return text.split(markupSpan).map((part, i) => {
+    if (/^`[^`]+`$/.test(part)) {
+      return (
+        <code key={i} className={inlineCode}>
+          {part.slice(1, -1)}
+        </code>
+      )
+    }
+    if (/^_[^_]+_$/.test(part)) {
+      return (
+        <em key={i} className={emphasis}>
+          {part.slice(1, -1)}
+        </em>
+      )
+    }
+    return <Fragment key={i}>{part}</Fragment>
+  })
 }
 
 function Section({
@@ -182,7 +197,9 @@ export default function ProjectContent({ project }: { project: Project }) {
         </motion.p>
 
         <Section title="Why I built it" delay={0.5}>
-          <p className={sectionProse}>{project.why}</p>
+          <p className={sectionProse}>
+            <InlineMarkup text={project.why} />
+          </p>
         </Section>
 
         <Section title="Key features" delay={0.6}>
@@ -201,7 +218,7 @@ export default function ProjectContent({ project }: { project: Project }) {
                 key={feature}
                 className={css({ textStyle: 'prose', color: 'text' })}
               >
-                <InlineCode text={feature} />
+                <InlineMarkup text={feature} />
               </li>
             ))}
           </ul>
@@ -241,7 +258,7 @@ export default function ProjectContent({ project }: { project: Project }) {
 
         <Section title="Tech notes" delay={0.7}>
           <p className={sectionProse}>
-            <InlineCode text={project.techNotes} />
+            <InlineMarkup text={project.techNotes} />
           </p>
           {project.closingNote && (
             <p

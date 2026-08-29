@@ -78,11 +78,11 @@ export const projects: Project[] = [
     description:
       'A Rust terminal application that holds a to-do list for the length of one coding session. Tasks sit in two panes side by side, Active and Completed, and checking one off moves it across. Each session is a single GitHub-flavored markdown file on disk, so the list stays readable in any editor long after the terminal is closed.',
     logo: {
-      src: '/images/projects/caleb/mark-light.svg',
-      alt: 'caleb mark: an iris cut into a circular plate, with a green check drawn through it',
+      src: '/images/projects/caleb/iris-light.svg',
+      alt: 'caleb mark: an iris cut into a circular plate, with a blue check drawn through it',
     },
-    logoDark: '/images/projects/caleb/mark-dark.svg',
-    why: 'I wanted a list that begins when I sit down to build software and ends with the terminal, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in Ex Machina, a film I keep going back to for its story and its look, which this app borrows from.',
+    logoDark: '/images/projects/caleb/iris-dark.svg',
+    why: 'I wanted a list that begins when I sit down to build software and ends with the terminal, instead of a permanent backlog that follows me around. Sessions expiring is the point: yesterday is a file I can pull from, not a debt I carry. The name is the personal half. It is for Caleb Smith in _Ex Machina_, a film I keep going back to for its story and its look, which this app borrows from.',
     features: [
       'Two panes, Active and Completed, with a task crossing over the moment you check it off',
       'Every session is one GitHub-flavored markdown file under `~/.local/share/caleb/`, editable outside the app',
@@ -96,16 +96,16 @@ export const projects: Project[] = [
     closingNote: 'Linux only for now, since that is where I work.',
     screenshots: [
       {
-        src: '/images/projects/caleb/tui-picker.png',
-        alt: 'caleb session picker listing three past sessions on the left, with a live markdown preview of the selected session on the right',
-        width: 1160,
-        height: 603,
+        src: '/images/projects/caleb/tui-resume-picker.png',
+        alt: 'caleb resume picker listing four past sessions on the left, with a live markdown preview of the selected session on the right',
+        width: 1103,
+        height: 627,
       },
       {
-        src: '/images/projects/caleb/tui-panes.png',
+        src: '/images/projects/caleb/tui-task-panes.png',
         alt: 'caleb showing its two panes, Active on the left with three open tasks and Completed on the right with three struck-through tasks',
-        width: 1160,
-        height: 603,
+        width: 1190,
+        height: 670,
       },
     ],
     techStack: ['Rust', 'ratatui', 'crossterm', 'clap'],
