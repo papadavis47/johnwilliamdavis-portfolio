@@ -3,7 +3,6 @@ export type Project = {
   title: string
   summary: string
   description: string
-  descriptionLink?: { text: string; href: string }
   logo?: { src: string; alt: string }
   logoDark?: string
   why: string
@@ -140,11 +139,7 @@ export const projects: Project[] = [
     title: 'Rattlesnake',
     summary: 'A tool for learning Python concepts, inspired by Rustlings',
     description:
-      'An interactive exercise runner for learning Python, from basic syntax through advanced language features. It is a fork of Rustlings that keeps the fast Rust CLI, including its file watcher, progress tracking, and hints, while replacing the curriculum and validation pipeline with Python: fix the code, save, and get immediate feedback.',
-    descriptionLink: {
-      text: 'Rustlings',
-      href: 'https://rustlings.rust-lang.org/',
-    },
+      'An interactive exercise runner for learning Python, from basic syntax through advanced language features. It is a fork of [Rustlings](https://rustlings.rust-lang.org/) that keeps the fast Rust CLI, including its file watcher, progress tracking, and hints, while replacing the curriculum and validation pipeline with Python: fix the code, save, and get immediate feedback.',
     logo: {
       src: '/images/projects/rattlesnake/logo.png',
       alt: 'Rattlesnake logo: a coiled rattlesnake wrapped around the Python mark',

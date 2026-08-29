@@ -12,6 +12,7 @@ import { button, link } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
 import TechStack from '@/design-system/TechStack'
 import type { Project } from '../projects'
+import { markupSpan, linkSpan } from './markup'
 
 const sectionHeading = css({
   textStyle: 'h2',
@@ -19,10 +20,19 @@ const sectionHeading = css({
   mb: '4',
 })
 
-const sectionProse = css({
-  textStyle: 'prose',
-  color: 'text',
+// The prose pair every body block shares; blocks that differ compose from it
+// rather than respelling it, so a change to one lands everywhere.
+const proseBase = css.raw({ textStyle: 'prose', color: 'text' })
+
+const sectionProse = css(proseBase, { maxWidth: 'content' })
+
+const featureText = css(proseBase)
+
+const closingNote = css(proseBase, {
+  color: 'text.muted',
   maxWidth: 'content',
+  mt: '4',
+  fontStyle: 'italic',
 })
 
 const inlineCode = css({
@@ -37,11 +47,8 @@ const emphasis = css({
   fontStyle: 'italic',
 })
 
-// Renders copy with `backtick` spans as inline <code> and _underscore_ spans as
-// <em>, for titles. Splitting on a capturing group keeps the delimited segments
-// in the array, so each one is matched by its own wrapper.
-const markupSpan = /(`[^`]+`|_[^_]+_)/
-
+// Splitting on a capturing group keeps the delimited segments in the array, so
+// each one is matched by its own wrapper.
 function InlineMarkup({ text }: { text: string }) {
   return text.split(markupSpan).map((part, i) => {
     if (/^`[^`]+`$/.test(part)) {
@@ -56,6 +63,20 @@ function InlineMarkup({ text }: { text: string }) {
         <em key={i} className={emphasis}>
           {part.slice(1, -1)}
         </em>
+      )
+    }
+    const linkMatch = linkSpan.exec(part)
+    if (linkMatch) {
+      return (
+        <a
+          key={i}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={link()}
+        >
+          {linkMatch[1]}
+        </a>
       )
     }
     return <Fragment key={i}>{part}</Fragment>
@@ -99,10 +120,6 @@ function Section({
 }
 
 export default function ProjectContent({ project }: { project: Project }) {
-  const descriptionLinkIndex = project.descriptionLink
-    ? project.description.indexOf(project.descriptionLink.text)
-    : -1
-
   return (
     <PageContainer>
       <motion.article
@@ -179,36 +196,14 @@ export default function ProjectContent({ project }: { project: Project }) {
           <TechStack items={project.techStack} />
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.4 }}
-          className={css({
-            textStyle: 'prose',
-            color: 'text',
-            mb: '10',
-            maxWidth: 'content',
-          })}
+          className={css({ mb: '10' })}
         >
-          {project.descriptionLink && descriptionLinkIndex >= 0 ? (
-            <>
-              {project.description.slice(0, descriptionLinkIndex)}
-              <a
-                href={project.descriptionLink.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={link()}
-              >
-                {project.descriptionLink.text}
-              </a>
-              {project.description.slice(
-                descriptionLinkIndex + project.descriptionLink.text.length,
-              )}
-            </>
-          ) : (
-            project.description
-          )}
-        </motion.p>
+          <Paragraphs text={project.description} />
+        </motion.div>
 
         <Section title="Why I built it" delay={0.5}>
           <Paragraphs text={project.why} />
@@ -226,10 +221,7 @@ export default function ProjectContent({ project }: { project: Project }) {
             })}
           >
             {project.features.map((feature) => (
-              <li
-                key={feature}
-                className={css({ textStyle: 'prose', color: 'text' })}
-              >
+              <li key={feature} className={featureText}>
                 <InlineMarkup text={feature} />
               </li>
             ))}
@@ -271,17 +263,7 @@ export default function ProjectContent({ project }: { project: Project }) {
         <Section title="Tech notes" delay={0.7}>
           <Paragraphs text={project.techNotes} />
           {project.closingNote && (
-            <p
-              className={css({
-                textStyle: 'prose',
-                color: 'text.muted',
-                maxWidth: 'content',
-                mt: '4',
-                fontStyle: 'italic',
-              })}
-            >
-              {project.closingNote}
-            </p>
+            <p className={closingNote}>{project.closingNote}</p>
           )}
         </Section>
 

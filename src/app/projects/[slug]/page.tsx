@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ProjectContent from './ProjectContent'
 import { getProjectBySlug, projects } from '../projects'
+import { stripMarkup } from './markup'
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -25,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: project.title,
-    description: project.description,
+    description: stripMarkup(project.description),
   }
 }
 
