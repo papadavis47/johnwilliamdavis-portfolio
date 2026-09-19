@@ -81,8 +81,8 @@ Rules:
 
 ## Deployment (Vercel)
 
-- `pnpm-workspace.yaml` is **gitignored** — pnpm 11 regenerates it locally to hold the native build-script allowlist, but Vercel's older pnpm rejects a workspace file without a `packages:` field (`packages field missing or empty` → install fails). Keep it out of git.
-- Vercel does **not** honor the `pnpm@11.5.0` pin (Corepack isn't enabled); it builds with its own pnpm. To make Vercel use pnpm 11, set env var `ENABLE_EXPERIMENTAL_COREPACK=1` in project settings.
+- **`pnpm-workspace.yaml` is committed, and must stay committed** — it holds the native build-script allowlist (`allowBuilds:` under pnpm 12; was `onlyBuiltDependencies:` under 10/11). pnpm 12 turned an ignored build script into a hard error, so without this file Vercel fails install with `ERR_PNPM_IGNORED_BUILDS — Ignored build scripts: esbuild, unrs-resolver`. It used to be gitignored because Vercel's older pnpm rejected a workspace file with no `packages:` key; Vercel now builds with pnpm 12, which does not need one. The allowlist cannot live in `package.json` instead — **pnpm 12 ignores the `pnpm` field there entirely** (verified: `pnpm.onlyBuiltDependencies` still errors).
+- Vercel now reads the `packageManager` pin from `package.json` and builds with that pnpm (the build log says so: `from package.json#packageManager pnpm@12.4.2`). `ENABLE_EXPERIMENTAL_COREPACK=1` is no longer needed for the version to match.
 
 ## Directory map
 
