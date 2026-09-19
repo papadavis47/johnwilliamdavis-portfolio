@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev",
-    "build": "next build",
+    "build": "panda codegen && next build",
     "start": "next start",
     "lint": "eslint .",
     "test:e2e": "playwright test"

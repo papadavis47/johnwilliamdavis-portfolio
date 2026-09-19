@@ -17,7 +17,7 @@ Personal developer portfolio for John William Davis. Next.js App Router site, st
 
 ```bash
 pnpm dev      # dev server
-pnpm build    # production build (runs panda codegen via prepare + tsc)
+pnpm build    # production build (panda codegen && next build, incl. tsc)
 pnpm lint     # eslint . (flat config)
 pnpm test:e2e # Playwright smoke + axe suite (builds, serves on :3100)
 ```
@@ -29,6 +29,8 @@ Playwright smoke suite in `e2e/` — no unit tests by design (no logic to unit-t
 For a refactor that is meant to be **visually inert**, prove it rather than assuming it: `pnpm build` before and after, then diff the emitted `.next/static/chunks/*.css` (byte-identical means no style moved) and the prerendered `.next/server/app/**/*.html` (ignore the hashed `<script src>` and the `__next_f` payload lines). This is cheap and catches what the other gates cannot — it is how a raw-markup leak into a `<meta>` tag was found after `lint`, `tsc` and the full e2e suite had all passed.
 
 `pnpm prepare` runs `panda codegen` to regenerate `styled-system/`. Run it after changing `panda.config.ts`.
+
+**`build` runs `panda codegen` itself, and must keep doing so** — do not "simplify" it back to bare `next build` on the grounds that `prepare` already covers it. `prepare` only fires when pnpm actually installs. On Vercel, a restored build cache can make install a no-op (`Already up to date`, `Done in 33ms`), and since `styled-system/` is gitignored it then does not exist at build time — `next build` dies with 39 × `Module not found: Can't resolve 'styled-system/css'`. This shipped as a red production deploy on 2026-09-19; reproduce it any time with `rm -rf styled-system && next build`.
 
 ## Code organization — VERTICAL (by feature/route)
 
