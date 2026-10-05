@@ -95,16 +95,16 @@ export const projects: Project[] = [
     closingNote: 'Linux only for now, since that is where I work.',
     screenshots: [
       {
-        src: '/images/projects/caleb/tui-resume-picker.png',
-        alt: 'caleb resume picker listing four past sessions on the left, with a live markdown preview of the selected session on the right',
-        width: 1103,
-        height: 627,
+        src: '/images/projects/caleb/caleb-picker.png',
+        alt: 'caleb session picker listing six past sessions by date and open task count on the left, with a live markdown preview of the selected session on the right',
+        width: 1526,
+        height: 840,
       },
       {
-        src: '/images/projects/caleb/tui-task-panes.png',
+        src: '/images/projects/caleb/caleb-panes.png',
         alt: 'caleb showing its two panes, Active on the left with three open tasks and Completed on the right with three struck-through tasks',
-        width: 1190,
-        height: 670,
+        width: 1526,
+        height: 840,
       },
     ],
     techStack: ['Rust', 'ratatui', 'crossterm', 'clap'],
