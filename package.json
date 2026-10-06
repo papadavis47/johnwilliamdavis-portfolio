@@ -2,6 +2,7 @@
   "name": "johnwilliamdavis-portfolio",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev",
@@ -20,7 +21,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
-    "@pandacss/dev": "^1.12.0",
+    "@pandacss/dev": "^2.1.1",
+    "@pandacss/preset-base": "^2.1.1",
+    "@pandacss/preset-panda": "^2.1.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.4",
     "@types/react": "19.3.0",

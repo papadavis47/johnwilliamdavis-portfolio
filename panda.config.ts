@@ -118,6 +118,10 @@ const link = defineRecipe({
 })
 
 export default defineConfig({
+  // v2 adds no presets implicitly (v1 did). base = utilities/shorthands/conditions,
+  // panda = default token scales (radii.xl, spacing, fontSizes…) the theme builds on.
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda'],
+
   preflight: true,
 
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
