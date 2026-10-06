@@ -124,6 +124,10 @@ export default defineConfig({
 
   preflight: true,
 
+  // Ship only the token vars something references. preset-panda's full palette
+  // (~14KB of hex + lab pairs) is otherwise emitted though nothing uses it.
+  optimize: { removeUnusedTokens: true },
+
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
 
   exclude: [],

@@ -148,3 +148,20 @@ test.describe('mobile theme toggle', () => {
     await expect(drawer).toBeVisible()
   })
 })
+
+// Kitchen-sink swatches read tokens via runtime-built token.var() paths, which
+// panda's removeUnusedTokens can't see. They survive only while something else
+// uses each token; this catches a swatch whose var got pruned to nothing.
+test('kitchen-sink inline token vars all resolve', async ({ page }) => {
+  await page.goto('/kitchen-sink')
+  const unresolved = await page.evaluate(() => {
+    const root = getComputedStyle(document.documentElement)
+    const names = new Set<string>()
+    for (const el of document.querySelectorAll<HTMLElement>('[style*="var(--"]')) {
+      for (const m of el.getAttribute('style')!.matchAll(/var\((--[\w-]+)/g)) names.add(m[1])
+    }
+    return { count: names.size, missing: [...names].filter((n) => !root.getPropertyValue(n).trim()) }
+  })
+  expect(unresolved.count).toBeGreaterThan(0)
+  expect(unresolved.missing).toEqual([])
+})
