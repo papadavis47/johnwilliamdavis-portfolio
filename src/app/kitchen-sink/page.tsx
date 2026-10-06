@@ -27,6 +27,7 @@ const semanticColors = [
 // Each textStyle needs its own literal css() call so Panda extracts it — a
 // runtime `css({ textStyle: name })` in a loop would not be picked up.
 const textStyles: { name: string; cls: string }[] = [
+  { name: 'jumbo', cls: css({ textStyle: 'jumbo' }) },
   { name: 'display', cls: css({ textStyle: 'display' }) },
   { name: 'h1', cls: css({ textStyle: 'h1' }) },
   { name: 'h2', cls: css({ textStyle: 'h2' }) },
@@ -34,6 +35,7 @@ const textStyles: { name: string; cls: string }[] = [
   { name: 'subtitle', cls: css({ textStyle: 'subtitle' }) },
   { name: 'prose', cls: css({ textStyle: 'prose' }) },
   { name: 'body', cls: css({ textStyle: 'body' }) },
+  { name: 'menuItem', cls: css({ textStyle: 'menuItem' }) },
   { name: 'small', cls: css({ textStyle: 'small' }) },
   { name: 'caption', cls: css({ textStyle: 'caption' }) },
   { name: 'mono', cls: css({ textStyle: 'mono' }) },

@@ -154,6 +154,15 @@ export default defineConfig({
             letterSpacing: '-0.02em',
           },
         },
+        jumbo: {
+          description: 'Oversized display numeral (404)',
+          value: {
+            fontFamily: 'heading',
+            fontWeight: '700',
+            fontSize: { base: '7xl', md: '8xl' },
+            lineHeight: '1.1',
+          },
+        },
         h1: {
           description: 'Page title',
           value: {
@@ -204,6 +213,13 @@ export default defineConfig({
           value: {
             fontSize: 'md',
             lineHeight: '1.6',
+          },
+        },
+        menuItem: {
+          description: 'Mobile drawer destination',
+          value: {
+            fontSize: 'lg',
+            lineHeight: '1.5',
           },
         },
         small: {

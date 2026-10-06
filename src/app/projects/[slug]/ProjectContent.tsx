@@ -140,7 +140,7 @@ export default function ProjectContent({ project }: { project: Project }) {
               gap: '2',
               color: 'text.muted',
               textDecoration: 'none',
-              fontSize: 'sm',
+              textStyle: 'small',
               transition: 'color 200ms',
               mb: '8',
               _hover: { color: 'accent' },

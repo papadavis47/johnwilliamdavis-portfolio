@@ -69,7 +69,7 @@ function Navigation() {
                 className={css({
                   color: 'text',
                   textDecoration: 'none',
-                  fontSize: 'sm',
+                  textStyle: 'small',
                   transition: 'color 200ms',
                   _hover: { color: 'accent' },
                 })}
@@ -178,7 +178,7 @@ function Navigation() {
                         display: 'block',
                         color: 'text',
                         textDecoration: 'none',
-                        fontSize: 'lg',
+                        textStyle: 'menuItem',
                         py: '3',
                         borderBottomWidth: '1px',
                         borderBottomStyle: 'solid',

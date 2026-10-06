@@ -17,7 +17,6 @@ export default function SkipToContent() {
         bg: 'accent.emphasis',
         color: 'accent.fg',
         fontWeight: '600',
-        textDecoration: 'none',
         borderRadius: 'control',
         transition: 'top 0.2s',
         _focus: {

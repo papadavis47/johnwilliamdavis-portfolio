@@ -22,10 +22,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className={css({
             display: 'block',
-            fontFamily: 'heading',
-            fontWeight: '700',
-            fontSize: { base: '7xl', md: '8xl' },
-            lineHeight: '1.1',
+            textStyle: 'jumbo',
             color: 'accent',
             mb: '2',
           })}

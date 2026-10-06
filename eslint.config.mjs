@@ -25,8 +25,7 @@ const eslintConfig = [
         { categories: ['colors'], allow: ['accent.fg', 'transparent', 'black'] },
       ],
       // AGENTS.md: typography is textStyle, never inline fontSize/fontWeight.
-      // warn, not error: the existing hits change rendering when converted.
-      '@pandacss/prefer-text-style': 'warn',
+      '@pandacss/prefer-text-style': 'error',
     },
   },
   {
