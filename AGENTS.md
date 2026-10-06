@@ -9,9 +9,9 @@ Personal developer portfolio for John William Davis. Next.js App Router site, st
 ## Stack
 
 - **Next.js 16** (App Router) · **React 19** · **TypeScript 6**
-- **PandaCSS** for styling (`styled-system/` is generated, gitignored, `outdir: styled-system`)
+- **PandaCSS 2** for styling (`styled-system/` is generated, gitignored, `outdir: styled-system`). v2 is ESM-only and needs Node 22+, hence `"type": "module"` in `package.json` (`postcss.config.cjs` stays CJS on purpose)
 - **motion** (framer-motion successor) for animation · **lucide-react** icons · **next-themes** for dark mode
-- **pnpm 11.5.0** (pinned via `packageManager`) · Node 22
+- **pnpm 12** (pinned via `packageManager`) · Node 22
 
 ## Commands
 
@@ -28,7 +28,9 @@ Playwright smoke suite in `e2e/` — no unit tests by design (no logic to unit-t
 
 For a refactor that is meant to be **visually inert**, prove it rather than assuming it: `pnpm build` before and after, then diff the emitted `.next/static/chunks/*.css` (byte-identical means no style moved) and the prerendered `.next/server/app/**/*.html` (ignore the hashed `<script src>` and the `__next_f` payload lines). This is cheap and catches what the other gates cannot — it is how a raw-markup leak into a `<meta>` tag was found after `lint`, `tsc` and the full e2e suite had all passed.
 
-`pnpm prepare` runs `panda codegen` to regenerate `styled-system/`. Run it after changing `panda.config.ts`.
+`pnpm prepare` runs `panda codegen` to regenerate `styled-system/`. Run it after changing `panda.config.ts`. `pnpm panda doctor` is the config health check (v2 replaced `inspect`/`validate`/`info`).
+
+**`presets: ['@pandacss/preset-base', '@pandacss/preset-panda']` in `panda.config.ts` is required, not decoration.** Panda v1 added both implicitly; v2 adds nothing. Drop them and codegen still "succeeds" but generates a `SystemStyleObject` with no shorthands (`p`, `bg`, `px`) and no conditions (`_hover`, `_dark`), plus none of the default scales (`radii.xl`, spacing, font sizes) the theme builds on — `next build` then dies on dozens of `TS2769` errors. Both presets are devDependencies and must move in lockstep with `@pandacss/dev` (all `@pandacss/*` share one version).
 
 **`build` runs `panda codegen` itself, and must keep doing so** — do not "simplify" it back to bare `next build` on the grounds that `prepare` already covers it. `prepare` only fires when pnpm actually installs. On Vercel, a restored build cache can make install a no-op (`Already up to date`, `Done in 33ms`), and since `styled-system/` is gitignored it then does not exist at build time — `next build` dies with 39 × `Module not found: Can't resolve 'styled-system/css'`. This shipped as a red production deploy on 2026-09-19; reproduce it any time with `rm -rf styled-system && next build`.
 
@@ -75,7 +77,7 @@ Rules:
 - **Every route wraps in `src/design-system/PageContainer.tsx`** — one 56rem frame for every page (`hero` only bumps top padding), so all `h1`s share a left edge with the nav brand. It owns `mx/px/py`, so routes should not set their own page gutters, and must not render a `<main>` (`layout.tsx` already does). Long-form text sets `maxWidth: 'content'` (44rem) on its own block to hold a readable measure; **never narrow the frame itself** — that is what knocked headings out of alignment before.
 - Semantic `radii`: `card` (12px) · `control` (8px, buttons/panels/photos) · `tag` (6px). Semantic `shadows`: `hover`, `lifted`. No raw `rgba()`.
 - Panda extracts styles **statically** — never build a `css()` object from a runtime conditional (`...(i === 1 ? {...} : {})`). Hoist each branch to its own `css()` and pick with `cx()`.
-- **Never pair a directional border shorthand with `borderColor`** (`borderBottom: '1px solid'` + `borderColor: 'border'`). Panda emits `.bd-b_1px_solid` *after* `.bd-c_border`, so the shorthand resets that edge to `currentColor` — a near-white hairline in dark mode. Use longhands: `borderBottomWidth` / `borderBottomStyle` / `borderBottomColor`. The all-sides `border: '1px solid'` + `borderColor` pairing is fine.
+- **Use longhands for a per-side border** (`borderBottomWidth` / `borderBottomStyle` / `borderBottomColor`), not `borderBottom: '1px solid'` + `borderColor`. Under Panda v1 that pairing emitted `.bd-b_1px_solid` *after* `.bd-c_border`, resetting the edge to `currentColor` — a near-white hairline in dark mode. v2 sorts atomic rules by property breadth (all-sides shorthands before per-side ones, longhands last), which happens to fix that pairing, but longhands are the form that wins regardless of sort order, so keep writing them. The all-sides `border: '1px solid'` + `borderColor` pairing is fine.
 - Overlay panels (the mobile drawer) get **elevation, not outlines** — `boxShadow: 'lifted'` over the scrim. A border on the drawer crosses the header's bottom hairline at its corner. Its top offset comes from `top: 'token(sizes.navHeight)'`, matching the header's `height: 'navHeight'`; never hardcode a pixel offset.
 - **The theme toggle lives in the header at every breakpoint** (`src/layout/Navigation.tsx`), never in the mobile drawer — the drawer holds destinations, the toggle is a control over the page you are already on. An earlier drawer-hosted version had to self-dismiss on toggle (you could not see the theme change behind the panel), which was the tell that it did not belong there; that is why `ThemeToggle` has no close callback. The toggle and the menu button sit in one flex group sharing `p: '3'` (12px around a 20px glyph = a 44px target), so keep their hitboxes equal. `Menu`/`X` carry `strokeWidth={2.25}`: three thin lines read lighter than the `Sun`/`Moon`, which fills its box, so don't normalize it back to the lucide default of 2.
 - Project screenshots live under `public/images/projects/<slug>/`; strip EXIF/GPS from any photo (`convert … -auto-orient -strip`) before committing.
@@ -83,7 +85,7 @@ Rules:
 
 ## Deployment (Vercel)
 
-- **`pnpm-workspace.yaml` is committed, and must stay committed** — it holds the native build-script allowlist (`allowBuilds:` under pnpm 12; was `onlyBuiltDependencies:` under 10/11). pnpm 12 turned an ignored build script into a hard error, so without this file Vercel fails install with `ERR_PNPM_IGNORED_BUILDS — Ignored build scripts: esbuild, unrs-resolver`. It used to be gitignored because Vercel's older pnpm rejected a workspace file with no `packages:` key; Vercel now builds with pnpm 12, which does not need one. The allowlist cannot live in `package.json` instead — **pnpm 12 ignores the `pnpm` field there entirely** (verified: `pnpm.onlyBuiltDependencies` still errors).
+- **`pnpm-workspace.yaml` is committed, and must stay committed** — it holds the native build-script allowlist (`allowBuilds:` under pnpm 12; was `onlyBuiltDependencies:` under 10/11). pnpm 12 turned an ignored build script into a hard error, so without this file Vercel fails install with `ERR_PNPM_IGNORED_BUILDS — Ignored build scripts: esbuild, unrs-resolver`. A new native dep surfaces the same error locally on `pnpm add`; decide per package. `'@parcel/watcher': false` (pulled in by Panda 2's CLI) is a deliberate *deny*: its install script only runs `node-gyp` when `npm_config_build_from_source=true`, and the prebuilt `@parcel/watcher-<platform>` binary is used otherwise. It used to be gitignored because Vercel's older pnpm rejected a workspace file with no `packages:` key; Vercel now builds with pnpm 12, which does not need one. The allowlist cannot live in `package.json` instead — **pnpm 12 ignores the `pnpm` field there entirely** (verified: `pnpm.onlyBuiltDependencies` still errors).
 - Vercel now reads the `packageManager` pin from `package.json` and builds with that pnpm (the build log says so: `from package.json#packageManager pnpm@12.4.2`). `ENABLE_EXPERIMENTAL_COREPACK=1` is no longer needed for the version to match.
 
 ## Directory map
