@@ -25,6 +25,7 @@
     "@pandacss/eslint-plugin": "^2.1.1",
     "@pandacss/preset-base": "^2.1.1",
     "@pandacss/preset-panda": "^2.1.1",
+    "@pandacss/typescript-plugin": "^2.1.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.4",
     "@types/react": "19.3.0",

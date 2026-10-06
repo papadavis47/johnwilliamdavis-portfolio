@@ -200,6 +200,9 @@ importers:
       '@pandacss/preset-panda':
         specifier: ^2.1.1
         version: 2.1.1
+      '@pandacss/typescript-plugin':
+        specifier: ^2.1.1
+        version: 2.1.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(typescript@6.0.3)
       '@playwright/test':
         specifier: ^1.63.0
         version: 1.63.0
@@ -744,6 +747,12 @@ packages:
   '@pandacss/types@2.1.1':
     resolution: {integrity: sha512-ycF8sYdqg8mu2cdfdR2hM/pLRpSxBVkD2kJkCBhWAr+KvKb5SoRRNeERSzizgENDUKmThcWHF3N0kSFMA1Rt9A==}
     engines: {node: '>=22'}
+
+  '@pandacss/typescript-plugin@2.1.1':
+    resolution: {integrity: sha512-wplUyNL6GzlL+rZ+aj5f7LvD6XuWwxTgXP4lLml+DuVpAZ8HUGEIVeW7FL26pFItAUMtSun9OINl7jlXtlS7Fw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      typescript: '>=5'
 
   '@parcel/watcher-android-arm64@2.5.6':
     resolution: {integrity: sha512-YQxSS34tPF/6ZG7r/Ih9xy+kP/WwediEUsqmtf0cuCV5TPPKw/PQHRhueUo6JdeFJaqV3pyjm0GdYjZotbRt/A==}
@@ -2921,6 +2930,16 @@ snapshots:
       '@pandacss/types': 2.1.1
 
   '@pandacss/types@2.1.1': {}
+
+  '@pandacss/typescript-plugin@2.1.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(typescript@6.0.3)':
+    dependencies:
+      '@pandacss/compiler': 2.1.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)
+      '@pandacss/compiler-shared': 2.1.1
+      '@pandacss/types': 2.1.1
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   '@parcel/watcher-android-arm64@2.5.6':
     optional: true
