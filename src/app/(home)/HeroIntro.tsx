@@ -53,7 +53,7 @@ export default function HeroIntro() {
           mb: '8',
         })}
       >
-        Software Engineer
+        Software Engineer · Rust &amp; TypeScript
       </motion.h2>
 
       <motion.div

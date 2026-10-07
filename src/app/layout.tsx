@@ -8,22 +8,25 @@ import SkipToContent from '@/layout/SkipToContent'
 import PageTransition from '@/layout/PageTransition'
 import { css } from 'styled-system/css'
 
+const description =
+  'Portfolio of John William Davis, a software engineer working in Rust and TypeScript, with Python when needed.'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.johnwilliamdavis.com'),
   title: {
     template: '%s | John William Davis',
     default: 'John William Davis | Developer Portfolio',
   },
-  description: 'Portfolio website for John William Davis - Software Engineer',
+  description,
   openGraph: {
     title: 'John William Davis | Developer Portfolio',
-    description: 'Portfolio website for John William Davis - Software Engineer',
+    description,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'John William Davis | Developer Portfolio',
-    description: 'Portfolio website for John William Davis - Software Engineer',
+    description,
   },
 }
 

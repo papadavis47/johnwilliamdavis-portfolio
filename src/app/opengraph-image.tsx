@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import { OG_SIZE, OgFrame, loadOgFonts, og } from '@/design-system/og/og'
 import { CURRENT_FOCUS } from '@/design-system/current-focus'
 
-export const alt = 'John William Davis — Software Engineer'
+export const alt = 'John William Davis, Software Engineer · Rust & TypeScript'
 export const size = OG_SIZE
 export const contentType = 'image/png'
 
@@ -22,7 +22,7 @@ export default async function OpengraphImage() {
           John William Davis
         </div>
         <div style={{ fontSize: 42, color: og.muted, marginTop: 20 }}>
-          Software Engineer
+          Software Engineer · Rust &amp; TypeScript
         </div>
         <div
           style={{
