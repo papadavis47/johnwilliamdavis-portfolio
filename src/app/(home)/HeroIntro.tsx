@@ -31,8 +31,8 @@ export default function HeroIntro() {
   return (
     <>
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={css({
           textStyle: 'display',
@@ -44,8 +44,8 @@ export default function HeroIntro() {
       </motion.h1>
 
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className={css({
           textStyle: 'subtitle',
@@ -99,8 +99,8 @@ export default function HeroIntro() {
       </motion.h2>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className={css({
           display: 'flex',
@@ -123,8 +123,8 @@ export default function HeroIntro() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         className={css({
           display: 'flex',

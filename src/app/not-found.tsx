@@ -11,8 +11,8 @@ export default function NotFound() {
   return (
     <PageContainer hero>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         className={css({ textAlign: 'center', maxWidth: 'content', mx: 'auto' })}
       >
@@ -31,8 +31,8 @@ export default function NotFound() {
         </motion.span>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className={css({
             textStyle: 'h1',
@@ -44,8 +44,8 @@ export default function NotFound() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className={css({
             textStyle: 'prose',
@@ -58,8 +58,8 @@ export default function NotFound() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <Link href="/" className={button({ visual: 'solid', size: 'md' })}>

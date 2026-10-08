@@ -3,13 +3,13 @@
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import type { Skill } from './skill-data'
-import { itemVariants } from './skill-data'
+import { riseVariants } from './skill-data'
 
 export default function SkillBadge({ skill }: { skill: Skill }) {
   const Icon = skill.icon
   return (
     <motion.div
-      variants={itemVariants}
+      variants={riseVariants}
       className={css({
         display: 'flex',
         alignItems: 'center',

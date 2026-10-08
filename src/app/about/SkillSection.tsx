@@ -3,14 +3,14 @@
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import type { SkillCategory } from './skill-data'
-import { containerVariants, itemVariants } from './skill-data'
+import { containerVariants, riseVariants } from './skill-data'
 import SkillBadge from './SkillBadge'
 
 export default function SkillSection({ category }: { category: SkillCategory }) {
   const CategoryIcon = category.icon
   return (
     <motion.div
-      variants={itemVariants}
+      variants={riseVariants}
       className={css({
         display: 'flex',
         flexDirection: 'column',

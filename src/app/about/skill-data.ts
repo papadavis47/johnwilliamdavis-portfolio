@@ -83,13 +83,21 @@ export const containerVariants = {
 }
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
       duration: 0.5,
       ease: [0, 0, 0.2, 1] as const,
     },
+  },
+}
+
+// Tech I Know Well keeps its staggered rise; the rest of the page only fades
+export const riseVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    ...itemVariants.visible,
+    y: 0,
   },
 }

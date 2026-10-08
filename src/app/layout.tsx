@@ -1,6 +1,7 @@
 import { plexSans, plexMono, fraunces } from './fonts'
 import { Metadata } from 'next'
 import './globals.css'
+import { MotionProvider } from '@/providers/MotionProvider'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import Navigation from '@/layout/Navigation'
 import Footer from '@/layout/Footer'
@@ -56,7 +57,9 @@ export default function RootLayout({
           >
             <Navigation />
             <main id="main-content" className={css({ flex: 1 })}>
-              <PageTransition>{children}</PageTransition>
+              <MotionProvider>
+                <PageTransition>{children}</PageTransition>
+              </MotionProvider>
             </main>
             <Footer />
           </div>

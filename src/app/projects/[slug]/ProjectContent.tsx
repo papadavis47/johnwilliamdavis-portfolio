@@ -108,8 +108,8 @@ function Section({
 }) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.4, delay }}
       className={css({ mb: '10' })}
     >
@@ -123,13 +123,13 @@ export default function ProjectContent({ project }: { project: Project }) {
   return (
     <PageContainer>
       <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
           <Link
@@ -152,8 +152,8 @@ export default function ProjectContent({ project }: { project: Project }) {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           className={css({
             display: 'flex',
@@ -188,8 +188,8 @@ export default function ProjectContent({ project }: { project: Project }) {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.3 }}
           className={css({ mb: '8' })}
         >
@@ -197,8 +197,8 @@ export default function ProjectContent({ project }: { project: Project }) {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.4 }}
           className={css({ mb: '10' })}
         >
@@ -240,8 +240,8 @@ export default function ProjectContent({ project }: { project: Project }) {
             {project.screenshots.map((screenshot, index) => (
               <motion.div
                 key={screenshot.src}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.65 + index * 0.08 }}
               >
                 <Image
@@ -268,8 +268,8 @@ export default function ProjectContent({ project }: { project: Project }) {
         </Section>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.8 }}
           className={css({
             display: 'flex',
