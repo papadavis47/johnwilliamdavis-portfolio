@@ -33,6 +33,7 @@ const textStyles: { name: string; cls: string }[] = [
   { name: 'h2', cls: css({ textStyle: 'h2' }) },
   { name: 'h3', cls: css({ textStyle: 'h3' }) },
   { name: 'subtitle', cls: css({ textStyle: 'subtitle' }) },
+  { name: 'subtitleMono', cls: css({ textStyle: 'subtitleMono' }) },
   { name: 'prose', cls: css({ textStyle: 'prose' }) },
   { name: 'body', cls: css({ textStyle: 'body' }) },
   { name: 'menuItem', cls: css({ textStyle: 'menuItem' }) },

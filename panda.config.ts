@@ -205,6 +205,17 @@ export default defineConfig({
             lineHeight: '1.4',
           },
         },
+        subtitleMono: {
+          description:
+            'Mono half of the hero subtitle (the stack beside the role)',
+          value: {
+            fontFamily: 'mono',
+            fontWeight: '400',
+            // a step below subtitle: mono runs wider and taller than Fraunces at equal size
+            fontSize: { base: 'lg', md: 'xl' },
+            lineHeight: '1.4',
+          },
+        },
         prose: {
           description: 'Standard body/prose paragraph text',
           value: {

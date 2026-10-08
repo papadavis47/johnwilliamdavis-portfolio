@@ -59,11 +59,23 @@ export default function HeroIntro() {
         </span>{' '}
         <span
           aria-hidden="true"
-          className={css({ display: 'none', sm: { display: 'inline' } })}
+          className={css({
+            display: 'none',
+            color: 'text.muted',
+            mx: '1.5',
+            sm: { display: 'inline' },
+          })}
         >
           ·
         </span>{' '}
-        <span className={css({ display: 'block', sm: { display: 'inline' } })}>
+        <span
+          className={css({
+            display: 'block',
+            textStyle: 'subtitleMono',
+            color: 'accent',
+            sm: { display: 'inline' },
+          })}
+        >
           Rust &amp; TypeScript
         </span>
       </motion.h2>
