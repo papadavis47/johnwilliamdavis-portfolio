@@ -76,7 +76,25 @@ export default function HeroIntro() {
             sm: { display: 'inline' },
           })}
         >
-          Rust &amp; TypeScript
+          {/* Clipped, not removed, so screen readers get the full line at once */}
+          <span
+            className={css({
+              display: 'inline-block',
+              _motionSafe: { animation: 'typewriter 0.9s steps(17) 0.6s both' },
+            })}
+          >
+            Rust &amp; TypeScript
+          </span>{' '}
+          <span
+            className={css({
+              display: 'inline-block',
+              color: 'text.muted',
+              fontSize: { base: 'md', md: 'lg' },
+              _motionSafe: { animation: 'typewriter 0.5s steps(8) 2s both' },
+            })}
+          >
+            (mostly)
+          </span>
         </span>
       </motion.h2>
 

@@ -146,6 +146,11 @@ export default defineConfig({
           '0%, 49%': { opacity: '1' },
           '50%, 100%': { opacity: '0' },
         },
+        // Wipes text in left to right; with steps(n) over n mono chars, one char per step
+        typewriter: {
+          from: { clipPath: 'inset(0 100% 0 0)' },
+          to: { clipPath: 'inset(0 0 0 0)' },
+        },
       },
       textStyles: {
         display: {
