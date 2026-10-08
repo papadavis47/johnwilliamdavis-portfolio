@@ -53,7 +53,19 @@ export default function HeroIntro() {
           mb: '8',
         })}
       >
-        Software Engineer · Rust &amp; TypeScript
+        {/* Stacked on phones, one dotted line from sm up, so a wrap never strands the dot */}
+        <span className={css({ display: 'block', sm: { display: 'inline' } })}>
+          Software Engineer
+        </span>{' '}
+        <span
+          aria-hidden="true"
+          className={css({ display: 'none', sm: { display: 'inline' } })}
+        >
+          ·
+        </span>{' '}
+        <span className={css({ display: 'block', sm: { display: 'inline' } })}>
+          Rust &amp; TypeScript
+        </span>
       </motion.h2>
 
       <motion.div
