@@ -19,6 +19,15 @@ const markBase = css({
   flexShrink: 0,
 })
 
+// Centers the smaller fallback glyph in the full slot, so a logo-less card's
+// header row is as tall as a logo card's and the text below lines up
+const fallbackBase = css({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+})
+
 const lightOnly = css({ _dark: { display: 'none' } })
 const darkOnly = css({ display: 'none', _dark: { display: 'block' } })
 
@@ -46,10 +55,12 @@ export default function ProjectMark({
 
   if (!project.logo) {
     return (
-      <MountainsMark
-        size={slot.fallback}
-        className={css({ color: 'accent', flexShrink: 0 })}
-      />
+      <span className={cx(fallbackBase, slot.box)}>
+        <MountainsMark
+          size={slot.fallback}
+          className={css({ color: 'accent' })}
+        />
+      </span>
     )
   }
 

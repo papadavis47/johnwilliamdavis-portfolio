@@ -106,7 +106,8 @@ export default function HeroIntro() {
           display: 'flex',
           flexDirection: 'column',
           gap: '6',
-          mb: '10',
+          // matches the space above TerminalCard: 32px mobile, 48px desktop
+          mb: { base: '8', md: '12' },
           maxWidth: 'content',
         })}
       >

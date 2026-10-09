@@ -32,6 +32,8 @@ export default function TerminalCard() {
     <div
       className={css({
         maxWidth: 'content',
+        // extra air above (gap 6 + mt = 32px mobile, 48px desktop); HeroIntro matches it below
+        mt: { base: '2', md: '6' },
         bg: 'surface',
         border: '1px solid',
         borderColor: 'border',
