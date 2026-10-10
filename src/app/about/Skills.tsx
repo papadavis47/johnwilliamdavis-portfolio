@@ -37,6 +37,17 @@ export default function Skills() {
         Lately I&apos;ve been exploring Turso, the embedded SQLite platform, and
         adopting Panda CSS, a design token system for styling.
       </p>
+      <p
+        className={css({
+          textStyle: 'prose',
+          color: 'text',
+          maxWidth: 'content',
+          mt: '4',
+        })}
+      >
+        I also spend a lot of time with agentic coding tools like Claude Code
+        and Amp, learning the new craft of steering AI agents to build software.
+      </p>
     </motion.section>
   )
 }
