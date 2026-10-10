@@ -78,7 +78,7 @@ export default function Reading() {
             key={book.title}
             className={css({
               display: 'grid',
-              gridTemplateColumns: '82px 1fr',
+              gridTemplateColumns: '120px 1fr',
               gap: '4',
               alignItems: 'start',
               bg: 'bg',
@@ -93,12 +93,11 @@ export default function Reading() {
             <Image
               src={book.coverSrc}
               alt={`${book.title} book cover`}
-              width={82}
-              height={124}
+              width={120}
+              height={180}
               className={css({
-                width: '82px',
-                height: '124px',
-                objectFit: 'cover',
+                width: '120px',
+                height: 'auto',
                 borderRadius: 'sm',
                 boxShadow: 'lifted',
               })}
