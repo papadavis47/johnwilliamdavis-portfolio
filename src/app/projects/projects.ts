@@ -111,6 +111,32 @@ export const projects: Project[] = [
     github: 'https://github.com/papadavis47/caleb',
   },
   {
+    slug: 'mija',
+    title: 'Mija',
+    summary: 'A terminal Pomodoro timer',
+    description:
+      'A Rust terminal application for the Pomodoro technique: a 25-minute work period, a short break, and a longer break after every fourth round. The clock fills the window and drains from the top as the period runs down, so it doubles as the progress indicator. Below it, round pips track the current cycle and a ribbon records the pomodoros finished this session.',
+    logo: {
+      src: '/images/projects/mija/mark-light.svg',
+      alt: 'Mija mark: a pomodoro dial with an M monogram and an arc sweeping 25 minutes',
+    },
+    logoDark: '/images/projects/mija/mark-dark.svg',
+    why: 'Mija is a colloquial Spanish word for "my daughter," pronounced MEE-hah and shortened from _mi hija_. It is the word I often use when speaking to my daughter. I frequently see her while I am working at my computer, and her visits are a welcome reminder to take a break and spend time with her.\n\nThe mark carries the timer in it. The arc starts at 12 o’clock and sweeps 150 degrees, which is 25 minutes on a 60-minute dial, and the M is drawn in four strokes, one for each round in a cycle.',
+    features: [
+      'A full-screen clock that drains from the top as the period runs down, with round pips and a session ribbon below',
+      'Adapts to the space it is given, down to a single status line in a small pane',
+      'Layered settings: command-line flags over a `config.toml` over built-in defaults',
+      'Terminal bells or desktop notifications on every transition',
+      'Native notifications inside [Herdr](https://herdr.dev/), and installable as a Herdr plugin straight from GitHub',
+      'Pauses instead of replaying lost time when the machine sleeps or the process is stopped',
+    ],
+    techNotes:
+      'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface, `clap` for the command line, and `serde` with `toml` for the config file. The timer is a small state machine that moves from idle through work and short or long breaks, and the clock paces its ticks from both monotonic and wall time, so a sleep or a stopped process pauses the period rather than replaying it. The rose palette uses 24-bit color where the terminal supports it and falls back to 256 colors otherwise.\n\nAlerts go through an `AlertSender` trait with implementations for Herdr, terminal bells, and desktop notifications, which keeps side effects mockable in tests. It was built test-first, and CI runs `cargo fmt`, `clippy` with warnings denied, and the test suite on Linux and macOS.',
+    closingNote: 'Installable with Cargo or as a Herdr plugin.',
+    techStack: ['Rust', 'ratatui', 'clap', 'Herdr'],
+    github: 'https://github.com/papadavis47/mija',
+  },
+  {
     slug: 'sokay',
     title: 'Sokay',
     summary: 'A mindful eating tracker',

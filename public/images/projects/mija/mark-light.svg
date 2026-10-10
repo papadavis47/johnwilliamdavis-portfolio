@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mija">
+  <title>Mija</title>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#B9C0C7" stroke-width="2.6"/>
+  <path d="M32 5A27 27 0 0 1 45.5 55.38" fill="none" stroke="#A63A6D" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M20 44L20 20L32 32L44 20L44 44" fill="none" stroke="#A63A6D" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
