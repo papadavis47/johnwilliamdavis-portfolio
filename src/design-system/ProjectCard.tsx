@@ -90,7 +90,7 @@ export default function ProjectCard({
         {featured && (
           <p
             className={css({
-              textStyle: 'body',
+              textStyle: { base: 'body', md: 'prose' },
               color: 'text',
               maxWidth: 'content',
               mb: '6',
