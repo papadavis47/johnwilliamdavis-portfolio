@@ -10,41 +10,57 @@ const books = [
     title: 'Rules to Live By',
     author: 'Jimmy Chin',
     coverSrc: '/images/books/rules-to-live-by.jpg',
+    width: 322,
+    height: 500,
   },
   {
     title: 'Programming Rust',
     author: 'Jim Blandy, Jason Orendorff & Leonora F. S. Tindall',
     coverSrc: '/images/books/programming-rust.jpg',
+    width: 381,
+    height: 500,
   },
   {
     title: 'Liferider',
     author: 'Laird Hamilton & Gabrielle Reece',
     coverSrc: '/images/books/liferider.jpg',
+    width: 331,
+    height: 500,
   },
   {
     title: 'Natural Born Heroes',
     author: 'Christopher McDougall',
     coverSrc: '/images/books/natural-born-heroes.jpg',
+    width: 324,
+    height: 500,
   },
   {
     title: 'Rust In Action',
     author: 'Tim McNamara',
     coverSrc: '/images/books/rust-in-action.jpg',
+    width: 399,
+    height: 500,
   },
   {
     title: 'The Forever War',
     author: 'Dexter Filkins',
     coverSrc: '/images/books/the-forever-war.jpg',
+    width: 336,
+    height: 500,
   },
   {
     title: 'The Things They Carried',
     author: "Tim O'Brien",
     coverSrc: '/images/books/the-things-they-carried.jpg',
+    width: 343,
+    height: 500,
   },
   {
     title: 'Programming TypeScript',
     author: 'Boris Cherny',
     coverSrc: '/images/books/programming-typescript.jpg',
+    width: 381,
+    height: 500,
   },
 ]
 
@@ -73,7 +89,7 @@ export default function Reading() {
           md: { gridTemplateColumns: 'repeat(2, 1fr)' },
         })}
       >
-        {books.map((book) => (
+        {books.map((book, i) => (
           <li
             key={book.title}
             className={css({
@@ -93,8 +109,10 @@ export default function Reading() {
             <Image
               src={book.coverSrc}
               alt={`${book.title} book cover`}
-              width={120}
-              height={180}
+              width={book.width}
+              height={book.height}
+              sizes="120px"
+              loading={i < 2 ? 'eager' : undefined}
               className={css({
                 width: '120px',
                 height: 'auto',
