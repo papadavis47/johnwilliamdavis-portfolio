@@ -8,7 +8,7 @@ import ProjectCard from '@/design-system/ProjectCard'
 import { projects } from '@/app/projects/projects'
 import HeroIntro from './HeroIntro'
 
-const featuredSlugs = ['iwantyoutoknow', 'mountains']
+const featuredSlugs = ['iwantyoutoknow', 'mountains', 'mija']
 const featured = projects.filter((project) =>
   featuredSlugs.includes(project.slug),
 )
@@ -44,10 +44,8 @@ export default function HomeContent() {
           className={css({
             display: 'grid',
             gridTemplateColumns: '1fr',
-            gridAutoRows: '1fr',
             gap: '6',
             mb: '8',
-            md: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
           })}
         >
           {featured.map((project, index) => (
