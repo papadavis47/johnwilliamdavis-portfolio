@@ -53,6 +53,7 @@ export default function HomeContent() {
               key={project.slug}
               project={project}
               index={index + 5}
+              featured
             />
           ))}
         </div>

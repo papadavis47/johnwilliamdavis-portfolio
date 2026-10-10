@@ -9,13 +9,18 @@ import { css, cx } from 'styled-system/css'
 import { card } from 'styled-system/recipes'
 import TechStack from './TechStack'
 import type { Project } from '@/app/projects/projects'
+import { stripMarkup } from '@/app/projects/[slug]/markup'
 
+// Featured cards (home) also carry the full description, flattened to plain
+// text: the whole card is a link, so the markup's own links can't nest in it.
 export default function ProjectCard({
   project,
   index,
+  featured = false,
 }: {
   project: Project
   index: number
+  featured?: boolean
 }) {
   return (
     <motion.div
@@ -81,6 +86,19 @@ export default function ProjectCard({
         >
           {project.summary}
         </p>
+
+        {featured && (
+          <p
+            className={css({
+              textStyle: 'body',
+              color: 'text',
+              maxWidth: 'content',
+              mb: '6',
+            })}
+          >
+            {stripMarkup(project.description)}
+          </p>
+        )}
 
         <TechStack
           items={project.techStack}
