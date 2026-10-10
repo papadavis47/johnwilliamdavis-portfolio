@@ -7,6 +7,16 @@ import InterestCard from './InterestCard'
 
 const books = [
   {
+    title: 'Rules to Live By',
+    author: 'Jimmy Chin',
+    coverSrc: '/images/books/rules-to-live-by.jpg',
+  },
+  {
+    title: 'Programming Rust',
+    author: 'Jim Blandy, Jason Orendorff & Leonora F. S. Tindall',
+    coverSrc: '/images/books/programming-rust.jpg',
+  },
+  {
     title: 'Liferider',
     author: 'Laird Hamilton & Gabrielle Reece',
     coverSrc: '/images/books/liferider.jpg',
