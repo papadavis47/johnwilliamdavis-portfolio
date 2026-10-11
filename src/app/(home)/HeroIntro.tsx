@@ -90,7 +90,7 @@ export default function HeroIntro() {
               display: 'inline-block',
               color: 'text.muted',
               fontSize: { base: 'md', md: 'lg' },
-              _motionSafe: { animation: 'typewriter 0.5s steps(8) 2s both' },
+              _motionSafe: { animation: 'typewriter 0.5s steps(8) 2.4s both' },
             })}
           >
             (mostly)
