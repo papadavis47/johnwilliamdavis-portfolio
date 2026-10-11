@@ -45,8 +45,9 @@ export default function Skills() {
           mt: '4',
         })}
       >
-        I also spend a lot of time with agentic coding tools like Claude Code
-        and Amp, learning the new craft of steering AI agents to build software.
+        I also spend a lot of time with agentic coding tools like Claude Code,
+        Amp, and Delta, learning the new craft of steering AI agents to build
+        software.
       </p>
     </motion.section>
   )
