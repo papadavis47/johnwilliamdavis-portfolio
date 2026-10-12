@@ -1,8 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
-import { Github } from '@/design-system/icons'
+import { ArrowRight } from 'lucide-react'
 import ProjectMark from './ProjectMark'
 import { motion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
@@ -32,6 +31,7 @@ export default function ProjectCard({
       <Link
         href={`/projects/${project.slug}`}
         className={cx(
+          'group',
           card({ interactive: true }),
           css({
             display: 'flex',
@@ -63,18 +63,18 @@ export default function ProjectCard({
               {project.title}
             </h2>
           </div>
-          {project.url && (
-            <ExternalLink
-              size={18}
-              className={css({ color: 'text.muted', flexShrink: 0 })}
-            />
-          )}
-          {project.github && (
-            <Github
-              size={18}
-              className={css({ color: 'text.muted', flexShrink: 0 })}
-            />
-          )}
+          <ArrowRight
+            size={18}
+            className={css({
+              color: 'text.muted',
+              flexShrink: 0,
+              _motionSafe: {
+                transition: 'transform 200ms',
+                _groupHover: { transform: 'translateX(4px)' },
+                _groupFocusVisible: { transform: 'translateX(4px)' },
+              },
+            })}
+          />
         </div>
 
         <p
