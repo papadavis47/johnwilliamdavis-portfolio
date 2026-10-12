@@ -133,6 +133,20 @@ export const projects: Project[] = [
     techNotes:
       'Written in Rust on the 2024 edition with `ratatui` and `crossterm` for the interface, `clap` for the command line, and `serde` with `toml` for the config file. The timer is a small state machine that moves from idle through work and short or long breaks, and the clock paces its ticks from both monotonic and wall time, so a sleep or a stopped process pauses the period rather than replaying it. The rose palette uses 24-bit color where the terminal supports it and falls back to 256 colors otherwise.\n\nAlerts go through an `AlertSender` trait with implementations for Herdr, terminal bells, and desktop notifications, which keeps side effects mockable in tests. It was built test-first, and CI runs `cargo fmt`, `clippy` with warnings denied, and the test suite on Linux and macOS.',
     closingNote: 'Installable with Cargo or as a Herdr plugin.',
+    screenshots: [
+      {
+        src: '/images/projects/mija/mija-work.png',
+        alt: 'Mija in a work period, round 2 of 4, with 24:01 in large rose block digits draining from the top, two of four round pips filled, and key hints for pause, skip, and quit',
+        width: 1281,
+        height: 689,
+      },
+      {
+        src: '/images/projects/mija/mija-break.png',
+        alt: 'Mija on a short break with 04:48 in pale pink block digits, the lighter palette marking the break',
+        width: 1281,
+        height: 689,
+      },
+    ],
     techStack: ['Rust', 'ratatui', 'clap', 'Herdr'],
     github: 'https://github.com/papadavis47/mija',
   },
