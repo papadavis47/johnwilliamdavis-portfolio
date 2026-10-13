@@ -31,7 +31,7 @@ export const books: Book[] = [
     summary:
       'A thorough guide to Rust for systems programmers, covering ownership, borrowing, traits, generics, concurrency and unsafe code in depth.',
     takeaway:
-      'A great companion to the official Rust Book. It explains why the rules exist, not just what they are, and I reach for it all the time as a reference. A very detailed and helpful thing on my shelf.',
+      'A great companion to the official Rust Book. It explains why the rules exist, not just what they are, and I reach for it all the time as a reference. A very detailed and helpful resource to keep on my shelf.',
   },
   {
     title: 'Liferider',
@@ -53,7 +53,7 @@ export const books: Book[] = [
     summary:
       'The story of the Cretan resistance kidnapping a German general in World War II, woven together with a look at the lost skills of natural movement, endurance and fat-fueled stamina.',
     takeaway:
-      'As a trail runner I loved the argument that endurance is a skill you can train, not a gift. It has some fascinating information about fueling for long, difficult journeys.',
+      'As a trail runner I loved the argument that endurance is a skill you can train, not a gift. This book has some fascinating information about fueling for long, difficult journeys.',
   },
   {
     title: 'Rust In Action',
@@ -75,7 +75,7 @@ export const books: Book[] = [
     summary:
       'A New York Times correspondent’s firsthand account of the wars in Afghanistan and Iraq, told in vivid, fragmented scenes.',
     takeaway:
-      "This book is powerful. It is one of the most memorable pieces of war reporting I have read. Similar to Michael Herr's writing, it made the human cost of those years concrete in a way headlines from the Iraq and Afghanistan wars never did.",
+      'This book is powerful. It is one of the most memorable pieces of war reporting I have read. Similar to what Michael Herr did with his writing about the Vietnam war, this book made the human cost of the post 9/11 wars concrete in a way that headlines from the newspapers and magazines never did.',
   },
   {
     title: 'The Things They Carried',
@@ -97,6 +97,6 @@ export const books: Book[] = [
     summary:
       'A practical tour of TypeScript’s type system, from the basics through generics, advanced types and structuring large applications.',
     takeaway:
-      'TypeScript is my daily language, and this book filled the gaps I had. I lean on the types far more deliberately because of it.',
+      'TypeScript is one of my daily programming languages, and this book filled the gaps I had. I lean on the types far more deliberately because of it. It helped me gain some confident fluency when programming with TypeScript.',
   },
 ]
