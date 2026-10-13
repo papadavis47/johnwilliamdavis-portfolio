@@ -1,5 +1,6 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 import { projects } from '../src/app/projects/projects'
+import { books } from '../src/app/interests/books'
 
 const staticRoutes = [
   { path: '/', h1: 'John William Davis' },
@@ -74,6 +75,62 @@ test.describe('projects data ↔ routes contract', () => {
       }
     })
   }
+})
+
+test.describe('reading cards', () => {
+  const bookButton = (page: Page, title: string) =>
+    page.getByRole('button', { name: new RegExp(`^${title}`) })
+
+  test('expand in place, one at a time', async ({ page }) => {
+    const [first, second] = books
+    await page.goto('/interests')
+
+    await bookButton(page, first.title).click()
+    await expect(bookButton(page, first.title)).toHaveAttribute('aria-expanded', 'true')
+    await expect(page.getByText(first.summary)).toBeVisible()
+
+    await bookButton(page, first.title).click()
+    await expect(bookButton(page, first.title)).toHaveAttribute('aria-expanded', 'false')
+    await expect(page.getByText(first.summary)).toHaveCount(0)
+
+    await bookButton(page, first.title).click()
+    await bookButton(page, second.title).click()
+    await expect(bookButton(page, second.title)).toHaveAttribute('aria-expanded', 'true')
+    await expect(bookButton(page, first.title)).toHaveAttribute('aria-expanded', 'false')
+    await expect(page.getByText(second.summary)).toBeVisible()
+    await expect(page.getByText(first.summary)).toHaveCount(0)
+  })
+
+  test('an opened book moves to the top and returns on close', async ({
+    page,
+  }) => {
+    const book = books.at(-2)!
+    await page.goto('/interests')
+    const firstCard = page.locator('li.group').first()
+
+    await bookButton(page, book.title).click()
+    await expect(firstCard.getByRole('button')).toHaveAttribute('aria-expanded', 'true')
+    await expect(firstCard).toContainText(book.title)
+    await expect(bookButton(page, book.title)).toBeFocused()
+
+    await bookButton(page, book.title).click()
+    await expect(firstCard).toContainText(books[0].title)
+    await expect(page.locator('li.group').nth(books.length - 2)).toContainText(book.title)
+    await expect(bookButton(page, book.title)).toBeFocused()
+  })
+
+  test('no empty grid slot when a card is open', async ({ page }) => {
+    await page.goto('/interests')
+    await bookButton(page, books[1].title).click()
+
+    // the leftover closed card stretches across the row, so it spans the list
+    const list = page.locator('li.group').first().locator('..')
+    const last = list.locator('li.group').last()
+    await expect(async () => {
+      const [listBox, lastBox] = await Promise.all([list.boundingBox(), last.boundingBox()])
+      expect(lastBox!.width).toBeCloseTo(listBox!.width, 0)
+    }).toPass()
+  })
 })
 
 test.describe('theme toggle', () => {

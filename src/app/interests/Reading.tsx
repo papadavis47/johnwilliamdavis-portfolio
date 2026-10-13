@@ -1,70 +1,47 @@
 'use client'
 
-import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 import { Book } from 'lucide-react'
+import { LayoutGroup, useReducedMotion } from 'motion/react'
 import { css } from 'styled-system/css'
 import InterestCard from './InterestCard'
-
-const books = [
-  {
-    title: 'Rules to Live By',
-    author: 'Jimmy Chin',
-    coverSrc: '/images/books/rules-to-live-by.jpg',
-    width: 322,
-    height: 500,
-  },
-  {
-    title: 'Programming Rust',
-    author: 'Jim Blandy, Jason Orendorff & Leonora F. S. Tindall',
-    coverSrc: '/images/books/programming-rust.jpg',
-    width: 381,
-    height: 500,
-  },
-  {
-    title: 'Liferider',
-    author: 'Laird Hamilton & Gabrielle Reece',
-    coverSrc: '/images/books/liferider.jpg',
-    width: 331,
-    height: 500,
-  },
-  {
-    title: 'Natural Born Heroes',
-    author: 'Christopher McDougall',
-    coverSrc: '/images/books/natural-born-heroes.jpg',
-    width: 324,
-    height: 500,
-  },
-  {
-    title: 'Rust In Action',
-    author: 'Tim McNamara',
-    coverSrc: '/images/books/rust-in-action.jpg',
-    width: 399,
-    height: 500,
-  },
-  {
-    title: 'The Forever War',
-    author: 'Dexter Filkins',
-    coverSrc: '/images/books/the-forever-war.jpg',
-    width: 336,
-    height: 500,
-  },
-  {
-    title: 'The Things They Carried',
-    author: "Tim O'Brien",
-    coverSrc: '/images/books/the-things-they-carried.jpg',
-    width: 343,
-    height: 500,
-  },
-  {
-    title: 'Programming TypeScript',
-    author: 'Boris Cherny',
-    coverSrc: '/images/books/programming-typescript.jpg',
-    width: 381,
-    height: 500,
-  },
-]
+import BookCard from './BookCard'
+import { books } from './books'
 
 export default function Reading() {
+  // one card open at a time; opening another swaps, reopening closes
+  const [openTitle, setOpenTitle] = useState<string | null>(null)
+  const listRef = useRef<HTMLUListElement>(null)
+  const reduceMotion = useReducedMotion()
+
+  // The open book moves to the top of the list (in the DOM, so tab and
+  // screen-reader order match what's on screen) and takes the full first row.
+  // Closing it puts it back in its original spot.
+  const openBook = books.find((book) => book.title === openTitle)
+  const closed = books.filter((book) => book !== openBook)
+  const ordered = openBook ? [openBook, ...closed] : books
+
+  // If the closed cards are an odd count, the last one would sit alone on its
+  // row, so stretch it across the row too.
+  const stretchedTitle =
+    closed.length % 2 === 1 ? closed.at(-1)?.title : undefined
+
+  // A book opened further down jumps to the top, possibly off screen; bring
+  // the list's top back into view. Measured on the list, not the card, since
+  // motion's layout animation leaves the card transformed mid-flight.
+  useEffect(() => {
+    const list = listRef.current
+    if (!openTitle || !list) return
+    const top = list.getBoundingClientRect().top
+    const navHeight = parseFloat(getComputedStyle(list).scrollMarginTop)
+    if (top < navHeight) {
+      list.scrollIntoView({
+        block: 'start',
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      })
+    }
+  }, [openTitle, reduceMotion])
+
   return (
     <InterestCard icon={Book} title="Reading">
       <p
@@ -79,69 +56,34 @@ export default function Reading() {
         favorites:
       </p>
 
-      <ul
-        className={css({
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '4',
-          listStyle: 'none',
-          p: '0',
-          md: { gridTemplateColumns: 'repeat(2, 1fr)' },
-        })}
-      >
-        {books.map((book, i) => (
-          <li
-            key={book.title}
-            className={css({
-              display: 'grid',
-              gridTemplateColumns: '120px 1fr',
-              gap: '4',
-              alignItems: 'start',
-              bg: 'bg',
-              border: '1px solid',
-              borderColor: 'border',
-              borderRadius: 'control',
-              p: '4',
-              transition: 'border-color 200ms',
-              _hover: { borderColor: 'accent/40' },
-            })}
-          >
-            <Image
-              src={book.coverSrc}
-              alt={`${book.title} book cover`}
-              width={book.width}
-              height={book.height}
-              sizes="120px"
-              loading={i < 2 ? 'eager' : undefined}
-              className={css({
-                width: '120px',
-                height: 'auto',
-                borderRadius: 'sm',
-                boxShadow: 'lifted',
-              })}
+      <LayoutGroup>
+        <ul
+          ref={listRef}
+          className={css({
+            display: 'grid',
+            gridTemplateColumns: '1fr',
+            gap: '4',
+            // clears the sticky header when scrolled into view
+            scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.4))',
+            listStyle: 'none',
+            p: '0',
+            md: { gridTemplateColumns: 'repeat(2, 1fr)' },
+          })}
+        >
+          {ordered.map((book) => (
+            <BookCard
+              key={book.title}
+              book={book}
+              index={books.indexOf(book)}
+              expanded={openTitle === book.title}
+              stretched={stretchedTitle === book.title}
+              onToggle={() =>
+                setOpenTitle((open) => (open === book.title ? null : book.title))
+              }
             />
-            <div>
-              <p
-                className={css({
-                  fontWeight: '600',
-                  color: 'text',
-                  mb: '1',
-                })}
-              >
-                {book.title}
-              </p>
-              <p
-                className={css({
-                  textStyle: 'small',
-                  color: 'text.muted',
-                })}
-              >
-                {book.author}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </LayoutGroup>
     </InterestCard>
   )
 }

@@ -36,5 +36,25 @@ for (const theme of themes) {
         expect(results.violations).toEqual([])
       })
     }
+
+    test('/interests with a book expanded has no WCAG A/AA violations', async ({
+      page,
+    }) => {
+      await page.addInitScript((value) => {
+        window.localStorage.setItem('theme', value)
+      }, theme)
+
+      await page.goto('/interests')
+      await page.waitForTimeout(1500)
+      await page.getByRole('button', { name: /^Rules to Live By/ }).click()
+      // notes fade in over ~350ms; wait so axe doesn't read a mid-fade color
+      await page.waitForTimeout(600)
+
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        .analyze()
+
+      expect(results.violations).toEqual([])
+    })
   })
 }
