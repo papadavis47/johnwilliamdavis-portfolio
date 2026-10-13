@@ -18,9 +18,9 @@ export const books: Book[] = [
     width: 322,
     height: 500,
     summary:
-      'The climber, photographer and co-director of Free Solo distills what decades on big mountains and behind the camera taught him about risk, preparation and commitment.',
+      'The climber, photographer and co-director of Free Solo talks to various unusual and accomplished people who have made an impact on the way that he sees the world and how he lives his life.',
     takeaway:
-      'I read it for the stories and stayed for the discipline. Preparation is what makes boldness safe, which applies as much to shipping software as to climbing.',
+      'Beautifully written and filled with great gems that I am trying to incorporate into my own life as best I can. A great book for reflecting on what is important in my day to day.',
   },
   {
     title: 'Programming Rust',
@@ -31,7 +31,7 @@ export const books: Book[] = [
     summary:
       'A thorough guide to Rust for systems programmers, covering ownership, borrowing, traits, generics, concurrency and unsafe code in depth.',
     takeaway:
-      'This is the book that made the borrow checker click for me. It explains why the rules exist, not just what they are, and I still reach for it as a reference.',
+      'A great companion to the official Rust Book. It explains why the rules exist, not just what they are, and I reach for it all the time as a reference. A very detailed and helpful thing on my shelf.',
   },
   {
     title: 'Liferider',
@@ -42,7 +42,7 @@ export const books: Book[] = [
     summary:
       'The big wave surfing pioneer lays out his approach to training, food, recovery and family, framed around a life spent in the ocean.',
     takeaway:
-      'It pushed me to treat health as a daily practice rather than a goal. The idea of building a life that keeps you ready for the next wave stuck with me.',
+      'It pushed me to treat health as a daily practice rather than a goal. The idea of building a life that keeps you ready for the next wave stuck with me and I try to put that into practice relating to my own trail running.',
   },
   {
     title: 'Natural Born Heroes',
@@ -53,7 +53,7 @@ export const books: Book[] = [
     summary:
       'The story of the Cretan resistance kidnapping a German general in World War II, woven together with a look at the lost skills of natural movement, endurance and fat-fueled stamina.',
     takeaway:
-      'As a trail runner I loved the argument that endurance is a skill you can train, not a gift. It changed how I think about fueling long efforts.',
+      'As a trail runner I loved the argument that endurance is a skill you can train, not a gift. It has some fascinating information about fueling for long, difficult journeys.',
   },
   {
     title: 'Rust In Action',
@@ -64,7 +64,7 @@ export const books: Book[] = [
     summary:
       'Teaches Rust through hands-on systems projects: a CPU emulator, a key-value store, network clients and a tiny operating system kernel.',
     takeaway:
-      'Where Programming Rust gave me the theory, this gave me the practice. Building real things below the application layer made the language feel useful, not academic.',
+      'Where Programming Rust gave me the theory, this gave me the practice. I read it without much background in systems programming. Building real things below the application layer made the language feel useful.',
   },
   {
     title: 'The Forever War',
@@ -75,7 +75,7 @@ export const books: Book[] = [
     summary:
       'A New York Times correspondent’s firsthand account of the wars in Afghanistan and Iraq, told in vivid, fragmented scenes.',
     takeaway:
-      'It is one of the most honest pieces of war reporting I have read. It made the human cost of those years concrete in a way headlines never did.',
+      "This book is powerful. It is one of the most memorable pieces of war reporting I have read. Similar to Michael Herr's writing, it made the human cost of those years concrete in a way headlines from the Iraq and Afghanistan wars never did.",
   },
   {
     title: 'The Things They Carried',
@@ -86,7 +86,7 @@ export const books: Book[] = [
     summary:
       'Linked stories about a platoon of American soldiers in Vietnam that blur the line between memory and fiction.',
     takeaway:
-      'It taught me that a story can be truer than the facts behind it. I return to it as much for the craft of the writing as for the subject.',
+      'This book blew me away with its power. It made me think of the experience of war and how lucky I have been to avoid it so far. It is an amazing book.',
   },
   {
     title: 'Programming TypeScript',
@@ -97,6 +97,6 @@ export const books: Book[] = [
     summary:
       'A practical tour of TypeScript’s type system, from the basics through generics, advanced types and structuring large applications.',
     takeaway:
-      'TypeScript is my daily language, and this book filled the gaps I had picked up on the job. I lean on the types far more deliberately because of it.',
+      'TypeScript is my daily language, and this book filled the gaps I had. I lean on the types far more deliberately because of it.',
   },
 ]
