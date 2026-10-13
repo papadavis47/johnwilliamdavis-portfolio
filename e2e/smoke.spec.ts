@@ -109,13 +109,26 @@ test.describe('reading cards', () => {
     const firstCard = page.locator('li.group').first()
 
     await bookButton(page, book.title).click()
-    await expect(firstCard.getByRole('button')).toHaveAttribute('aria-expanded', 'true')
+    await expect(firstCard.getByRole('button', { expanded: true })).toHaveCount(1)
     await expect(firstCard).toContainText(book.title)
     await expect(bookButton(page, book.title)).toBeFocused()
 
     await bookButton(page, book.title).click()
     await expect(firstCard).toContainText(books[0].title)
     await expect(page.locator('li.group').nth(books.length - 2)).toContainText(book.title)
+    await expect(bookButton(page, book.title)).toBeFocused()
+  })
+
+  test('bottom Hide notes closes the card and returns focus', async ({
+    page,
+  }) => {
+    const book = books[0]
+    await page.goto('/interests')
+    await bookButton(page, book.title).click()
+
+    await page.getByRole('button', { name: `Hide notes on ${book.title}` }).click()
+    await expect(bookButton(page, book.title)).toHaveAttribute('aria-expanded', 'false')
+    await expect(page.getByText(book.summary)).toHaveCount(0)
     await expect(bookButton(page, book.title)).toBeFocused()
   })
 

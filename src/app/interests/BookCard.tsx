@@ -1,9 +1,9 @@
 'use client'
 
-import { useId, useLayoutEffect, useRef } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef } from 'react'
 import Image from 'next/image'
-import { ChevronDown } from 'lucide-react'
-import { AnimatePresence, motion } from 'motion/react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import { css, cx } from 'styled-system/css'
 import type { Book } from './books'
 
@@ -30,6 +30,8 @@ const cardBase = css({
   border: '1px solid',
   borderColor: 'border',
   borderRadius: 'control',
+  // clears the sticky header when a closed card is scrolled back into view
+  scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.4))',
   transition: 'border-color 200ms, box-shadow 200ms, translate 200ms',
   '&:hover, &:has(:focus-visible)': {
     borderColor: 'accent/40',
@@ -109,9 +111,6 @@ const hint = css({
   },
 })
 
-const chevron = css({ transition: 'rotate 200ms' })
-const chevronOpen = css({ rotate: '180deg' })
-
 const notes = css({
   gridColumn: '1 / -1',
   display: 'flex',
@@ -119,7 +118,15 @@ const notes = css({
   gap: '4',
   maxWidth: 'content',
   pt: '4',
+  // extra room under the last line so long notes don't end flush on the edge
+  pb: '6',
   md: { gridColumn: '2' },
+})
+
+const noteParagraphs = css({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4',
 })
 
 const noteLabel = css({
@@ -131,6 +138,41 @@ const noteLabel = css({
 
 const noteBody = css({ textStyle: 'prose', color: 'text' })
 
+// Long notes leave the top toggle far behind; this closes from where you
+// finished reading.
+const bottomClose = css({
+  alignSelf: 'flex-start',
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '1.5',
+  mt: '2',
+  textStyle: 'body',
+  color: 'accent',
+  textUnderlineOffset: '3px',
+  cursor: 'pointer',
+  borderRadius: 'sm',
+  transition: 'color 200ms',
+  _hover: { color: 'accent.hover', textDecoration: 'underline' },
+  _focusVisible: {
+    outline: '2px solid',
+    outlineColor: 'accent',
+    outlineOffset: '4px',
+  },
+})
+
+// A blank line in the copy is a paragraph break, as in projects.ts.
+function NoteParagraphs({ text }: { text: string }) {
+  return (
+    <div className={noteParagraphs}>
+      {text.split('\n\n').map((paragraph) => (
+        <p key={paragraph} className={noteBody}>
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  )
+}
+
 export default function BookCard({
   book,
   index,
@@ -139,8 +181,11 @@ export default function BookCard({
   onToggle,
 }: BookCardProps) {
   const notesId = useId()
+  const cardRef = useRef<HTMLLIElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const refocus = useRef(false)
+  const followOnClose = useRef(false)
+  const reduceMotion = useReducedMotion()
 
   // Opening and closing reorders the list, and React may move this card's
   // node to do it; a moved node drops focus, so hand it back.
@@ -152,13 +197,39 @@ export default function BookCard({
     }
   }, [expanded])
 
+  // Closing sends the card back to its original spot, often off screen;
+  // follow it there once the layout animation (0.3s) has moved it, since
+  // mid-flight its box is still transformed.
+  useEffect(() => {
+    if (expanded || !followOnClose.current) return
+    followOnClose.current = false
+    const timer = setTimeout(
+      () =>
+        cardRef.current?.scrollIntoView({
+          block: 'nearest',
+          behavior: reduceMotion ? 'auto' : 'smooth',
+        }),
+      reduceMotion ? 0 : 320,
+    )
+    return () => clearTimeout(timer)
+  }, [expanded, reduceMotion])
+
   const handleClick = () => {
     refocus.current = document.activeElement === buttonRef.current
+    followOnClose.current = expanded
+    onToggle()
+  }
+
+  // the bottom button unmounts with the notes, so focus goes to the toggle
+  const handleBottomClose = (event: React.MouseEvent<HTMLButtonElement>) => {
+    refocus.current = document.activeElement === event.currentTarget
+    followOnClose.current = true
     onToggle()
   }
 
   return (
     <motion.li
+      ref={cardRef}
       layout
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className={cx(
@@ -168,10 +239,7 @@ export default function BookCard({
         stretched && cardStretched,
       )}
     >
-      <motion.div
-        layout
-        className={cx(coverBase, expanded && coverExpanded)}
-      >
+      <motion.div layout className={cx(coverBase, expanded && coverExpanded)}>
         <Image
           src={book.coverSrc}
           alt={`${book.title} book cover`}
@@ -198,38 +266,46 @@ export default function BookCard({
         <span className={css({ textStyle: 'small', color: 'text.muted' })}>
           {book.author}
         </span>
-        <span className={hint}>
-          {expanded ? 'Hide notes' : 'My notes'}
-          <ChevronDown
-            size={18}
-            aria-hidden
-            className={cx(chevron, expanded && chevronOpen)}
-          />
-        </span>
+        {/* Open, the visible close lives at the bottom of the notes; the title
+            block stays the toggle (and keeps aria-expanded) without a label. */}
+        {!expanded && (
+          <span className={hint}>
+            My notes
+            <ChevronDown size={18} aria-hidden />
+          </span>
+        )}
       </motion.button>
 
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            key="notes"
-            id={notesId}
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, delay: 0.1 }}
-            className={notes}
+      {/* No exit animation: closing also shrinks and moves the card, and notes
+          left fading inside it reflow into a tall, narrow column. They fade in
+          on open and vanish on close. */}
+      {expanded && (
+        <motion.div
+          id={notesId}
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.1 }}
+          className={notes}
+        >
+          <div>
+            <p className={noteLabel}>Summary</p>
+            <NoteParagraphs text={book.summary} />
+          </div>
+          <div>
+            <p className={noteLabel}>Why I read it</p>
+            <NoteParagraphs text={book.takeaway} />
+          </div>
+          <button
+            type="button"
+            aria-label={`Hide notes on ${book.title}`}
+            onClick={handleBottomClose}
+            className={bottomClose}
           >
-            <div>
-              <p className={noteLabel}>Summary</p>
-              <p className={noteBody}>{book.summary}</p>
-            </div>
-            <div>
-              <p className={noteLabel}>Why I read it</p>
-              <p className={noteBody}>{book.takeaway}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Hide notes
+            <ChevronUp size={18} aria-hidden />
+          </button>
+        </motion.div>
+      )}
     </motion.li>
   )
 }
