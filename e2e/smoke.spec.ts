@@ -32,6 +32,23 @@ test.describe('routes render', () => {
     await expect(nalaLink).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
+  test('resume PDF is served and opens in a new tab', async ({
+    page,
+    request,
+  }) => {
+    const href = '/john-william-davis-resume.pdf'
+    const response = await request.get(href)
+    expect(response.status()).toBe(200)
+    expect(response.headers()['content-type']).toContain('application/pdf')
+
+    await page.goto('/')
+    for (const scope of [page.locator('main'), page.locator('footer')]) {
+      const link = scope.getByRole('link', { name: 'Resume' })
+      await expect(link).toHaveAttribute('href', href)
+      await expect(link).toHaveAttribute('target', '_blank')
+    }
+  })
+
   test('unknown project slug 404s', async ({ page }) => {
     const response = await page.goto('/projects/does-not-exist')
     expect(response?.status()).toBe(404)

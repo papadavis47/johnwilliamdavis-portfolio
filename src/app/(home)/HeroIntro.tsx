@@ -157,6 +157,15 @@ export default function HeroIntro() {
           Get in touch
         </a>
 
+        <a
+          href="/john-william-davis-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={button({ visual: 'outline', size: 'md' })}
+        >
+          View Resume
+        </a>
+
         <div className={css({ display: 'flex', gap: '5', ml: '2' })}>
           {socialLinks.map(({ href, icon: Icon, label }) => (
             <motion.a

@@ -1,7 +1,7 @@
 'use client'
 
 import { css } from 'styled-system/css'
-import { Mail } from 'lucide-react'
+import { FileText, Mail } from 'lucide-react'
 import { Github, Linkedin } from '@/design-system/icons'
 import { motion } from 'motion/react'
 
@@ -9,6 +9,7 @@ const socialLinks = [
   { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },
   { href: 'https://www.linkedin.com/in/john-william-davis/', icon: Linkedin, label: 'LinkedIn' },
   { href: 'mailto:jwdavisdeveloper@gmail.com', icon: Mail, label: 'Email' },
+  { href: '/john-william-davis-resume.pdf', icon: FileText, label: 'Resume' },
 ]
 
 function Footer() {
