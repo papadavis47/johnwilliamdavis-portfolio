@@ -2,14 +2,13 @@
 
 import { css } from 'styled-system/css'
 import { FileText, Mail } from 'lucide-react'
-import { Github, Linkedin } from '@/design-system/icons'
 import { motion } from 'motion/react'
+import { emailHref, resumeHref, socialLinks } from '@/design-system/contact'
 
-const socialLinks = [
-  { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/john-william-davis/', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'mailto:jwdavisdeveloper@gmail.com', icon: Mail, label: 'Email' },
-  { href: '/john-william-davis-resume.pdf', icon: FileText, label: 'Resume' },
+const footerLinks = [
+  ...socialLinks,
+  { href: emailHref, icon: Mail, label: 'Email' },
+  { href: resumeHref, icon: FileText, label: 'Resume' },
 ]
 
 function Footer() {
@@ -36,12 +35,16 @@ function Footer() {
         })}
       >
         <div
+          // 44px tap targets (10px padding around a 24px icon); the negative
+          // margin cancels that padding so the glyphs keep their old spot,
+          // first one on the copyright's left edge
           className={css({
             display: 'flex',
-            gap: '6',
+            gap: '1',
+            m: '-2.5',
           })}
         >
-          {socialLinks.map(({ href, icon: Icon, label }) => (
+          {footerLinks.map(({ href, icon: Icon, label }) => (
             <motion.a
               key={label}
               href={href}
@@ -49,6 +52,8 @@ function Footer() {
               rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
               aria-label={label}
               className={css({
+                display: 'inline-flex',
+                p: '2.5',
                 color: 'text.muted',
                 transition: 'color 300ms',
                 _hover: {
@@ -58,7 +63,7 @@ function Footer() {
               whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Icon size={22} />
+              <Icon size={24} />
             </motion.a>
           ))}
         </div>

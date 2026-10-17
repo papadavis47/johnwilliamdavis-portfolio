@@ -54,6 +54,8 @@ function Navigation() {
         <div
           className={css({ display: 'flex', alignItems: 'center', gap: '6' })}
         >
+          {/* Inline links from md; below, the drawer. The home hero's About
+              button (HeroActions) hides at this same breakpoint. */}
           <div
             className={css({
               display: 'none',

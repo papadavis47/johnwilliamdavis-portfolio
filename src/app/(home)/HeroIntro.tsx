@@ -1,10 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { button } from 'styled-system/recipes'
-import { Github, Linkedin } from '@/design-system/icons'
+import HeroActions from './HeroActions'
 import TerminalCard from './TerminalCard'
 
 // The thesis stands alone; the projects that back it up follow. Fused into one
@@ -17,15 +15,6 @@ const projects =
 
 const adapting =
   'Things are shifting fast in the software industry, most of all toward agentic engineering. Adapting quickly is my main skill; lately that means getting real leverage from agents.'
-
-const socialLinks = [
-  { href: 'https://github.com/papadavis47', icon: Github, label: 'GitHub' },
-  {
-    href: 'https://www.linkedin.com/in/john-william-davis/',
-    icon: Linkedin,
-    label: 'LinkedIn',
-  },
-]
 
 export default function HeroIntro() {
   return (
@@ -127,65 +116,8 @@ export default function HeroIntro() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className={css({
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: '3',
-          alignItems: 'center',
-          sm: { gap: '4' },
-        })}
       >
-        <Link
-          href="/projects"
-          className={button({ visual: 'solid', size: 'md' })}
-        >
-          View Projects
-        </Link>
-
-        <Link
-          href="/about"
-          className={button({ visual: 'outline', size: 'md' })}
-        >
-          About
-        </Link>
-
-        <a
-          href="mailto:jwdavisdeveloper@gmail.com"
-          className={button({ visual: 'outline', size: 'md' })}
-        >
-          Get in touch
-        </a>
-
-        <a
-          href="/john-william-davis-resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={button({ visual: 'outline', size: 'md' })}
-        >
-          View Resume
-        </a>
-
-        <div className={css({ display: 'flex', gap: '5', ml: '2' })}>
-          {socialLinks.map(({ href, icon: Icon, label }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className={css({
-                color: 'accent',
-                transition: 'color 300ms',
-                _hover: { color: 'accent.hover' },
-              })}
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Icon size={22} />
-            </motion.a>
-          ))}
-        </div>
+        <HeroActions />
       </motion.div>
     </>
   )
