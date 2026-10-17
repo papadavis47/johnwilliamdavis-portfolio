@@ -61,13 +61,16 @@ export default function Reading() {
           ref={listRef}
           className={css({
             display: 'grid',
-            gridTemplateColumns: '1fr',
+            // minmax(0, …): a card's min-content never widens the column
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            // BookCard lays out against this width (cover beside or above)
+            containerType: 'inline-size',
             gap: '4',
             // clears the sticky header when scrolled into view
             scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.4))',
             listStyle: 'none',
             p: '0',
-            md: { gridTemplateColumns: 'repeat(2, 1fr)' },
+            md: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
           })}
         >
           {ordered.map((book) => (

@@ -16,14 +16,22 @@ interface BookCardProps {
   onToggle: () => void
 }
 
+// Narrow cards (phones) stack the cover above the title; a title word like
+// "Programming" can't fit beside a 120px cover under ~20rem. The query reads
+// the list's width (Reading sets `containerType`); from md the list splits
+// into two columns but each is still wide enough to sit side by side.
+//
 // Lift and tilt use the individual `translate`/`rotate` properties, not
 // `transform`: motion's layout animation owns `transform` inline and would
 // clobber a CSS transform on the same element.
 const cardBase = css({
   position: 'relative',
   display: 'grid',
-  gridTemplateColumns: 'auto 1fr',
+  gridTemplateColumns: 'minmax(0, 1fr)',
   columnGap: '4',
+  '@container (min-width: 20rem)': {
+    gridTemplateColumns: 'auto minmax(0, 1fr)',
+  },
   alignItems: 'start',
   p: '4',
   bg: 'bg',
@@ -67,13 +75,17 @@ const coverImage = css({
 })
 
 const toggle = css({
-  gridColumn: '2',
-  gridRow: '1',
+  gridColumn: '1',
+  gridRow: '2',
+  mt: '4',
+  '@container (min-width: 20rem)': { gridColumn: '2', gridRow: '1', mt: '0' },
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
   gap: '1',
   textAlign: 'left',
+  // last resort if a title word still outgrows its column
+  overflowWrap: 'break-word',
   cursor: 'pointer',
   borderRadius: 'sm',
   _focusVisible: {
