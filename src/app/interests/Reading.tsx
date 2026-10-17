@@ -26,20 +26,16 @@ export default function Reading() {
   const stretchedTitle =
     closed.length % 2 === 1 ? closed.at(-1)?.title : undefined
 
-  // A book opened further down jumps to the top, possibly off screen; bring
-  // the list's top back into view. Measured on the list, not the card, since
-  // motion's layout animation leaves the card transformed mid-flight.
+  // The open book jumps to the top of the list; snap the list's top (and so
+  // the card's) just under the sticky header, wherever it was on screen.
+  // Scrolls to the list, not the card, since motion's layout animation leaves
+  // the card transformed mid-flight.
   useEffect(() => {
-    const list = listRef.current
-    if (!openTitle || !list) return
-    const top = list.getBoundingClientRect().top
-    const navHeight = parseFloat(getComputedStyle(list).scrollMarginTop)
-    if (top < navHeight) {
-      list.scrollIntoView({
-        block: 'start',
-        behavior: reduceMotion ? 'auto' : 'smooth',
-      })
-    }
+    if (!openTitle) return
+    listRef.current?.scrollIntoView({
+      block: 'start',
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    })
   }, [openTitle, reduceMotion])
 
   return (
@@ -66,8 +62,9 @@ export default function Reading() {
             // BookCard lays out against this width (cover beside or above)
             containerType: 'inline-size',
             gap: '4',
-            // clears the sticky header when scrolled into view
-            scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.4))',
+            // lands just under the sticky header when scrolled into view; the
+            // 4px sliver shows the card arrived rather than slid beneath
+            scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.1))',
             listStyle: 'none',
             p: '0',
             md: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },

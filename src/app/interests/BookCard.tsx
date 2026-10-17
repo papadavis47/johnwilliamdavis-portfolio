@@ -45,8 +45,14 @@ const cardBase = css({
     borderColor: 'accent/40',
     boxShadow: 'hover',
   },
+  // No lift once open: the card snaps to a set gap under the header and a
+  // lift would eat into it. Hover lift only where hover is real; a tap leaves
+  // :hover stuck on touch screens.
   _motionSafe: {
-    '&:hover, &:has(:focus-visible)': { translate: '0 -2px' },
+    '&:has(:focus-visible):not([data-open])': { translate: '0 -2px' },
+    '@media (hover: hover)': {
+      '&:hover:not([data-open])': { translate: '0 -2px' },
+    },
   },
 })
 
@@ -244,6 +250,7 @@ export default function BookCard({
       ref={cardRef}
       layout
       transition={{ duration: 0.3, ease: 'easeOut' }}
+      data-open={expanded || undefined}
       className={cx(
         'group',
         cardBase,
