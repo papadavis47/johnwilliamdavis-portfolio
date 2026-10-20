@@ -5,13 +5,8 @@ import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import PageContainer from '@/design-system/PageContainer'
 import ProjectCard from '@/design-system/ProjectCard'
-import { projects } from '@/app/projects/projects'
 import HeroIntro from './HeroIntro'
-
-const featuredSlugs = ['iwantyoutoknow', 'mountains', 'mija']
-const featured = projects.filter((project) =>
-  featuredSlugs.includes(project.slug),
-)
+import { featured } from './content'
 
 export default function HomeContent() {
   return (

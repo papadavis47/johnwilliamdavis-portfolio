@@ -8,12 +8,10 @@ import Footer from '@/layout/Footer'
 import SkipToContent from '@/layout/SkipToContent'
 import PageTransition from '@/layout/PageTransition'
 import { css } from 'styled-system/css'
-
-const description =
-  'Portfolio of John William Davis, a software engineer working in Rust and TypeScript, with Python when needed.'
+import { siteDescription as description, siteUrl } from '@/design-system/site'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.johnwilliamdavis.com'),
+  metadataBase: new URL(siteUrl),
   title: {
     template: '%s | John William Davis',
     default: 'John William Davis | Developer Portfolio',
