@@ -7,7 +7,7 @@ function BrandLink() {
   return (
     <Link
       href="/"
-      aria-label="John William Davis — home"
+      aria-label="John William Davis, home"
       className={css({
         display: 'inline-flex',
         alignItems: 'center',

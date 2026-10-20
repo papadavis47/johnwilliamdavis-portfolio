@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 import { OG_SIZE, OgFrame, loadOgFonts, og } from '@/design-system/og/og'
 import { projects } from '../projects'
 
-export const alt = 'Project — John William Davis'
+export const alt = 'Project | John William Davis'
 export const size = OG_SIZE
 export const contentType = 'image/png'
 
