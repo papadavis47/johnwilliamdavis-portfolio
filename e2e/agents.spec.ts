@@ -169,6 +169,11 @@ test('sitemap lists exactly the canonical pages, each live', async ({
   expect(entries.map(({ loc }) => loc).sort()).toEqual(
     pages.map(({ path }) => new URL(path, site).href).sort(),
   )
+  for (const { slug, updated } of projects) {
+    expect(updated).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+    const entry = entries.find(({ loc }) => loc === `${site}/projects/${slug}`)
+    expect(entry?.lastmod, slug).toBe(updated)
+  }
   for (const { loc, lastmod } of entries) {
     if (lastmod) expect(Number.isNaN(Date.parse(lastmod))).toBe(false)
     const live = await request.get(new URL(loc).pathname)

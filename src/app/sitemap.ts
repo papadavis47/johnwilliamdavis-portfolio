@@ -39,10 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: '/projects',
       sources: ['src/app/projects/ProjectsContent.tsx', 'src/app/projects/markdown.ts', projectsData],
     },
-    ...projects.map(({ slug }) => ({
-      path: `/projects/${slug}`,
-      sources: [projectsData, 'src/app/projects/[slug]', `public/images/projects/${slug}`],
-    })),
     { path: '/about', sources: ['src/app/about'] },
     {
       path: '/interests',
@@ -50,8 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  return pages.map(({ path, sources }) => ({
-    url: absoluteUrl(path),
-    lastModified: lastCommitted(sources),
+  // A shared projects.ts would date every case study by the latest edit to
+  // any of them, so each project carries its own date.
+  const caseStudies = projects.map(({ slug, updated }) => ({
+    url: absoluteUrl(`/projects/${slug}`),
+    lastModified: updated,
   }))
+
+  return [
+    ...pages.map(({ path, sources }) => ({
+      url: absoluteUrl(path),
+      lastModified: lastCommitted(sources),
+    })),
+    ...caseStudies,
+  ]
 }

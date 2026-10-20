@@ -1,5 +1,8 @@
 export type Project = {
   slug: string
+  // YYYY-MM-DD: when this case study's copy or screenshots last changed.
+  // The sitemap's lastmod for its page; bump it with any content edit.
+  updated: string
   title: string
   summary: string
   description: string
@@ -18,6 +21,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'iwantyoutoknow',
+    updated: '2026-08-23',
     title: 'I want you to know',
     summary: 'A shared memory and communication vault for parents',
     description:
@@ -42,6 +46,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'mountains',
+    updated: '2026-08-28',
     title: 'Mountains',
     summary:
       'A terminal training log for trail running and nutrition awareness',
@@ -72,6 +77,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'caleb',
+    updated: '2026-10-05',
     title: 'caleb',
     summary: 'A terminal task manager for coding sessions',
     description:
@@ -112,6 +118,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'mija',
+    updated: '2026-10-11',
     title: 'Mija',
     summary: 'A terminal Pomodoro timer',
     description:
@@ -152,6 +159,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'sokay',
+    updated: '2026-07-17',
     title: 'Sokay',
     summary: 'A mindful eating tracker',
     description:
@@ -176,6 +184,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'rattlesnake',
+    updated: '2026-08-29',
     title: 'Rattlesnake',
     summary: 'A tool for learning Python concepts, inspired by Rustlings',
     description:

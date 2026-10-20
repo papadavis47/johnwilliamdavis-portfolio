@@ -74,7 +74,7 @@ export default function Writing() {
       >
         <Image
           src="/images/writing/blog-og.webp"
-          alt="Comfortable Feeling Dumb — a blog about software engineering (and trail running)"
+          alt="Comfortable Feeling Dumb: a blog about software engineering (and trail running)"
           width={1200}
           height={630}
           sizes="(max-width: 768px) 100vw, 600px"
