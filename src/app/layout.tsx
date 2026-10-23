@@ -8,23 +8,27 @@ import Footer from '@/layout/Footer'
 import SkipToContent from '@/layout/SkipToContent'
 import PageTransition from '@/layout/PageTransition'
 import { css } from 'styled-system/css'
-import { siteDescription as description, siteUrl } from '@/design-system/site'
+import {
+  siteDescription as description,
+  siteTitle,
+  siteUrl,
+} from '@/design-system/site'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: '%s | John William Davis',
-    default: 'John William Davis | Developer Portfolio',
+    default: siteTitle,
   },
   description,
   openGraph: {
-    title: 'John William Davis | Developer Portfolio',
+    title: siteTitle,
     description,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'John William Davis | Developer Portfolio',
+    title: siteTitle,
     description,
   },
 }

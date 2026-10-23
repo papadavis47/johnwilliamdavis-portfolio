@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import ProjectContent from './ProjectContent'
 import { getProjectBySlug, projects } from '../projects'
 import { stripMarkup } from './markup'
+import { pageMetadata } from '@/design-system/site'
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -24,10 +25,12 @@ export async function generateMetadata({
     }
   }
 
-  return {
+  return pageMetadata({
     title: project.title,
     description: stripMarkup(project.description),
-  }
+    path: `/projects/${project.slug}`,
+    type: 'article',
+  })
 }
 
 export default async function ProjectPage({

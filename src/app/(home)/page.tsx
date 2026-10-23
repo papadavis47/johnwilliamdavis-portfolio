@@ -1,15 +1,18 @@
-import type { Metadata } from 'next'
 import { emailHref, socialLinks } from '@/design-system/contact'
-import { absoluteUrl, siteDescription } from '@/design-system/site'
+import {
+  absoluteUrl,
+  pageMetadata,
+  siteDescription,
+  siteTitle,
+} from '@/design-system/site'
 import HomeContent from './HomeContent'
 
-export const metadata: Metadata = {
-  title: {
-    absolute: 'John William Davis | TypeScript, Rust & Python Developer',
-  },
+export const metadata = pageMetadata({
+  title: { absolute: siteTitle },
   description:
-    'Portfolio of John William Davis, a software developer specializing in TypeScript, Rust, and Python.',
-}
+    'Portfolio of John William Davis, a software engineer specializing in TypeScript, Rust, and Python.',
+  path: '/',
+})
 
 // schema.org Person + WebSite, linked by @id. Only facts the site states: the
 // hero's title and languages, the contact links, the site description.

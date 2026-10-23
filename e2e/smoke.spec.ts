@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test'
 import { projects } from '../src/app/projects/projects'
 import { books } from '../src/app/interests/books'
+import { siteUrl } from '../src/design-system/site'
 
 const staticRoutes = [
   { path: '/', h1: 'John William Davis' },
@@ -53,6 +54,36 @@ test.describe('routes render', () => {
     const response = await page.goto('/projects/does-not-exist')
     expect(response?.status()).toBe(404)
   })
+})
+
+// Link previews (LinkedIn, Slack) read og:/twitter:, not <title>, so each page
+// must carry its own rather than the layout's site-wide pair.
+test.describe('link preview tags match the page', () => {
+  const paths = [
+    ...staticRoutes.map((route) => route.path),
+    ...projects.map((project) => `/projects/${project.slug}`),
+  ]
+  const meta = (page: Page, attr: string, key: string) =>
+    page.locator(`meta[${attr}="${key}"]`).getAttribute('content')
+
+  for (const path of paths) {
+    test(`${path} og:/twitter: tags`, async ({ page }) => {
+      await page.goto(path)
+      const title = await page.title()
+      const description = await meta(page, 'name', 'description')
+
+      expect(await meta(page, 'property', 'og:title')).toBe(title)
+      expect(await meta(page, 'name', 'twitter:title')).toBe(title)
+      expect(await meta(page, 'property', 'og:description')).toBe(description)
+      expect(await meta(page, 'name', 'twitter:description')).toBe(
+        description,
+      )
+      expect(await meta(page, 'property', 'og:url')).toBe(
+        siteUrl + (path === '/' ? '' : path),
+      )
+      expect(await meta(page, 'property', 'og:image')).toBeTruthy()
+    })
+  }
 })
 
 test.describe('projects data ↔ routes contract', () => {
