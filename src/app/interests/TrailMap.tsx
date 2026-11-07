@@ -33,49 +33,49 @@ const trail1: TrailPhoto = {
   alt: 'A narrow dirt singletrack winding through dense green undergrowth in a Pacific Northwest forest',
   width: 1200,
   height: 1600,
-  caption: 'Singletrack through the undergrowth',
+  caption: 'Singletrack',
 }
 const oldGrowth: TrailPhoto = {
   src: '/images/trail/old-growth.webp',
   alt: 'Looking up at tall, straight conifers with sunlight filtering through the canopy',
   width: 1200,
   height: 1600,
-  caption: 'Under the tall firs',
+  caption: 'Within the tall firs',
 }
 const ferns: TrailPhoto = {
   src: '/images/trail/fern-singletrack.webp',
   alt: 'A dirt trail curving downhill between thick ferns and mossy trees',
   width: 1200,
   height: 1600,
-  caption: 'Fern-lined singletrack',
+  caption: 'More singletrack',
 }
 const summitPhoto: TrailPhoto = {
   src: '/images/trail/summit.webp',
   alt: 'A forested hilltop with a radio tower under a deep blue sky, seen across a rocky clearing',
   width: 1200,
   height: 1600,
-  caption: 'Topping out under a blue sky',
+  caption: 'Topping out',
 }
 const blowdown: TrailPhoto = {
   src: '/images/trail/blowdown.webp',
   alt: 'Fallen trees lying across a forest trail amid green undergrowth',
   width: 1600,
   height: 1200,
-  caption: 'Blowdown across the trail',
+  caption: 'Blowdown',
 }
 const trailBreak: TrailPhoto = {
   src: '/images/trail/trail-break.webp',
   alt: 'Legs and blue running shoes stretched out in sunny grass at the edge of an evergreen forest',
   width: 1200,
   height: 1600,
-  caption: 'A breather in a sunny clearing',
+  caption: 'A breather',
 }
 const trail2: TrailPhoto = {
   src: '/images/trail/trail-2.webp',
   alt: 'Low sun breaking through evergreens and casting long shadows across a forest trail',
   width: 1200,
   height: 1600,
-  caption: 'Late light through the evergreens',
+  caption: 'Late light',
 }
 
 // Landscapes run full width; portraits pair up either side of the trail, and
@@ -87,9 +87,9 @@ type Row =
 const rows: Row[] = [
   { kind: 'wide', photo: selfie },
   { kind: 'pair', photos: [trail1, oldGrowth] },
-  { kind: 'pair', photos: [ferns, summitPhoto] },
+  { kind: 'pair', photos: [ferns, trail2] },
   { kind: 'wide', photo: blowdown },
-  { kind: 'pair', photos: [trailBreak, trail2] },
+  { kind: 'pair', photos: [trailBreak, summitPhoto] },
 ]
 
 // Bleeds partway into the card's padding on desktop so the photos get the
@@ -250,11 +250,9 @@ function useTrailGeometry() {
       const dots: number[] = []
       el.querySelectorAll('[data-waypoint]').forEach((node) => {
         const r = node.getBoundingClientRect()
-        const coversSpine =
-          r.left - box.left < c && r.right - box.left > c
+        const coversSpine = r.left - box.left < c && r.right - box.left > c
         const y = Math.round(r.top + r.height / 2 - box.top)
-        if (!coversSpine && !dots.some((d) => Math.abs(d - y) < 4))
-          dots.push(y)
+        if (!coversSpine && !dots.some((d) => Math.abs(d - y) < 4)) dots.push(y)
       })
       setGeo({ w: box.width, h: box.height, c, dots })
     }
@@ -300,10 +298,7 @@ function Dot({
   const fill = useTransform(progress, [(y - 12) / h, (y + 4) / h], [0, 1])
   return (
     <span className={dot} style={{ left: x, top: y }} aria-hidden="true">
-      <motion.span
-        className={dotFill}
-        style={{ scale: still ? 1 : fill }}
-      />
+      <motion.span className={dotFill} style={{ scale: still ? 1 : fill }} />
     </span>
   )
 }
@@ -437,7 +432,8 @@ function Photo({
 
 // running photo number across rows: 01 to 08
 const rowStart = rows.reduce<number[]>((starts, row, i) => {
-  const prev = i === 0 ? 1 : starts[i - 1] + (rows[i - 1].kind === 'pair' ? 2 : 1)
+  const prev =
+    i === 0 ? 1 : starts[i - 1] + (rows[i - 1].kind === 'pair' ? 2 : 1)
   return [...starts, prev]
 }, [])
 
@@ -463,15 +459,17 @@ export default function TrailMap() {
         <span className={capLabel}>Trailhead</span>
       </div>
       <div ref={ref} className={track}>
-        {geo && (
-          <Spine geo={geo} progress={progress} still={!!reduceMotion} />
-        )}
+        {geo && <Spine geo={geo} progress={progress} still={!!reduceMotion} />}
         <ol>
           {rows.map((row, i) =>
             row.kind === 'wide' ? (
               // no spine anchor here: on desktop this row has no spine column
               <li key={row.photo.src} className={wideRow}>
-                <Photo photo={row.photo} number={rowStart[i]} placement="wide" />
+                <Photo
+                  photo={row.photo}
+                  number={rowStart[i]}
+                  placement="wide"
+                />
               </li>
             ) : (
               <li key={row.photos[0].src} className={pairRow}>
