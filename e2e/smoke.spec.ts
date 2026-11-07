@@ -125,6 +125,20 @@ test.describe('projects data ↔ routes contract', () => {
   }
 })
 
+test.describe('trail map', () => {
+  test('every trail photo loads', async ({ page }) => {
+    await page.goto('/interests')
+    const photos = page.locator('main figure img')
+    await expect(photos).toHaveCount(8)
+    for (const img of await photos.all()) {
+      await img.scrollIntoViewIfNeeded()
+      await expect
+        .poll(() => img.evaluate((el: HTMLImageElement) => el.naturalWidth))
+        .toBeGreaterThan(0)
+    }
+  })
+})
+
 test.describe('reading cards', () => {
   const bookButton = (page: Page, title: string) =>
     page.getByRole('button', { name: new RegExp(`^${title}`) })

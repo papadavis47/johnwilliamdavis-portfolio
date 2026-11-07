@@ -21,6 +21,7 @@ export function interestsMarkdown() {
     'Blog: [Comfortable Feeling Dumb](https://www.comfortablefeelingdumb.com/)',
     '## Trail Running',
     'Trail running is my way of disconnecting from screens and reconnecting with nature and with my own body. On a beautiful trail, the noise of a complicated world quiets. There are few things more core to who we humans are as a species than moving on foot across a landscape.',
+    'Close to home I run or hike the Issaquah Alps: Tiger Mountain, Cougar Mountain, and Squak Mountain. Mossy singletrack, towering firs and cedars, ferns everywhere, and the occasional clearing that opens onto the Cascades. Sometimes my daughter comes along.',
     `My love for the mountains inspired [Mountains](${absoluteUrl('/projects/mountains')}), a terminal user interface for tracking runs and exploring trail data.`,
     'I am currently working on an early-stage [web version](https://github.com/papadavis47/mountains-web) of Mountains.',
   ].join('\n\n')

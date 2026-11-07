@@ -57,7 +57,9 @@ export default function Writing() {
           display: 'flex',
           flexDirection: 'column',
           gap: '4',
-          maxWidth: '600px',
+          // Same edges as the full-width trail photos: card content plus the
+          // 1rem bleed into the card's padding on desktop.
+          mx: { md: '-4' },
           mb: '3',
           border: '1px solid',
           borderColor: 'border',
@@ -77,7 +79,7 @@ export default function Writing() {
           alt="Comfortable Feeling Dumb: a blog about software engineering (and trail running)"
           width={1200}
           height={630}
-          sizes="(max-width: 768px) 100vw, 600px"
+          sizes="(max-width: 768px) 100vw, 830px"
           className={css({
             width: '100%',
             height: 'auto',
@@ -90,7 +92,7 @@ export default function Writing() {
           alt="Landing page of my blog, Comfortable Feeling Dumb"
           width={1440}
           height={900}
-          sizes="(max-width: 768px) 100vw, 600px"
+          sizes="(max-width: 768px) 100vw, 830px"
           className={css({
             width: '100%',
             height: 'auto',
