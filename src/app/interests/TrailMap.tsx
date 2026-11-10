@@ -92,54 +92,71 @@ const rows: Row[] = [
   { kind: 'pair', photos: [trailBreak, summitPhoto] },
 ]
 
-// Bleeds partway into the card's padding on desktop so the photos get the
-// width; the trail stays dead center either way.
-const map = css({ my: '8', mx: { md: '-4' } })
+// Bleeds into the card's padding so the photos get the width (all of it on
+// phones, half of it on desktop); the trail stays dead center either way.
+// Phones clip sideways: full-width photos sliding in from their side would
+// otherwise scroll the page horizontally.
+const map = css({
+  my: '8',
+  mx: '-4',
+  overflowX: { base: 'clip', md: 'visible' },
+})
 const track = css({ position: 'relative' })
 
-// Every row shares one column template so the spine column lines up down the
-// whole list. Phones: spine on the left edge, photo beside it.
+// Desktop rows share one column template so the spine column lines up down
+// the whole list. Phones: a single column, the trail running down its center.
 const columns = {
   gridTemplateColumns: {
-    base: '2.5rem minmax(0, 1fr)',
+    base: 'minmax(0, 1fr)',
     md: 'minmax(0, 1fr) 2.5rem minmax(0, 1fr)',
   },
-  columnGap: { base: '3', md: '0' },
 } as const
 
-// Phones: one photo per grid row, all beside the spine. Desktop: a pair sits
-// either side of it; a wide photo spans all three columns and the trail
-// passes behind it.
+// Phones: every photo stacks full width over the trail, which shows only in
+// the gaps between them. Desktop: a pair sits either side of the spine; a
+// wide photo spans all three columns and the trail passes behind it.
 const pairRow = css({
   ...columns,
   display: 'grid',
   gridTemplateAreas: {
-    base: '"spine a" "spine b"',
+    base: '"a" "b"',
     md: '"a spine b"',
   },
-  rowGap: '8',
-  py: { base: '4', md: '5' },
+  position: { base: 'relative', md: 'static' },
+  zIndex: { base: '1', md: 'auto' },
+  rowGap: { base: '12', md: '8' },
+  py: { base: '6', md: '5' },
 })
 const wideRow = css({
   ...columns,
   display: 'grid',
-  gridTemplateAreas: { base: '"spine a"', md: '"a a a"' },
+  gridTemplateAreas: { base: '"a"', md: '"a a a"' },
   position: 'relative',
   zIndex: '1',
-  py: { base: '4', md: '5' },
+  py: { base: '6', md: '5' },
 })
 
-const spineAnchor = css({ gridArea: 'spine' })
+// zero-height; on phones it overlays the photo column, so its center is the
+// column's center
+const spineAnchor = css({ gridArea: { base: 'a', md: 'spine' } })
 
 const figure = css({
   display: 'flex',
   flexDirection: 'column',
   gap: '3',
 })
-const areaA = css({ gridArea: 'a', pr: { md: '3' } })
-const areaB = css({ gridArea: 'b', pl: { md: '3' } })
-// Same fill as the card, so the trail passing behind the row is hidden under
-// the caption too, not just the photo.
+// Same fill as the card wherever the trail passes behind a photo (wide rows,
+// and every row on phones), so it is hidden under the caption too.
+const areaA = css({
+  gridArea: 'a',
+  bg: { base: 'surface', md: 'transparent' },
+  pr: { md: '3' },
+})
+const areaB = css({
+  gridArea: 'b',
+  bg: { base: 'surface', md: 'transparent' },
+  pl: { md: '3' },
+})
 const areaWide = css({ gridArea: 'a', bg: 'surface' })
 
 const frame = css({
@@ -150,10 +167,18 @@ const frame = css({
 })
 const image = css({ display: 'block', width: '100%', height: 'auto' })
 
-const caption = css({ display: 'flex', alignItems: 'baseline', gap: '3' })
-// Captions hug the trail: a photo left of the spine aligns its caption right.
+// Phones: every caption sits centered on the trail. Desktop: captions hug
+// the trail; a photo left of the spine aligns its caption right.
+const caption = css({
+  display: 'flex',
+  alignItems: 'baseline',
+  gap: '3',
+  justifyContent: 'center',
+})
+// Each placement owns its one desktop value: two md values on one element
+// would land in the same layer and resolve by stylesheet order.
+const captionLeft = css({ md: { justifyContent: 'flex-start' } })
 const captionRight = css({ md: { justifyContent: 'flex-end' } })
-const captionCenter = css({ md: { justifyContent: 'center' } })
 const waypointNumber = css({ textStyle: 'mono', color: 'accent' })
 const captionText = css({
   textStyle: 'prose',
@@ -190,10 +215,12 @@ const dotFill = css({
   bg: 'accent',
 })
 
+// Same three columns at every width, so the marker lands on the centered
+// trail on phones too.
 const capRow = css({
-  ...columns,
   display: 'grid',
-  gridTemplateAreas: { base: '"spine label"', md: '". spine label"' },
+  gridTemplateColumns: 'minmax(0, 1fr) 2.5rem minmax(0, 1fr)',
+  gridTemplateAreas: '". spine label"',
   alignItems: 'center',
 })
 const capMarker = css({ gridArea: 'spine', justifySelf: 'center' })
@@ -201,7 +228,7 @@ const capLabel = css({
   gridArea: 'label',
   textStyle: 'mono',
   color: 'text.muted',
-  px: { md: '3' },
+  px: '3',
 })
 const trailhead = css({
   display: 'block',
@@ -248,12 +275,28 @@ function useTrailGeometry() {
       if (!anchor) return
       const c = anchor.left + anchor.width / 2 - box.left
       const dots: number[] = []
+      const covers = (r: DOMRect) =>
+        r.left - box.left < c && r.right - box.left > c
+      const add = (y: number) => {
+        if (!dots.some((d) => Math.abs(d - y) < 4)) dots.push(y)
+      }
       el.querySelectorAll('[data-waypoint]').forEach((node) => {
         const r = node.getBoundingClientRect()
-        const coversSpine = r.left - box.left < c && r.right - box.left > c
-        const y = Math.round(r.top + r.height / 2 - box.top)
-        if (!coversSpine && !dots.some((d) => Math.abs(d - y) < 4)) dots.push(y)
+        if (!covers(r)) add(Math.round(r.top + r.height / 2 - box.top))
       })
+      // Two stacked photos that both hide the trail (every photo on phones):
+      // mark the stretch of trail visible between them instead.
+      const figures = [...el.querySelectorAll('[data-figure]')].map((n) =>
+        n.getBoundingClientRect(),
+      )
+      for (let i = 1; i < figures.length; i++) {
+        const prev = figures[i - 1]
+        const next = figures[i]
+        if (covers(prev) && covers(next) && next.top > prev.bottom) {
+          add(Math.round((prev.bottom + next.top) / 2 - box.top))
+        }
+      }
+      dots.sort((a, b) => a - b)
       setGeo({ w: box.width, h: box.height, c, dots })
     }
     const observer = new ResizeObserver(measure)
@@ -374,8 +417,8 @@ const placementStyles: Record<Placement, string> = {
 }
 const captionStyles: Record<Placement, string> = {
   left: cx(caption, captionRight),
-  right: caption,
-  wide: cx(caption, captionCenter),
+  right: cx(caption, captionLeft),
+  wide: caption,
 }
 // Pairs slide in from their own side and settle with a slight outward tilt;
 // a wide photo scales up in place (no y offset: the trail geometry is read
@@ -405,6 +448,7 @@ function Photo({
       whileHover={{ rotate: 0, scale: wide ? 1.01 : 1.02 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+      data-figure
     >
       <div className={frame} data-waypoint>
         <Image
@@ -414,8 +458,8 @@ function Photo({
           height={photo.height}
           sizes={
             wide
-              ? '(max-width: 768px) calc(100vw - 7rem), 830px'
-              : '(max-width: 768px) calc(100vw - 7rem), 400px'
+              ? '(max-width: 768px) calc(100vw - 3rem), 830px'
+              : '(max-width: 768px) calc(100vw - 3rem), 400px'
           }
           className={image}
         />
