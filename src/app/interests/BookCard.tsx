@@ -16,10 +16,11 @@ interface BookCardProps {
   onToggle: () => void
 }
 
-// Narrow cards (phones) stack the cover above the title; a title word like
-// "Programming" can't fit beside a 120px cover under ~20rem. The query reads
-// the list's width (Reading sets `containerType`); from md the list splits
-// into two columns but each is still wide enough to sit side by side.
+// Narrow cards (phones) stack a larger cover above the title, the same image
+// over caption rhythm as the trail photos; a title word like "Programming"
+// can't sit comfortably beside a cover under ~24rem. The query reads the
+// list's width (Reading sets `containerType`); from md the list splits into
+// two columns but each is still wide enough to sit side by side.
 //
 // Lift and tilt use the individual `translate`/`rotate` properties, not
 // `transform`: motion's layout animation owns `transform` inline and would
@@ -29,7 +30,7 @@ const cardBase = css({
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
   columnGap: '4',
-  '@container (min-width: 20rem)': {
+  '@container (min-width: 24rem)': {
     gridTemplateColumns: 'auto minmax(0, 1fr)',
   },
   alignItems: 'start',
@@ -63,7 +64,14 @@ const cardExpanded = css({
 
 const cardStretched = css({ gridColumn: '1 / -1' })
 
-const coverBase = css({ gridColumn: '1', gridRow: '1', width: '120px' })
+// 120px beside the title, 160px stacked. The stacked size sits under the
+// narrow query (never true from md) so it can't contest coverExpanded's 180px.
+const coverBase = css({
+  gridColumn: '1',
+  gridRow: '1',
+  width: '120px',
+  '@container (width < 24rem)': { width: '160px' },
+})
 const coverExpanded = css({ md: { gridRow: '1 / span 2', width: '180px' } })
 
 const coverImage = css({
@@ -84,7 +92,7 @@ const toggle = css({
   gridColumn: '1',
   gridRow: '2',
   mt: '4',
-  '@container (min-width: 20rem)': { gridColumn: '2', gridRow: '1', mt: '0' },
+  '@container (min-width: 24rem)': { gridColumn: '2', gridRow: '1', mt: '0' },
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
@@ -264,7 +272,7 @@ export default function BookCard({
           alt={`${book.title} book cover`}
           width={book.width}
           height={book.height}
-          sizes="(min-width: 768px) 180px, 120px"
+          sizes="(min-width: 768px) 180px, 160px"
           loading={index < 2 ? 'eager' : undefined}
           className={coverImage}
         />

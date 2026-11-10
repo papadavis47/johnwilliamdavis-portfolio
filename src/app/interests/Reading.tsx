@@ -67,6 +67,8 @@ export default function Reading() {
             scrollMarginTop: 'calc(token(sizes.navHeight) + token(spacing.1))',
             listStyle: 'none',
             p: '0',
+            // phones: nearly fills the card, a sliver of padding either side
+            mx: { base: '-3', md: '0' },
             md: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
           })}
         >
@@ -78,7 +80,9 @@ export default function Reading() {
               expanded={openTitle === book.title}
               stretched={stretchedTitle === book.title}
               onToggle={() =>
-                setOpenTitle((open) => (open === book.title ? null : book.title))
+                setOpenTitle((open) =>
+                  open === book.title ? null : book.title,
+                )
               }
             />
           ))}
