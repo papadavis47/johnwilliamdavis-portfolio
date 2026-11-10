@@ -57,14 +57,15 @@ export default function Writing() {
           display: 'flex',
           flexDirection: 'column',
           gap: '4',
-          // Same edges as the full-width trail photos: card content plus the
-          // 1rem bleed into the card's padding on desktop.
-          mx: { md: '-4' },
+          // Desktop: same edges as the full-width trail photos (1rem bleed
+          // into the card's padding). Phones: same edges as the book cards,
+          // a sliver of padding either side.
+          mx: { base: '-3', md: '-4' },
           mb: '3',
           border: '1px solid',
           borderColor: 'border',
           borderRadius: 'control',
-          p: '3',
+          p: { base: '2', md: '3' },
           boxShadow: 'hover',
           transition: 'border-color 200ms, transform 200ms, box-shadow 200ms',
           _hover: {
