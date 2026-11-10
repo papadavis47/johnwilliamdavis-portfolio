@@ -2,12 +2,12 @@ import { projects } from '@/app/projects/projects'
 
 // Shared by the hero (HTML) and the Markdown representation of `/`.
 
-// The thesis stands alone; the projects that back it up follow. Fused into one
-// paragraph, the thesis reads as a lead-in to the list rather than a claim.
+// Identity first (builder: fluent in Rust/TS, reach via agents), then the why
+// and the projects behind it, then how the work gets built.
 export const heroParagraphs = [
-  'I care most about building software that adds health and happiness to people’s lives.',
-  'My projects include a legacy vault for parents, a guilt-free eating tracker, and terminal tools for training and focus.',
-  'Things are shifting fast in the software industry, most of all toward agentic engineering. Adapting quickly is my main skill; lately that means getting real leverage from agents.',
+  'I’m a builder. Rust and TypeScript are where I’m fluent, and with coding agents I can build in just about any stack a project calls for.',
+  'I care most about software that adds health and happiness to people’s lives. My projects include a legacy vault for parents, a guilt-free eating tracker, and terminal tools for training and focus.',
+  'All of my recent projects have been built with the help of coding agents. I set the direction, make the calls, and build the guardrails that keep the output honest: tests, accessibility checks, and written instructions for the agents themselves.',
 ]
 
 const featuredSlugs = ['iwantyoutoknow', 'mountains', 'mija']

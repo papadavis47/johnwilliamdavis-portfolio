@@ -4,17 +4,32 @@ import { CURRENT_FOCUS } from '@/design-system/current-focus'
 const session = [
   { cmd: 'whoami', out: ['john'] },
   { cmd: 'pwd', out: ['/pnw/greater_seattle_area'] },
-  { cmd: 'cat languages.txt', out: ['rust  typescript  python'] },
+  {
+    cmd: 'cat languages.txt',
+    out: [
+      'fluent  rust  typescript',
+      'also    python',
+      'reach   whatever the project needs',
+    ],
+  },
   // versions hand-synced; bump on release
   {
     cmd: 'cargo install --list',
     out: [
-      'caleb v0.7.1:',
+      'caleb v0.8.0:',
       '    caleb',
-      'mountains v0.9.3:',
+      'mountains v0.13.0:',
       '    mountains',
       'rattlesnake v0.1.0:',
       '    rattlesnake',
+    ],
+  },
+  {
+    cmd: 'ls ~/projects/{iwantyoutoknow,mija,sokay}/AGENTS.md',
+    out: [
+      '~/projects/iwantyoutoknow/AGENTS.md',
+      '~/projects/mija/AGENTS.md',
+      '~/projects/sokay/AGENTS.md',
     ],
   },
   { cmd: 'echo $EDITOR', out: ['zed --wait'] },
