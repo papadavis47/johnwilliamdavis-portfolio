@@ -5,7 +5,7 @@ import { interestsMarkdown } from '@/app/interests/markdown'
 import { projectsMarkdown } from '@/app/projects/markdown'
 import { projectMarkdown } from '@/app/projects/[slug]/markdown'
 import { projects } from '@/app/projects/projects'
-import { workflowMarkdown } from '@/app/workflow/markdown'
+import { processMarkdown } from '@/app/process/markdown'
 import { absoluteUrl } from '@/design-system/site'
 
 // Markdown content negotiation. Every page URL also has a Markdown
@@ -26,7 +26,7 @@ const pages = new Map<string, () => string>([
   ['/about', aboutMarkdown],
   ['/interests', interestsMarkdown],
   ['/projects', projectsMarkdown],
-  ['/workflow', workflowMarkdown],
+  ['/process', processMarkdown],
   ...projects.map(
     (project) =>
       [`/projects/${project.slug}`, () => projectMarkdown(project)] as const,

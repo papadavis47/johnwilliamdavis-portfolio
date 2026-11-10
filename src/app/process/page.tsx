@@ -1,13 +1,13 @@
 import { pageMetadata } from '@/design-system/site'
-import WorkflowContent from './WorkflowContent'
+import ProcessContent from './ProcessContent'
 
 export const metadata = pageMetadata({
-  title: 'Workflow',
+  title: 'Process',
   description:
     'How John William Davis builds software with coding agents: plan first, small reviewed steps, mechanical guardrails, and an AGENTS.md in every repo.',
-  path: '/workflow',
+  path: '/process',
 })
 
-export default function WorkflowPage() {
-  return <WorkflowContent />
+export default function ProcessPage() {
+  return <ProcessContent />
 }

@@ -1,6 +1,6 @@
 import { intro, sections } from './content'
 
-export function workflowMarkdown() {
+export function processMarkdown() {
   return [
     '# How I build',
     intro,

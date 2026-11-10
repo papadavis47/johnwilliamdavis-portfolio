@@ -7,7 +7,7 @@ const routes = [
   '/about',
   '/interests',
   '/projects',
-  '/workflow',
+  '/process',
   ...projects.map((project) => `/projects/${project.slug}`),
 ]
 

@@ -6,7 +6,7 @@ import { siteUrl } from '../src/design-system/site'
 const staticRoutes = [
   { path: '/', h1: 'John William Davis' },
   { path: '/projects', h1: 'Projects' },
-  { path: '/workflow', h1: 'How I build' },
+  { path: '/process', h1: 'How I build' },
   { path: '/about', h1: null },
   { path: '/interests', h1: null },
 ]

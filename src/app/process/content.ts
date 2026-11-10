@@ -1,10 +1,10 @@
-// Shared by WorkflowContent (HTML) and the Markdown representation of
-// /workflow. Plain strings only: no inline markup is parsed here.
+// Shared by ProcessContent (HTML) and the Markdown representation of
+// /process. Plain strings only: no inline markup is parsed here.
 
 export const intro =
   'Agents write code fast. The rest is my job: deciding what gets built, checking what comes back, and building the checks that catch what a quick review would miss.'
 
-export type WorkflowSection = {
+export type ProcessSection = {
   title: string
   paragraphs: string[]
   // excerpts from this site’s AGENTS.md, rendered as blockquotes
@@ -12,7 +12,7 @@ export type WorkflowSection = {
   closing?: string
 }
 
-export const sections: WorkflowSection[] = [
+export const sections: ProcessSection[] = [
   {
     title: 'The loop',
     paragraphs: [

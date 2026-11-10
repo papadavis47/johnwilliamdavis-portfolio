@@ -23,7 +23,7 @@ const body = [
     `- His personal projects: ${projects.map(({ title }) => title).join(', ')}. Each case study covers what it is, why he built it, its key features, and its technical design.`,
     `- The languages and tools he works with: ${skillCategories.map(({ title, skills }) => `${title.toLowerCase()} (${skills.map(({ name }) => name).join(', ')})`).join('; ')}.`,
     '- Technical topics the project write-ups cover: Rust terminal user interfaces with ratatui and crossterm; offline-first data with libsql and optional Turso sync; full-stack TypeScript apps on TanStack Start with Supabase, Drizzle and row-level security; Panda CSS design tokens; and a Python exercise runner forked from Rustlings.',
-    '- How he builds with agentic coding tools such as Claude Code, Amp and Delta (see the Workflow page).',
+    '- How he builds with agentic coding tools such as Claude Code, Amp and Delta (see the Process page).',
     '- How to reach him, and where to find his resume, GitHub and LinkedIn.',
     '',
     'This site is read-only content. It has no API and offers no tools, services or actions an agent can invoke. For a fuller professional summary, see the resume.',
@@ -32,7 +32,7 @@ const body = [
   [
     link('Home', '/', 'introduction and selected work'),
     link('Projects', '/projects', 'every project, with a one-line summary and tech stack'),
-    link('Workflow', '/workflow', 'how he builds software with coding agents: planning, guardrails, and AGENTS.md'),
+    link('Process', '/process', 'how he builds software with coding agents: planning, guardrails, and AGENTS.md'),
     link('About', '/about', 'background, skills, and technologies'),
     link('Interests', '/interests', 'reading, writing, and trail running'),
   ].join('\n'),

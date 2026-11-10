@@ -6,7 +6,7 @@ import { css } from 'styled-system/css'
 import { link } from 'styled-system/recipes'
 import HeroActions from './HeroActions'
 import TerminalCard from './TerminalCard'
-import { heroParagraphs, workflowLinkLabel } from './content'
+import { heroParagraphs, processLinkLabel } from './content'
 
 export default function HeroIntro() {
   return (
@@ -101,8 +101,8 @@ export default function HeroIntro() {
           </p>
         ))}
         <p className={css({ textStyle: 'prose' })}>
-          <Link href="/workflow" className={link()}>
-            {workflowLinkLabel}
+          <Link href="/process" className={link()}>
+            {processLinkLabel}
           </Link>
         </p>
         <TerminalCard />

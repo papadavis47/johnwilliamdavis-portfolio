@@ -11,7 +11,7 @@ const browserAccept =
 const pages = [
   { path: '/', h1: 'John William Davis' },
   { path: '/projects', h1: 'Projects' },
-  { path: '/workflow', h1: 'How I build' },
+  { path: '/process', h1: 'How I build' },
   { path: '/about', h1: 'About' },
   { path: '/interests', h1: 'Interests' },
   ...projects.map(({ slug, title }) => ({ path: `/projects/${slug}`, h1: title })),

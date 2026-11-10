@@ -10,7 +10,7 @@ export const heroParagraphs = [
   'All of my recent projects have been built with the help of coding agents. I set the direction, make the calls, and build the guardrails that keep the output honest: tests, accessibility checks, and written instructions for the agents themselves.',
 ]
 
-export const workflowLinkLabel = 'How I build with agents →'
+export const processLinkLabel = 'How I build with agents →'
 
 const featuredSlugs = ['iwantyoutoknow', 'mountains', 'mija']
 export const featured = projects.filter((project) =>

@@ -17,7 +17,7 @@ const quote = css({
   borderLeftColor: 'accent',
 })
 
-export default function WorkflowContent() {
+export default function ProcessContent() {
   return (
     <PageContainer>
       <motion.div

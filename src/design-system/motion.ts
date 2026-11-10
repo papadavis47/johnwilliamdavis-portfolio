@@ -1,5 +1,5 @@
 // Page-level motion: a container that staggers its children, each of which
-// fades in. Shared by /about and /workflow.
+// fades in. Shared by /about and /process.
 
 export const containerVariants = {
   hidden: { opacity: 0 },
