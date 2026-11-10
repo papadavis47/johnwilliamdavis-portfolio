@@ -2,7 +2,7 @@
 // /workflow. Plain strings only: no inline markup is parsed here.
 
 export const intro =
-  'I’m a builder. Rust and TypeScript are where I’m fluent, and coding agents are how I reach everything else. This is how that works day to day.'
+  'Agents write code fast. The rest is my job: deciding what gets built, checking what comes back, and building the checks that catch what a quick review would miss.'
 
 export type WorkflowSection = {
   title: string
