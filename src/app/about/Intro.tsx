@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import { link } from 'styled-system/recipes'
-import { itemVariants } from './skill-data'
+import { itemVariants } from '@/design-system/motion'
 import { introParagraphs } from './content'
 
 export default function Intro() {

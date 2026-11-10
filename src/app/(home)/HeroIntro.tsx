@@ -1,10 +1,12 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
+import { link } from 'styled-system/recipes'
 import HeroActions from './HeroActions'
 import TerminalCard from './TerminalCard'
-import { heroParagraphs } from './content'
+import { heroParagraphs, workflowLinkLabel } from './content'
 
 export default function HeroIntro() {
   return (
@@ -98,6 +100,11 @@ export default function HeroIntro() {
             {paragraph}
           </p>
         ))}
+        <p className={css({ textStyle: 'prose' })}>
+          <Link href="/workflow" className={link()}>
+            {workflowLinkLabel}
+          </Link>
+        </p>
         <TerminalCard />
       </motion.div>
 

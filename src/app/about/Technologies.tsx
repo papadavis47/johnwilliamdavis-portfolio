@@ -2,7 +2,8 @@
 
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { skillCategories, itemVariants } from './skill-data'
+import { itemVariants } from '@/design-system/motion'
+import { skillCategories } from './skill-data'
 import SkillSection from './SkillSection'
 
 export default function Technologies() {

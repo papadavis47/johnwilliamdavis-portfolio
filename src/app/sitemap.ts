@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: '/projects',
       sources: ['src/app/projects/ProjectsContent.tsx', 'src/app/projects/markdown.ts', projectsData],
     },
+    { path: '/workflow', sources: ['src/app/workflow'] },
     { path: '/about', sources: ['src/app/about'] },
     {
       path: '/interests',

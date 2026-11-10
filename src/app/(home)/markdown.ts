@@ -1,13 +1,14 @@
 import { stripMarkup } from '@/app/projects/[slug]/markup'
 import { emailHref, resumeHref, socialLinks } from '@/design-system/contact'
 import { absoluteUrl } from '@/design-system/site'
-import { featured, heroParagraphs } from './content'
+import { featured, heroParagraphs, workflowLinkLabel } from './content'
 
 export function homeMarkdown() {
   return [
     '# John William Davis',
     'Software Engineer · Rust & TypeScript (mostly)',
     ...heroParagraphs,
+    `[${workflowLinkLabel}](${absoluteUrl('/workflow')})`,
     '## Selected work',
     ...featured.map((project) =>
       [

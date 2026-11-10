@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
-import { itemVariants } from './skill-data'
+import { itemVariants } from '@/design-system/motion'
 
 export default function Skills() {
   return (

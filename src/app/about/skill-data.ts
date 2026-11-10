@@ -1,3 +1,4 @@
+import { itemVariants } from '@/design-system/motion'
 import type { LucideIcon } from 'lucide-react'
 import {
   Code2,
@@ -72,27 +73,6 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
 ]
-
-export const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-export const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0, 0, 0.2, 1] as const,
-    },
-  },
-}
 
 // Tech I Know Well keeps its staggered rise; the rest of the page only fades
 export const riseVariants = {

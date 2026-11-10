@@ -3,7 +3,7 @@
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import PageContainer from '@/design-system/PageContainer'
-import { containerVariants, itemVariants } from './skill-data'
+import { containerVariants, itemVariants } from '@/design-system/motion'
 import Intro from './Intro'
 import Skills from './Skills'
 import Technologies from './Technologies'
