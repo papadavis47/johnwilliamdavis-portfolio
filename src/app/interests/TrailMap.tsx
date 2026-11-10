@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import Image from 'next/image'
 import {
   motion,
@@ -436,6 +436,22 @@ const entrance: Record<Placement, { x: number; rotate: number }> = {
   wide: { x: 0, rotate: 0 },
 }
 
+// Panda's default md breakpoint. Phones run photos edge to edge, square, so
+// a settled tilt reads as crooked there: they slide in straight.
+const desktopQuery = '(min-width: 768px)'
+const subscribeDesktop = (onChange: () => void) => {
+  const mq = window.matchMedia(desktopQuery)
+  mq.addEventListener('change', onChange)
+  return () => mq.removeEventListener('change', onChange)
+}
+function useIsDesktop() {
+  return useSyncExternalStore(
+    subscribeDesktop,
+    () => window.matchMedia(desktopQuery).matches,
+    () => true,
+  )
+}
+
 function Photo({
   photo,
   number,
@@ -445,7 +461,8 @@ function Photo({
   number: number
   placement: Placement
 }) {
-  const { x, rotate } = entrance[placement]
+  const { x, rotate: tilt } = entrance[placement]
+  const rotate = useIsDesktop() ? tilt : 0
   const wide = placement === 'wide'
   return (
     <motion.figure
