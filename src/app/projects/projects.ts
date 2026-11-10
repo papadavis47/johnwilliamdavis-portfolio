@@ -12,6 +12,8 @@ export type Project = {
   features: string[]
   techNotes: string
   closingNote?: string
+  // How it was built with agents; same inline grammar and \n\n paragraphs
+  buildNotes: string
   screenshots?: { src: string; alt: string; width: number; height: number }[]
   techStack: string[]
   github?: string
@@ -21,7 +23,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'iwantyoutoknow',
-    updated: '2026-08-23',
+    updated: '2026-11-09',
     title: 'I want you to know',
     summary: 'A shared memory and communication vault for parents',
     description:
@@ -41,12 +43,14 @@ export const projects: Project[] = [
     techNotes:
       'Built with TanStack Start: React 19 with SSR, file-based routing, and type-safe server functions validated with Zod. Data lives in Supabase Postgres through Drizzle ORM, with photos in Supabase Storage. Vault and share-link codes are hashed with scrypt and never stored in plain text. The codebase is organized vertically by feature, and styling is Panda CSS with semantic design tokens.',
     closingNote: 'The design will continue to evolve as I refine the idea.',
+    buildNotes:
+      'Built with Claude Code and Amp, both guided by one shared AGENTS.md. I made the product and design calls, including the decision to speak to parents rather than fathers, and reviewed every change; agents did much of the implementation inside those rules.\n\nThe guardrail I care most about: every server function that touches user data has a cross-tenant test proving one parent can never read another’s entries. The database tests and the Playwright specs both refuse to run against anything but a local database, so no agent can ever point them at production.',
     techStack: ['TanStack Start', 'React', 'Supabase', 'Drizzle', 'Panda CSS'],
     url: 'https://iwantyoutoknow.app/',
   },
   {
     slug: 'mountains',
-    updated: '2026-08-28',
+    updated: '2026-11-09',
     title: 'Mountains',
     summary:
       'A terminal training log for trail running and nutrition awareness',
@@ -72,12 +76,14 @@ export const projects: Project[] = [
         height: 536,
       },
     ],
+    buildNotes:
+      'Built with Claude Code. I shaped the screens and keyboard flow from logging my own runs every day, and agents implemented much of it within those constraints.\n\nA pre-commit hook blocks any commit that is not `rustfmt`-clean and `clippy`-clean with zero warnings, so agent-written code has to meet the same bar as mine before it lands.',
     techStack: ['Rust', 'ratatui', 'libsql', 'Turso'],
     github: 'https://github.com/papadavis47/mountains',
   },
   {
     slug: 'caleb',
-    updated: '2026-10-05',
+    updated: '2026-11-09',
     title: 'caleb',
     summary: 'A terminal task manager for coding sessions',
     description:
@@ -113,12 +119,14 @@ export const projects: Project[] = [
         height: 840,
       },
     ],
+    buildNotes:
+      'Built with Claude Code as a learning project: the goal was to understand ownership, error handling, and testing in Rust, not just to ship a tool. Its AGENTS.md asks the agent to explain Rust-specific choices in doc comments, so every change doubles as a lesson.\n\nUnit, integration, and property tests, plus scripted smoke tests that drive the real binary through a pseudo-terminal, let me accept agent changes with confidence. A table of deliberate behaviors records why odd-looking choices exist, so an agent does not quietly “fix” them.',
     techStack: ['Rust', 'ratatui', 'crossterm', 'clap'],
     github: 'https://github.com/papadavis47/caleb',
   },
   {
     slug: 'mija',
-    updated: '2026-10-11',
+    updated: '2026-11-09',
     title: 'Mija',
     summary: 'A terminal Pomodoro timer',
     description:
@@ -154,12 +162,14 @@ export const projects: Project[] = [
         height: 689,
       },
     ],
+    buildNotes:
+      'Built with Claude Code using a strict red/green loop written into its AGENTS.md: a failing test first, then the minimal code to pass it. Side effects like notifications sit behind a trait, so tests can mock them instead of firing real alerts.\n\nFormatting, `clippy` with warnings as errors, and the full test suite must pass before any commit, and CI repeats all of it on Linux and macOS.',
     techStack: ['Rust', 'ratatui', 'clap', 'Herdr'],
     github: 'https://github.com/papadavis47/mija',
   },
   {
     slug: 'sokay',
-    updated: '2026-07-17',
+    updated: '2026-11-09',
     title: 'Sokay',
     summary: 'A mindful eating tracker',
     description:
@@ -179,12 +189,14 @@ export const projects: Project[] = [
     techNotes:
       'Built with TanStack Start: React 19, file-based routing, and server functions that gate every query by the authenticated user. Auth is Supabase with row-level security; the schema is managed with Drizzle migrations. The UI is Panda CSS with config recipes and Ark UI primitives, and the logic is covered by Vitest unit tests plus Playwright end-to-end flows.',
     closingNote: 'The design is still evolving as I refine the idea.',
+    buildNotes:
+      'Built with Amp and Claude Code. Its AGENTS.md includes a short list of things not to do: no second styling system, no bypassing auth checks in server functions, no schema change without a migration. That list stops shortcuts that look harmless in a single diff.\n\nVitest covers the server functions, including auth guards and per-user scoping, and Playwright covers sign-up, login, and the full goal flow end to end.',
     techStack: ['TanStack Start', 'Supabase', 'Drizzle', 'Panda CSS'],
     url: 'https://sokay-help.netlify.app/',
   },
   {
     slug: 'rattlesnake',
-    updated: '2026-08-29',
+    updated: '2026-11-09',
     title: 'Rattlesnake',
     summary: 'A tool for learning Python concepts, inspired by Rustlings',
     description:
@@ -204,6 +216,8 @@ export const projects: Project[] = [
     techNotes:
       'The CLI is Rust, preserved from Rustlings; the validation pipeline is rebuilt on the Astral toolchain: `uv` bootstraps the Python 3.12 environment, then each exercise runs through `python`, `pytest`, `ruff`, and the `ty` type checker as configured per exercise. Curriculum, ordering, and hints live in a single `.toml` file.',
     closingNote: 'This project served as a great Rust codebase tour.',
+    buildNotes:
+      'Built with Claude Code. Forking a large Rust codebase I did not write meant using an agent to map it first, then rebuilding the exercise pipeline phase by phase, with AGENTS.md tracking what was done and what remained.\n\nEvery exercise ships with a reference solution, and CI on Linux, Windows, and macOS checks that each unsolved exercise fails and each solution passes all of its enabled stages.',
     techStack: ['Rust', 'Python', 'uv', 'pytest'],
     github: 'https://github.com/papadavis47/rattlesnake',
   },

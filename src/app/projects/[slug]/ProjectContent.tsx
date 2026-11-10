@@ -267,10 +267,14 @@ export default function ProjectContent({ project }: { project: Project }) {
           )}
         </Section>
 
+        <Section title="How I built it" delay={0.8}>
+          <Paragraphs text={project.buildNotes} />
+        </Section>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.9 }}
           className={css({
             display: 'flex',
             flexWrap: 'wrap',

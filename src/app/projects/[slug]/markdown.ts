@@ -23,6 +23,8 @@ export function projectMarkdown(project: Project) {
     '## Tech notes',
     project.techNotes,
     project.closingNote && `_${project.closingNote}_`,
+    '## How I built it',
+    project.buildNotes,
     '## Links',
     [
       project.github && `- [View on GitHub](${project.github})`,
