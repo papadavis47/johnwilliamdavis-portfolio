@@ -161,7 +161,8 @@ const areaWide = css({ gridArea: 'a', bg: 'surface' })
 
 const frame = css({
   overflow: 'hidden',
-  borderRadius: 'control',
+  // square on phones, where photos run edge to edge
+  borderRadius: { base: '0', md: 'control' },
   boxShadow: 'lifted',
   bg: 'surface',
 })
@@ -257,6 +258,9 @@ interface Geometry {
   c: number
   // waypoint dot y positions; a dot is dropped where a photo covers the spine
   dots: number[]
+  // where the trail crosses center between dots: dots, plus the gap between
+  // two stacked photos that both hide it (no dot drawn there)
+  stops: number[]
 }
 
 // Reads the laid-out positions back from the DOM: the spine column's center
@@ -277,15 +281,17 @@ function useTrailGeometry() {
       const dots: number[] = []
       const covers = (r: DOMRect) =>
         r.left - box.left < c && r.right - box.left > c
-      const add = (y: number) => {
-        if (!dots.some((d) => Math.abs(d - y) < 4)) dots.push(y)
-      }
+      const near = (ys: number[], y: number) =>
+        ys.some((d) => Math.abs(d - y) < 4)
       el.querySelectorAll('[data-waypoint]').forEach((node) => {
         const r = node.getBoundingClientRect()
-        if (!covers(r)) add(Math.round(r.top + r.height / 2 - box.top))
+        const y = Math.round(r.top + r.height / 2 - box.top)
+        if (!covers(r) && !near(dots, y)) dots.push(y)
       })
       // Two stacked photos that both hide the trail (every photo on phones):
-      // mark the stretch of trail visible between them instead.
+      // bend through the gap between them, so each visible stretch of trail
+      // crosses center rather than drifting with one long curve.
+      const stops = [...dots]
       const figures = [...el.querySelectorAll('[data-figure]')].map((n) =>
         n.getBoundingClientRect(),
       )
@@ -293,11 +299,12 @@ function useTrailGeometry() {
         const prev = figures[i - 1]
         const next = figures[i]
         if (covers(prev) && covers(next) && next.top > prev.bottom) {
-          add(Math.round((prev.bottom + next.top) / 2 - box.top))
+          const y = Math.round((prev.bottom + next.top) / 2 - box.top)
+          if (!near(stops, y)) stops.push(y)
         }
       }
-      dots.sort((a, b) => a - b)
-      setGeo({ w: box.width, h: box.height, c, dots })
+      stops.sort((a, b) => a - b)
+      setGeo({ w: box.width, h: box.height, c, dots, stops })
     }
     const observer = new ResizeObserver(measure)
     observer.observe(el)
@@ -307,12 +314,12 @@ function useTrailGeometry() {
   return [ref, geo] as const
 }
 
-// One S-bend between each pair of stops (top, every dot, bottom): out to the
+// One S-bend between each pair of stops (top, every stop, bottom): out to the
 // right, back through center, out to the left, back to center. Each bend ends
 // on the tangent the next one starts with, so the trail reads as one line.
-function trailPath({ h, c, dots }: Geometry) {
+function trailPath({ h, c, stops: inner }: Geometry) {
   const a = 16
-  const stops = [0, ...dots, h]
+  const stops = [0, ...inner, h]
   let d = `M ${c} 0`
   for (let i = 1; i < stops.length; i++) {
     const y0 = stops[i - 1]
