@@ -3,8 +3,20 @@
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import PageContainer from '@/design-system/PageContainer'
+import Typewriter from '@/design-system/Typewriter'
 import { containerVariants, itemVariants } from '@/design-system/motion'
 import { intro, sections } from './content'
+
+const heading = css({ textStyle: 'h2', color: 'text' })
+
+const headingRow = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'baseline',
+  columnGap: '3',
+})
+
+const asideStyle = css({ textStyle: 'mono', fontSize: 'md', color: 'text.muted' })
 
 const prose = css({ textStyle: 'prose', color: 'text' })
 
@@ -40,7 +52,7 @@ export default function ProcessContent() {
           {intro}
         </motion.p>
 
-        {sections.map(({ title, paragraphs, quotes, closing }) => (
+        {sections.map(({ title, aside, paragraphs, quotes, closing }) => (
           <motion.section
             key={title}
             variants={itemVariants}
@@ -51,7 +63,15 @@ export default function ProcessContent() {
               maxWidth: 'content',
             })}
           >
-            <h2 className={css({ textStyle: 'h2', color: 'text' })}>{title}</h2>
+            {aside ? (
+              // aside sits outside the h2 so the heading reads plain "The loop"
+              <div className={headingRow}>
+                <h2 className={heading}>{title}</h2>
+                <Typewriter text={aside} duration={1} delay={1} className={asideStyle} />
+              </div>
+            ) : (
+              <h2 className={heading}>{title}</h2>
+            )}
             {paragraphs.map((paragraph) => (
               <p key={paragraph} className={prose}>
                 {paragraph}

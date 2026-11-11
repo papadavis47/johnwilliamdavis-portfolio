@@ -4,8 +4,8 @@ export function processMarkdown() {
   return [
     '# How I build',
     intro,
-    ...sections.flatMap(({ title, paragraphs, quotes = [], closing }) => [
-      `## ${title}`,
+    ...sections.flatMap(({ title, aside, paragraphs, quotes = [], closing }) => [
+      aside ? `## ${title} ${aside}` : `## ${title}`,
       ...paragraphs,
       ...quotes.map((quote) => `> ${quote}`),
       ...(closing ? [closing] : []),

@@ -6,6 +6,8 @@ export const intro =
 
 export type ProcessSection = {
   title: string
+  // typed out beside the heading, like the hero's "(mostly)"
+  aside?: string
   paragraphs: string[]
   // excerpts from this site’s AGENTS.md, rendered as blockquotes
   quotes?: string[]
@@ -15,6 +17,7 @@ export type ProcessSection = {
 export const sections: ProcessSection[] = [
   {
     title: 'The loop',
+    aside: '(still iterating)',
     paragraphs: [
       'Every change starts as a plan, not code. The agent reads the codebase, proposes an approach, and asks clarifying questions; I decide what gets built and what gets cut.',
       'Then the agent implements in small, reviewable steps. I read the diff, run it, and check it in the browser or the terminal before anything is committed. Nothing ships just because an agent says it is done.',
