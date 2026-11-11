@@ -20,7 +20,7 @@ export const sections: ProcessSection[] = [
     aside: '(still iterating)',
     paragraphs: [
       'Every change starts as a plan, not code. The agent reads the codebase, proposes an approach, and asks clarifying questions; I decide what gets built and what gets cut.',
-      'Then the agent implements in small, reviewable steps. I read the diff, run it, and check it in the browser or the terminal before anything is committed. Nothing ships just because an agent says it is done.',
+      'Then the agent implements in small, reviewable steps. I don’t read every line of every diff; I read closely where a mistake would be costly or quiet, and skim where the checks already guard it. Usually I run it in the browser or the terminal before committing; when I don’t, I lean on the tests, and any commit can be reverted. Nothing ships just because an agent says it is done.',
     ],
   },
   {
