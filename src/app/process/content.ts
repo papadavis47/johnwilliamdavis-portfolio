@@ -29,7 +29,7 @@ export const sections: ProcessSection[] = [
     ],
   },
   {
-    title: 'Teaching the agents',
+    title: 'Guiding the agents',
     paragraphs: [
       'Every repo I work in has an AGENTS.md: the conventions, the commands, and above all the decisions, each with its reason. An agent that knows why something is the way it is will not quietly undo it. A few excerpts from this site’s file:',
     ],
