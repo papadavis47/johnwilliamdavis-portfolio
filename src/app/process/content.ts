@@ -44,7 +44,7 @@ export const sections: ProcessSection[] = [
   {
     title: 'Tools',
     paragraphs: [
-      'I work in Zed and Ghostty, with Claude Code, Amp, and Delta as my coding agents.',
+      'I always have Chrome, Zed, and Ghostty open while I work, with Claude Code, Amp, and Delta as my preferred coding agents.',
     ],
   },
 ]
