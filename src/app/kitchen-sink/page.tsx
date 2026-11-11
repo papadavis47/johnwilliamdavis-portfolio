@@ -4,6 +4,7 @@ import { css, cx } from 'styled-system/css'
 import { token } from 'styled-system/tokens'
 import { button, card, tag, link } from 'styled-system/recipes'
 import PageContainer from '@/design-system/PageContainer'
+import Typewriter from '@/design-system/Typewriter'
 
 // Design-system catalog. Gated: 404s on Vercel production, renders in local dev
 // and on preview deploys. Everything here reads the real Panda setup, so a token
@@ -224,6 +225,12 @@ export default function KitchenSink() {
             ~/.mountains/
           </code>{' '}
           directory.
+        </p>
+      </Section>
+
+      <Section title="Typewriter">
+        <p className={cx(textColor, css({ textStyle: 'mono' }))}>
+          <Typewriter text="types out on load" duration={1} delay={0.5} />
         </p>
       </Section>
 

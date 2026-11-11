@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import { css } from 'styled-system/css'
 import { link } from 'styled-system/recipes'
+import Typewriter from '@/design-system/Typewriter'
 import HeroActions from './HeroActions'
 import TerminalCard from './TerminalCard'
 import { heroParagraphs, processLinkLabel } from './content'
@@ -57,25 +58,13 @@ export default function HeroIntro() {
             sm: { display: 'inline' },
           })}
         >
-          {/* Clipped, not removed, so screen readers get the full line at once */}
-          <span
-            className={css({
-              display: 'inline-block',
-              _motionSafe: { animation: 'typewriter 0.9s steps(17) 0.6s both' },
-            })}
-          >
-            Rust &amp; TypeScript
-          </span>{' '}
-          <span
-            className={css({
-              display: 'inline-block',
-              color: 'text.muted',
-              fontSize: { base: 'md', md: 'lg' },
-              _motionSafe: { animation: 'typewriter 0.5s steps(8) 2.4s both' },
-            })}
-          >
-            (mostly)
-          </span>
+          <Typewriter text="Rust & TypeScript" duration={0.9} delay={0.6} />{' '}
+          <Typewriter
+            text="(mostly)"
+            duration={0.5}
+            delay={2.4}
+            className={css({ color: 'text.muted', fontSize: { base: 'md', md: 'lg' } })}
+          />
         </span>
       </motion.h2>
 
